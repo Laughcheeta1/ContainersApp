@@ -73,6 +73,6 @@ const receiverSchema = new mongoose.taskSchema(
             required : true
         }
     }
-)
+);
 
 module.exports = mongoose.model("Commodatum", commodatumSchema);

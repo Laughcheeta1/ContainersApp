@@ -1,4 +1,4 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
 const costumersSchema = mongoose.Schema(
     {
@@ -30,6 +30,6 @@ const costumersSchema = mongoose.Schema(
     {
         timestamps: true
     }
-)
+);
 
 module.exports = mongoose.model("Costumer", costumersSchema);
