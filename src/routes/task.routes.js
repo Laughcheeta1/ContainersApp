@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const router = Router();
 const authRequired = require("../middlewares/validateToken");
 const {
   getTasks,
@@ -7,7 +8,6 @@ const {
   updateTask,
   createTask,
 } = require("../controllers/task.controller");
-const router = Router();
 const validateSchema = require("../middlewares/validator.middleware");
 const createTaskSchema = require("../schemas/task.schema");
 
