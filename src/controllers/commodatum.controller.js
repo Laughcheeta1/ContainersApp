@@ -54,8 +54,16 @@ const updateCommodatum = async (req, res) => {
 // Eliminar un comodato
 
 const deleteCommodatum = async (req, res) => {
-  
-}
+  try {
+    console.log(req.params);
+    const foundCommodatum = await Commodatum.findByIdAndRemove(req.params.id);
+    if (!foundCommodatum)
+      return res.status(404).json({ message: "Commodatum Not Found" });
+    res.sendStatus(201);
+  } catch (error) {
+    return res.status(400).json({ message: "An Error Occured" });
+  }
+};
 
 const createCommodatum = async (req, res) => {
   const {
