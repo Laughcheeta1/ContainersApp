@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRoutes = require("./routes/auth.routes");
 const taskRoutes = require("./routes/task.routes");
 const containerRoutes = require("./routes/containers.routes");
+const commodatumRoutes = require("./routes/commodatum.routes");
 
 const app = express();
 
@@ -21,5 +22,6 @@ app.use(cookieParser());
 app.use("/api", authRoutes);
 app.use("/api", taskRoutes);
 app.use("/api", containerRoutes);
+app.use("/api", commodatumRoutes);
 
 module.exports = app;
