@@ -12,7 +12,7 @@ const router = Router();
 
 router.get("/comodatos/:id", getCommodatum);
 
-router.get("/comodatos/", getCommodatums);
+router.get("/comodatos", getCommodatums);
 
 router.post("/comodatos", createCommodatum);
 
