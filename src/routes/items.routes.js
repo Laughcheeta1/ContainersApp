@@ -16,8 +16,8 @@ router.get("/items", getItems);
 
 router.post("/items", createItem);
 
-router.delete("/items", deleteItem);
+router.delete("/items/:id", deleteItem);
 
-router.put("/items", updateItem);
+router.put("/items/:id", updateItem);
 
 module.exports = router;
