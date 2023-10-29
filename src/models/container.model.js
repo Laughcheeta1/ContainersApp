@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+// Schema para objetos de mantenimiento
+
 const maintenanceSchema = new mongoose.Schema({
   done_by: {
     type: String,
@@ -23,6 +25,8 @@ const maintenanceSchema = new mongoose.Schema({
   },
 });
 
+// Schema para objetos de compra
+
 const purchaseSchema = new mongoose.Schema({
   vendor: {
     type: String,
@@ -38,6 +42,8 @@ const purchaseSchema = new mongoose.Schema({
     type: String,
   },
 });
+
+// Schema para el contenedor
 
 const containerSchema = new mongoose.Schema(
   {
@@ -60,7 +66,6 @@ const containerSchema = new mongoose.Schema(
     },
     qr_code: {
       type: String,
-      unique: true,
     },
     status: {
       type: String,
