@@ -23,5 +23,6 @@ app.use("/api", authRoutes);
 app.use("/api", taskRoutes);
 app.use("/api", containerRoutes);
 app.use("/api", commodatumRoutes);
-
+// TODO: add the remaining models routes
+// TODO: add coments to everything
 module.exports = app;
