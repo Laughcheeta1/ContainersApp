@@ -18,6 +18,8 @@ router.post("/comodatos", createCommodatum);
 
 router.put("/comodatos/:id", updateCommodatum);
 
+router.delete("/comodatos/:id", deleteCommodatum);
+
 module.exports = router;
 
 // router.delete("/comodatos/:id", deleteCommodatum);

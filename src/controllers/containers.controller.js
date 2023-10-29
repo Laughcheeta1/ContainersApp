@@ -78,7 +78,6 @@ const updateContainer = async (req, res) => {
         new: true,
       }
     );
-    console.log(foundContainer);
     if (!foundContainer)
       return res.status(404).json({ message: "Container Not Found" });
     res.json(foundContainer);

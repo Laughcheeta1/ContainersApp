@@ -30,17 +30,32 @@ const getCommodatums = async (req, res) => {
 // Actualizar un comodato
 
 const updateCommodatum = async (req, res) => {
-  if (req.body.commodatum__id)
-    return res.status(400).json({ message: "Cannot Change Commodatum's Id" });
+  if (req.body.commodatum_id || req.body.container)
+    return res
+      .status(400)
+      .json({ message: "Cannot Change Specified Attribute" });
   try {
     const foundCommodatum = await Commodatum.findByIdAndUpdate(
       req.params.id,
-      req.body
-    );
+      req.body,
+      {
+        new: true,
+      }
+    ).populate("container");
+    if (!foundCommodatum)
+      return res.status(404).json({ message: "Commodatum Not Found" });
+    return res.json(foundCommodatum);
   } catch (error) {
-    return res.status(404).json({ message: "Commodatum Not Found" });
+    console.log(error);
+    return res.status(404).json({ message: "An Error Ocurred" });
   }
 };
+
+// Eliminar un comodato
+
+const deleteCommodatum = async (req, res) => {
+  
+}
 
 const createCommodatum = async (req, res) => {
   const {
@@ -98,7 +113,7 @@ const createCommodatum = async (req, res) => {
 module.exports = {
   getCommodatums,
   getCommodatum,
-  // deleteCommodatum,
+  deleteCommodatum,
   updateCommodatum,
   createCommodatum,
 };
