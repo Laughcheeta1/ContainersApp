@@ -66,6 +66,7 @@ const containerSchema = new mongoose.Schema(
     },
     qr_code: {
       type: String,
+      unique: true,
     },
     status: {
       type: String,
