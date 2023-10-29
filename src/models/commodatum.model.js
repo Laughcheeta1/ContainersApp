@@ -27,8 +27,7 @@ const commodatumSchema = new mongoose.Schema(
       trime: true,
     },
     container: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Container",
+      type: String,
       required: true,
     },
     receiver: {

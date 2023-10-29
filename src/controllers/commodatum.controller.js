@@ -8,8 +8,10 @@ const getCommodatum = async (req, res) => {
     const foundCommodatum = await Commodatum.findById(req.params.id).populate(
       "container"
     );
+
     if (!foundCommodatum)
       return res.status(404).json({ message: "Commodatum Not Found" });
+
     res.json(foundCommodatum);
   } catch (error) {
     return res.status(404).json({ message: "Commodatum Not Found" });
@@ -80,7 +82,7 @@ const createCommodatum = async (req, res) => {
         .status(400)
         .json({ message: "Commodatum Number Already Exists" }); // Verificar que no exista un comodato con ese numero
 
-    const foundContainer = await Container.findOne({ number: container });
+    const foundContainer = await Container.findOne({ container_id: container });
     if (!foundContainer)
       return res
         .status(404)

@@ -36,7 +36,6 @@ const purchaseSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-    default: Date.now,
   },
   original_purpose: {
     type: String,
@@ -50,7 +49,7 @@ const containerSchema = new mongoose.Schema(
     version: {
       type: Number,
     },
-    number: {
+    container_id: {
       type: String,
       required: true,
       trim: true,
