@@ -6,9 +6,7 @@ const getContainers = async (req, res) => {
   try {
     const containers = await Container.find();
     res.json(containers);
-  } 
-  catch (error) 
-  {
+  } catch (error) {
     res.status(400).json({ message: "Bad Request" });
   }
 };
@@ -20,11 +18,9 @@ const getContainer = async (req, res) => {
     const foundContainer = await Container.findById(req.params.id);
     if (!foundContainer)
       res.status(404).json({ message: "Container Not Found" });
-    
+
     res.json(foundContainer);
-  } 
-  catch (error) 
-  {
+  } catch (error) {
     return res.status(404).json({ message: "Container Not Found" });
   }
 };
@@ -63,7 +59,6 @@ const createContainer = async (req, res) => {
     const savedContainer = await newContainer.save();
     res.json(savedContainer); // Devolver por response al cliente el json con el nuevo contenedor
   } catch (error) {
-    console.log(error);
     return res
       .status(404)
       .json({ message: "Couldnt save container in database" });
@@ -75,7 +70,9 @@ const createContainer = async (req, res) => {
 const updateContainer = async (req, res) => {
   try {
     if (req.body.number)
-      return res.status(400).json({ message: "Cannot change container's number" });
+      return res
+        .status(400)
+        .json({ message: "Cannot change container's number" });
 
     const foundContainer = await Container.findByIdAndUpdate(
       req.params.id,
@@ -89,10 +86,7 @@ const updateContainer = async (req, res) => {
       return res.status(404).json({ message: "Container Not Found" });
 
     res.json(foundContainer);
-
-  } 
-  catch (error) 
-  {
+  } catch (error) {
     console.log(error);
     return res.status(404).json({ message: "Container Not Found" });
   }
@@ -104,14 +98,12 @@ const deleteContainer = async (req, res) => {
   try {
     const foundContainer = await Container.findByIdAndRemove(req.params.id);
     console.log(foundContainer);
-    
+
     if (!foundContainer)
       return res.status(404).json({ message: "Container Not Found" });
-    
+
     res.sendStatus(201);
-  } 
-  catch (error) 
-  {
+  } catch (error) {
     return res.status(404).json({ message: "Container Not Found" });
   }
 };

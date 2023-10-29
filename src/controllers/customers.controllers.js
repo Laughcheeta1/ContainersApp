@@ -12,8 +12,10 @@ const getCustomers = async (req, res) => {
 const getCustomer = async (req, res) => {
   try {
     const customer = await Customer.findById(req.params.id);
+
     if (!customer)
       return res.status(404).json({ message: "Customer Not Found" });
+
     return res.json(customer);
   } catch (error) {
     return res.status(400).json({ message: "An Error Occurred" });
@@ -22,11 +24,40 @@ const getCustomer = async (req, res) => {
 
 const createCustomer = async (req, res) => {
   const { version, company_NIT, name, address, phone, created_by } = req.body;
+
   try {
-    const duplicateCustomer = await Customer.find();
-  } catch (error) {}
+    const duplicateCustomer = await Customer.findOne({ company_NIT });
+    if (!duplicateCustomer)
+      return res.status(404).json({ message: "Company NIT Already Exists" });
+
+    const newCustomer = new Customer({
+      version,
+      company_NIT,
+      name,
+      address,
+      phone,
+      created_by,
+    });
+
+    const savedCustomer = await newCustomer.save();
+    res.json(savedCustomer);
+  } catch (error) {
+    return res.status(400).json({ message: "An Error Occurred" });
+  }
 };
 
-const updateCustomer = async (req, res) => {};
+const updateCustomer = async (req, res) => {
+  try {
+    if (req.body.company_NIT)
+      return res.status(400).json({ message: "Cannot Change Specified" });
+
+    const customer = await Customer.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+
+    if (!customer)
+      return res.status(404).json({ message: "Customer Not Found" });
+  } catch (error) {}
+};
 
 const deleteCustomer = async (req, res) => {};
