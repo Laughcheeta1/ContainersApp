@@ -27,7 +27,7 @@ const createCustomer = async (req, res) => {
 
   try {
     const duplicateCustomer = await Customer.findOne({ company_NIT });
-    if (!duplicateCustomer)
+    if (duplicateCustomer)
       return res.status(404).json({ message: "Company NIT Already Exists" });
 
     const newCustomer = new Customer({
@@ -49,7 +49,7 @@ const createCustomer = async (req, res) => {
 const updateCustomer = async (req, res) => {
   try {
     if (req.body.company_NIT)
-      return res.status(400).json({ message: "Cannot Change Specified" });
+      return res.status(400).json({ message: "Cannot Change Specified Key" });
 
     const customer = await Customer.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -57,7 +57,30 @@ const updateCustomer = async (req, res) => {
 
     if (!customer)
       return res.status(404).json({ message: "Customer Not Found" });
-  } catch (error) {}
+
+    return res.json(customer);
+  } catch (error) {
+    return res.status(400).json({ message: "An Error Ocurred" });
+  }
 };
 
-const deleteCustomer = async (req, res) => {};
+const deleteCustomer = async (req, res) => {
+  try {
+    const customer = await Customer.findByIdAndRemove(req.params.id);
+
+    if (!customer)
+      return res.status(404).json({ message: "Customer Not Found" });
+
+    res.sendStatus(201);
+  } catch (error) {
+    return res.status(404).json({ message: "An Error Occurred" });
+  }
+};
+
+module.exports = {
+  deleteCustomer,
+  updateCustomer,
+  createCustomer,
+  getCustomer,
+  getCustomers,
+};
