@@ -117,7 +117,3 @@ module.exports = {
   updateCommodatum,
   createCommodatum,
 };
-
-// const getCommodatum
-
-// TODO: make the commodatum contoller
