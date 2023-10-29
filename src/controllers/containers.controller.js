@@ -28,7 +28,7 @@ const getContainer = async (req, res) => {
 
 const createContainer = async (req, res) => {
   const {
-    number,
+    container_id,
     type,
     status,
     notes,
@@ -40,12 +40,12 @@ const createContainer = async (req, res) => {
   } = req.body;
 
   try {
-    const foundContainer = await Container.findOne({ number }); // Verificar que el numero del contenedor no exista todavia
+    const foundContainer = await Container.findOne({ container_id }); // Verificar que el numero del contenedor no exista todavia
     if (foundContainer)
-      return res.status(400).json(["Container number already exists"]);
+      return res.status(400).json(["Container_id already exists"]);
 
     const newContainer = new Container({
-      number,
+      container_id,
       type,
       status,
       notes,
