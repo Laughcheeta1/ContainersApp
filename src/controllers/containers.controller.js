@@ -87,7 +87,6 @@ const updateContainer = async (req, res) => {
 
     res.json(foundContainer);
   } catch (error) {
-    console.log(error);
     return res.status(404).json({ message: "Container Not Found" });
   }
 };
@@ -97,7 +96,6 @@ const updateContainer = async (req, res) => {
 const deleteContainer = async (req, res) => {
   try {
     const foundContainer = await Container.findByIdAndRemove(req.params.id);
-    console.log(foundContainer);
 
     if (!foundContainer)
       return res.status(404).json({ message: "Container Not Found" });
