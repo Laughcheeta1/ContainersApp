@@ -49,7 +49,7 @@ const createCustomer = async (req, res) => {
 const updateCustomer = async (req, res) => {
   try {
     if (req.body.company_NIT)
-      return res.status(400).json({ message: "Cannot Change Specified" });
+      return res.status(400).json({ message: "Cannot Change Specified Key" });
 
     const customer = await Customer.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
