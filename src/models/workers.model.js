@@ -2,38 +2,38 @@ const mongoose = require("mongoose");
 
 const workersSchema = new mongoose.Schema(
     {
-        version : {
-            type : String,
-            required : true
+        version: {
+            type: String,
+            required: true
         },
-        id : {
-            type : String,
-            required : true,
-            unique : true,
-            trim : true
+        id: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true
         },
-        name : {
-            type : String,
-            required : true,
-            trim : true
+        name: {
+            type: String,
+            required: true,
+            trim: true
         },
-        username : {
-            type : String,
-            required : true,
-            unique : true,
-            trim : true
+        username: {
+            type: String,
+            required: true,
+            unique: true,
+            trim: true
         },
-        password : {
-            type : String,
-            required : true
+        password: {
+            type: String,
+            required: true
         },
-        permission : {
-            type : String,
-            required : true
+        permission: {
+            type: String,
+            required: true
         },
     },
     {
-        timestamps : true
+        timestamps: true
     }
 );
 

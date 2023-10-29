@@ -1,26 +1,35 @@
-// const { Router } = require("express");
-// const router = Router();
-// const authRequired = require("../middlewares/validateToken");
-// const {
-//   getCommodatums,
-//   getSpecificCommodatum,
-//   deleteCommodatum,
-//   createCommodatum,
-// } = require("../controllers/commodatum.controller");
-// const validateSchema = require("../middlewares/validator.middleware");
-// const commodatumSchema = require("../models/commodatum.model");
+const { Router } = require("express");
+const authRequired = require("../middlewares/validateToken");
+const {
+  getCommodatums,
+  getSpecificCommodatum,
+  deleteCommodatum,
+  createCommodatum,
+} = require("../controllers/commodatum.controller");
 
-// router.get("/get_commodatums/:id", authRequired, getCommodatums);
+const validateSchema = require("../middlewares/validator.middleware");
+const commodatumSchema = require("../models/commodatum.model");
+const router = Router();
 
-// router.get("/get_specific_commodatum/:id", authRequired, getSpecificCommodatum);
+router.get("/comodatos/:search_value",
+  // authRequired, 
+  getCommodatums);
 
-// router.post(
-//   "/add_commodatum",
-//   authRequired,
-//   validateSchema(commodatumSchema),
-//   createCommodatum
-// );
+router.get("/comodatos_especifico/:id",
+  // authRequired, 
+  getSpecificCommodatum);
 
-// router.delete("/delete_commodatum/:id", authRequired, deleteCommodatum);
+router.post(
+  "/add_commodatum",
+  // authRequired,
+  // validateSchema(commodatumSchema),
+  createCommodatum
+);
 
-// // It makes no sense to be able to modify a commodatum, you shall only delete it, and create a new one
+router.delete("/delete_commodatum/:id",
+  // authRequired, 
+  deleteCommodatum);
+
+module.exports = router;
+
+// It makes no sense to be able to modify a commodatum, you shall only delete it, and create a new one
