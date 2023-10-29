@@ -9,6 +9,7 @@ const customerSchema = mongoose.Schema(
     company_NIT: {
       type: String,
       required: true,
+      unique: true,
     },
     name: {
       type: String,

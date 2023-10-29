@@ -9,9 +9,23 @@ const getCustomers = async (req, res) => {
   }
 };
 
-const getCustomer = async (req, res) => {};
+const getCustomer = async (req, res) => {
+  try {
+    const customer = await Customer.findById(req.params.id);
+    if (!customer)
+      return res.status(404).json({ message: "Customer Not Found" });
+    return res.json(customer);
+  } catch (error) {
+    return res.status(400).json({ message: "An Error Occurred" });
+  }
+};
 
-const createCustomer = async (req, res) => {};
+const createCustomer = async (req, res) => {
+  const { version, company_NIT, name, address, phone, created_by } = req.body;
+  try {
+    const duplicateCustomer = await Customer.find();
+  } catch (error) {}
+};
 
 const updateCustomer = async (req, res) => {};
 
