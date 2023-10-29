@@ -1,6 +1,23 @@
 const mongoose = require("mongoose");
 
-const commodatumSchema = new mongoose.taskSchema(
+const receiverSchema = new mongoose.Schema(
+    {
+        id : {
+            type : String,
+            required : true,
+        },
+        name : {
+            type : String,
+            required : true
+        },
+        number : {
+            type : String,
+            required : true
+        }
+    }
+);
+
+const commodatumSchema = new mongoose.Schema(
     {
         version : {
             type : Number
@@ -54,24 +71,6 @@ const commodatumSchema = new mongoose.taskSchema(
     },
     {
         timestamps: true
-    }
-);
-
-
-const receiverSchema = new mongoose.taskSchema(
-    {
-        id : {
-            type : String,
-            required : true,
-        },
-        name : {
-            type : String,
-            required : true
-        },
-        number : {
-            type : String,
-            required : true
-        }
     }
 );
 

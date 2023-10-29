@@ -67,6 +67,10 @@ const createContainer = async (req, res) => {
 
 const updateContainer = async (req, res) => {
   try {
+    if (req.body.number)
+      return res
+        .status(400)
+        .json({ message: "Cannot change container's number" });
     const foundContainer = await Container.findByIdAndUpdate(
       req.params.id,
       req.body,
@@ -83,6 +87,8 @@ const updateContainer = async (req, res) => {
     return res.status(404).json({ message: "Container Not Found" });
   }
 };
+
+// Borrar un contenedor
 
 const deleteContainer = async (req, res) => {
   try {
