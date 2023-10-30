@@ -28,6 +28,11 @@ export function ContainerProvider({ children }) {
     } catch (error) {}
   };
 
+  const createContainer = async (container) => {
+    const res = await createContainerRequest(container);
+    
+  };
+
   return (
     <ContainerContext.Provider value={{ getContainers, containers }}>
       {children}
