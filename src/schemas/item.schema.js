@@ -1,7 +1,7 @@
 const { z } = require("zod");
 
 const createItemsSchema = z.object({
-    version : z.string({
+    version : z.number({
         required_error: "Version is required"
     }),
     name : z.string({
@@ -10,10 +10,10 @@ const createItemsSchema = z.object({
     brand : z.string({
         required_error: "Brand is required"
     }),
-    total_quantity : z.int({
+    total_quantity : z.number({
         required_error: "The total quantity is required"
     }),
-    available_quantity : z.int({
+    available_quantity : z.number({
         required_error: "Available quantity is required"
     })
 });
