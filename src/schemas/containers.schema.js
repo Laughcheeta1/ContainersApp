@@ -37,3 +37,5 @@ const containerSchemaZod = z.object({
     original_purpose: z.string({}),
   },
 });
+
+module.exports = containerSchemaZod;
