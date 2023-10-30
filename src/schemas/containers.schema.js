@@ -1,6 +1,6 @@
 const { z } = require("zod");
 
-const containerSchemaZod = z.object({
+const containerSchema = z.object({
   version: z.number({
     required_error: "La version es necesaria",
   }),
