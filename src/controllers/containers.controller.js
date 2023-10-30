@@ -59,6 +59,7 @@ const createContainer = async (req, res) => {
     const savedContainer = await newContainer.save();
     res.json(savedContainer); // Devolver por response al cliente el json con el nuevo contenedor
   } catch (error) {
+    console.log(error);
     return res
       .status(404)
       .json({ message: "Couldnt save container in database" });

@@ -23,6 +23,7 @@ export function ContainerProvider({ children }) {
   const getContainers = async () => {
     try {
       const res = await getContainersRequest();
+      console.log(res.data);
       setContainers(() => res.data);
     } catch (error) {}
   };
