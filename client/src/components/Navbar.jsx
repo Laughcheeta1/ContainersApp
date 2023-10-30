@@ -9,7 +9,7 @@ export default function Navbar() {
   return (
     <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10 rounded-lg">
       <Link to={isAuthenticated ? "/tasks" : "/"}>
-        <h1 className="text-2xl font-bold">Tasks Manager</h1>
+        <h1 className="text-2xl font-bold">Espacios Móviles</h1>
       </Link>
       <ul className="flex gap-x-2">
         {isAuthenticated ? (

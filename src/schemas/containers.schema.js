@@ -38,4 +38,4 @@ const containerSchema = z.object({
   },
 });
 
-module.exports = containerSchemaZod;
+module.exports = containerSchema;

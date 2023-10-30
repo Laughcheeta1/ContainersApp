@@ -7,7 +7,7 @@ export default function ContainerCard({ container }) {
   return (
     <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
       <header className="flex justify-between">
-        <h1 className="text-2xl font-bold">{container.container_id}</h1>
+        <h1 className="text-2xl font-bold">Número: {container.container_id}</h1>
         <div className="flex gap-x-2 items-center">
           <button
             className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-md"
@@ -25,11 +25,22 @@ export default function ContainerCard({ container }) {
           </Link>
         </div>
       </header>
-      <p className="text-lg">{container.color}</p>
-      <p className="text-lg">{container.size}</p>
-      <p className="text-lg">{container.status}</p>
-      <p className="text-lg">{container.notes}</p>
-      <p className="text-lg">{container.type}</p>
+      <p className="text-sm">
+        <span className="text-lg">Color: </span>
+        {container.color}
+      </p>
+      <p className="text-sm">
+        <span className="text-lg">Tamaño:</span> {container.size}
+      </p>
+      <p className="text-sm">
+        <span className="text-lg">Estado:</span> {container.status}
+      </p>
+      <p className="text-sm">
+        <span className="text-lg">Notas:</span> {container.notes}
+      </p>
+      <p className="text-sm">
+        <span className="text-lg">Tipo:</span> {container.type}
+      </p>
     </div>
   );
 }
