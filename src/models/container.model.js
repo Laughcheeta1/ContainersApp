@@ -58,14 +58,17 @@ const containerSchema = new mongoose.Schema(
     color: {
       type: String,
       trim: true,
+      required: true,
     },
     size: {
       type: String,
       trim: true,
+      required: true,
     },
     qr_code: {
       type: String,
       unique: true,
+      required: true,
     },
     status: {
       type: String,
