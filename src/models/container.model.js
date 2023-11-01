@@ -30,15 +30,18 @@ const maintenanceSchema = new mongoose.Schema({
 const purchaseSchema = new mongoose.Schema({
   vendor: {
     type: String,
+    default: "",
   },
   price: {
     type: String,
+    default: "",
   },
   date: {
     type: Date,
   },
   original_purpose: {
     type: String,
+    default: "",
   },
 });
 
@@ -48,6 +51,7 @@ const containerSchema = new mongoose.Schema(
   {
     version: {
       type: Number,
+      default: 1,
     },
     container_id: {
       type: String,
@@ -68,18 +72,18 @@ const containerSchema = new mongoose.Schema(
     qr_code: {
       type: String,
       unique: true,
+      trim: true,
       required: true,
     },
     status: {
       type: String,
-      required: true,
+      default: "Libre",
     },
     notes: {
       type: String,
     },
     purchase: {
       type: purchaseSchema,
-      ref: "Purchase",
       default: {},
     },
     type: {
@@ -89,7 +93,6 @@ const containerSchema = new mongoose.Schema(
     maintenance: [
       {
         type: maintenanceSchema,
-        ref: "Maintenance",
         default: {},
       },
     ],

@@ -12,6 +12,7 @@ const ContainerContext = createContext();
 
 export const useContainers = () => {
   const context = useContext(ContainerContext);
+
   if (!ContainerContext)
     throw new Error("useContainers must be used within a ContainerProvider");
   return context;
@@ -30,11 +31,12 @@ export function ContainerProvider({ children }) {
 
   const createContainer = async (container) => {
     const res = await createContainerRequest(container);
-    
   };
 
   return (
-    <ContainerContext.Provider value={{ getContainers, containers }}>
+    <ContainerContext.Provider
+      value={{ getContainers, containers, createContainer }}
+    >
       {children}
     </ContainerContext.Provider>
   );

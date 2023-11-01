@@ -2,7 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #202020;
+  margin: 0;
+  background-color: #f2f2f2;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: none;
+  padding: 6px 16px;
+  font-size: 16px;
+  white-space: nowrap;
+  line-height: 1;
+  height: 32px;
+  transition: 150ms ease-in-out;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
+}
+
+.btn-verde {
+  background-color: #22ca51;
+  border-color: #28c254;
+  color: white;
+}
+
+.btn-naranja {
+  background-color: #ff650d;
   color: white;
 }

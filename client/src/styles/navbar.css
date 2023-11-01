@@ -1,0 +1,82 @@
+.navbar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3290ff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-inline: min(10vw, 5rem);
+  width: 100%;
+  padding: 1rem;
+  height: 4.3rem;
+  color: white;
+}
+
+.navbar a {
+  color: inherit;
+  font-size: 14px;
+}
+
+.logo {
+  height: 2.8rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.links ul {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  max-width: 80%;
+  width: 100%;
+  padding: 0;
+  margin-left: 2rem;
+  list-style: none;
+}
+
+.links a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.links a:hover {
+  transition: 200ms all ease-in-out;
+  color: rgb(220, 220, 220);
+}
+
+.tools ul {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.cerrar-sesion {
+  background-color: #ff650d;
+  font-weight: normal;
+}
+
+.avatar-usuario {
+  background-color: whitesmoke;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  border: none;
+}
+
+.avatar-usuario:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
+}
