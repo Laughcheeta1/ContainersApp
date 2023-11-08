@@ -45,7 +45,7 @@
 
 .links a {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: normal;
 }
 
 .links a:hover {
@@ -55,13 +55,8 @@
 
 .tools ul {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.5rem;
   align-items: center;
-}
-
-.cerrar-sesion {
-  background-color: #ff650d;
-  font-weight: normal;
 }
 
 .avatar-usuario {

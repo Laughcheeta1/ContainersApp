@@ -54,7 +54,7 @@ export default function Navbar() {
                 <Link
                   to="/login"
                   onClick={() => logout()}
-                  className="btn cerrar-sesion"
+                  className="btn btn-naranja"
                 >
                   Cerrar Sesión
                 </Link>
