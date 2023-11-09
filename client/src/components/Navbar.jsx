@@ -76,15 +76,14 @@ export default function Navbar() {
                   </svg>
                 </button>
               </>
+            ) : PATH === "/login" ? (
+              <Link to="/register" className="btn btn-verde">
+                Registrarse
+              </Link>
             ) : (
-              <>
-                <Link to="/login" className="btn btn-naranja">
-                  Iniciar Sesión
-                </Link>
-                <Link to="/register" className="btn btn-verde">
-                  Registrarse
-                </Link>
-              </>
+              <Link to="/login" className="btn btn-naranja">
+                Iniciar Sesión
+              </Link>
             )}
           </ul>
         </nav>

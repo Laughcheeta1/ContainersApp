@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import "../styles/auth.css";
 
 function RegisterPage() {
   const {
@@ -21,54 +22,61 @@ function RegisterPage() {
   });
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800 max-w-md p-10 rounded-md">
-        {registerErrors.map((error, i) => (
-          <div className="bg-red-500 p-2 text-white" key={i}>
-            {error}
-          </div>
-        ))}
-        <form onSubmit={onSubmit}>
-          <h1 className="text-3xl font-bold my-2">Register</h1>
-          <input
-            type="text"
-            {...register("username", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            placeholder="Username"
-          />
-          {errors.username && (
-            <p className="text-red-500">Username is required</p>
-          )}
-          <input
-            type="email"
-            {...register("email", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            placeholder="Email"
-          />
-          {errors.email && <p className="text-red-500">Email is required</p>}
-          <input
-            type="password"
-            {...register("password", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            placeholder="Password"
-          />
-          {errors.password && (
-            <p className="text-red-500">Password is required</p>
-          )}
-          <button
-            className="bg-sky-500 text-white px-4 py-1 rounded-md my-2"
-            type="submit"
+    <div className="auth-container">
+      {registerErrors.map((error, i) => (
+        <div className="bg-red-500 p-2 text-white" key={i}>
+          {error}
+        </div>
+      ))}
+      <form onSubmit={onSubmit}>
+        <div className="auth-title">
+          <h1
+            style={{
+              fontSize: "40px",
+              fontWeight: "600",
+              marginBottom: "1rem",
+            }}
           >
-            Register
-          </button>
-        </form>
-        <p className="flex gap-x-2 justify-between">
-          Already have an account?{" "}
-          <Link className="text-sky-500" to="/login">
-            Login
-          </Link>
-        </p>
-      </div>
+            Crea tu cuenta.
+          </h1>
+          <p style={{ fontSize: "14px" }}>
+            Crea tu cuenta para acceder a{" "}
+            <span style={{ fontWeight: "600" }}>Espacios Móviles S.A.S.</span>
+          </p>
+        </div>
+        <input
+          type="text"
+          {...register("username", { required: true })}
+          className="auth-input"
+          placeholder="Username"
+        />
+        {errors.username && (
+          <p className="text-red-500">Username is required</p>
+        )}
+        <input
+          type="email"
+          {...register("email", { required: true })}
+          className="auth-input"
+          placeholder="Email"
+        />
+        {errors.email && <p className="text-red-500">Email is required</p>}
+        <input
+          type="password"
+          {...register("password", { required: true })}
+          className="auth-input"
+          placeholder="Password"
+        />
+        {errors.password && (
+          <p className="text-red-500">Password is required</p>
+        )}
+        <button
+          style={{ width: "100%" }}
+          className="btn btn-azul"
+          type="submit"
+        >
+          Register
+        </button>
+      </form>
     </div>
   );
 }

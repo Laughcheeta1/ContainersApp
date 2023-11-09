@@ -38,7 +38,7 @@ body {
   height: 32px;
   transition: 150ms ease-in-out;
   box-shadow: rgba(9, 30, 66, 0.45) 0px 3px 8px -2px,
-    rgba(9, 30, 66, 0.13) 0px 0px 0px 0.5px, #ebebeb inset 0 0.6px 0.5px;
+    rgba(9, 30, 66, 0.13) 0px 0px 5px 0.5px, #ebebeb inset 0 0.6px 0.5px;
   cursor: pointer;
 }
 
