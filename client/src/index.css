@@ -32,24 +32,23 @@ body {
   padding: 0 18px;
   font-weight: normal;
   font-size: 14px;
+  color: white;
   white-space: nowrap;
   line-height: 1;
   height: 32px;
   transition: 150ms ease-in-out;
-  box-shadow: rgba(9, 30, 66, 0.35) 0px 4px 8px -2px,
-    rgba(9, 30, 66, 0.13) 0px 0px 0px 1px, #ebebeb inset 0 0.6px 0.5px;
+  box-shadow: rgba(9, 30, 66, 0.45) 0px 3px 8px -2px,
+    rgba(9, 30, 66, 0.33) 0px 0px 0px 0.5px, #ebebeb inset 0 0.6px 0.5px;
   cursor: pointer;
 }
 
 .btn:hover {
   cursor: pointer;
   box-shadow: rgba(9, 30, 66, 0.35) 0px 1px 1px,
-    rgba(9, 30, 66, 0.18) 0px 0px 1px 1px, #d2d2d2 inset 0 0.6px 0.5px;
+    rgba(9, 30, 66, 0.32) 0px 0px 0.5px 0.5px, #d2d2d2 inset 0 0.6px 0.5px;
 }
 
 .btn-verde {
-  /* background-color: #22ca51;
-  border-color: #28c254; */
   background-image: linear-gradient(
     to bottom,
     #22ca51,
@@ -58,7 +57,6 @@ body {
     #1bb946,
     #18b343
   );
-  color: white;
 }
 
 .btn-naranja {
