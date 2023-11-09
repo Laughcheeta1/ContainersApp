@@ -30,7 +30,7 @@ function LoginPage() {
           </div>
         ))}
         <form onSubmit={onSubmit}>
-          <h1 className="text-3xl font-bold my-2">Login</h1>
+          <h1 className="text-3xl font-bold my-2 text-white">Login</h1>
 
           <input
             type="email"
@@ -58,7 +58,7 @@ function LoginPage() {
           </button>
         </form>
 
-        <p className="flex gap-x-2 justify-between">
+        <p className="flex gap-x-2 justify-between text-white">
           Don't have an account yet?{" "}
           <Link className="text-sky-500" to="/register">
             Sign up

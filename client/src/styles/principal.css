@@ -1,0 +1,79 @@
+.page-title {
+  border-bottom: solid 1.5px #c2c2c2;
+  padding-block: 1.2rem;
+}
+
+.page-title h1 {
+  font-size: 26px;
+  font-weight: 500;
+  margin-inline: min(8.5vw, 6rem);
+}
+
+.title-container {
+  margin-inline: min(8.5vw, 1.5rem);
+}
+
+.title-container h1 {
+  font-weight: 600;
+  font-size: 26px;
+  padding-block: 1rem;
+}
+
+.principal-body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.servicios-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.servicios {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin-block: 1rem;
+}
+
+.servicios button {
+  width: 12rem;
+  height: 12rem;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 1rem;
+  width: 100%;
+}
+
+.btn-servicio {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #29aa64;
+  color: white;
+  border-radius: 16px;
+  border: none;
+  padding: 14px;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  line-height: 1;
+  height: 32px;
+  transition: 150ms ease-in-out;
+}
+
+.btn-servicio:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
+}

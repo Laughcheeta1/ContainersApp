@@ -76,7 +76,16 @@ export default function Navbar() {
                   </svg>
                 </button>
               </>
-            ) : null}
+            ) : (
+              <>
+                <Link to="/login" className="btn btn-naranja">
+                  Iniciar Sesión
+                </Link>
+                <Link to="/register" className="btn btn-verde">
+                  Registrarse
+                </Link>
+              </>
+            )}
           </ul>
         </nav>
       </div>
