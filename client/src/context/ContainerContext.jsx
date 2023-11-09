@@ -33,9 +33,21 @@ export function ContainerProvider({ children }) {
     const res = await createContainerRequest(container);
   };
 
+  const deleteContainer = async (id) => {
+    try {
+      const res = await deleteContainerRequest(id);
+      if (res.status === 204)
+        setContainers(() =>
+          containers.filter((container) => container._id !== id)
+        );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ContainerContext.Provider
-      value={{ getContainers, containers, createContainer }}
+      value={{ getContainers, containers, createContainer, deleteContainer }}
     >
       {children}
     </ContainerContext.Provider>

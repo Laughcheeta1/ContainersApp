@@ -101,7 +101,7 @@ const deleteContainer = async (req, res) => {
     if (!foundContainer)
       return res.status(404).json({ message: "Container Not Found" });
 
-    res.sendStatus(201);
+    res.sendStatus(204);
   } catch (error) {
     return res.status(404).json({ message: "Container Not Found" });
   }
