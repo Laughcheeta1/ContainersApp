@@ -5,22 +5,21 @@ export default function ContainerCard({ container }) {
   const { deleteContainer } = useContainers();
 
   return (
-    <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+    <div className="resultado-busqueda">
       <header className="flex justify-between">
-        <h1 className="text-2xl font-bold">Número: {container.container_id}</h1>
+        <h1 style={{ marginRight: "1rem" }} className="text-2xl font-medium">
+          Número: {container.container_id}
+        </h1>
         <div className="flex gap-x-2 items-center">
           <button
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-md"
-            // onClick={() => {
-            //   deleteContainer(container._id);
-            // }}
+            className="btn btn-rojo"
+            onClick={() => {
+              deleteContainer(container._id);
+            }}
           >
             Delete
           </button>
-          <Link
-            to={`/tasks/${container._id}`}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-md"
-          >
+          <Link to={`/tasks/${container._id}`} className="btn btn-azul">
             Edit
           </Link>
         </div>
@@ -34,9 +33,6 @@ export default function ContainerCard({ container }) {
       </p>
       <p className="text-sm">
         <span className="text-lg">Estado:</span> {container.status}
-      </p>
-      <p className="text-sm">
-        <span className="text-lg">Notas:</span> {container.notes}
       </p>
       <p className="text-sm">
         <span className="text-lg">Tipo:</span> {container.type}

@@ -17,7 +17,7 @@ export default function ContainersPage() {
     <>
       <h1 className="search-page-title">Buscar Contenedores</h1>
       <BarraBusqueda />
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+      <div className="container-resultados">
         {containers.map((container) => (
           <ContainerCard container={container} key={container._id} />
         ))}
