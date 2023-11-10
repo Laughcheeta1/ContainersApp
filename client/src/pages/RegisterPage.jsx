@@ -28,7 +28,7 @@ function RegisterPage() {
           {error}
         </div>
       ))}
-      <form onSubmit={onSubmit}>
+      <form style={{ width: "100%" }} onSubmit={onSubmit}>
         <div className="auth-title">
           <h1
             style={{
@@ -44,31 +44,67 @@ function RegisterPage() {
             <span style={{ fontWeight: "600" }}>Espacios Móviles S.A.S.</span>
           </p>
         </div>
+
+        {errors.username && (
+          <p
+            style={{
+              fontSize: "14px",
+              fontWeight: "normal",
+              color: "red",
+              marginBottom: ".5rem",
+            }}
+          >
+            Username is required
+          </p>
+        )}
+
         <input
           type="text"
           {...register("username", { required: true })}
           className="auth-input"
-          placeholder="Username"
+          placeholder="Nombre de usuario"
         />
-        {errors.username && (
-          <p className="text-red-500">Username is required</p>
+
+        {errors.email && (
+          <p
+            style={{
+              fontSize: "14px",
+              fontWeight: "normal",
+              color: "red",
+              marginBottom: ".5rem",
+            }}
+          >
+            Email is required
+          </p>
         )}
+
         <input
           type="email"
           {...register("email", { required: true })}
           className="auth-input"
-          placeholder="Email"
+          placeholder="Correo electrónico"
         />
-        {errors.email && <p className="text-red-500">Email is required</p>}
+
+        {errors.password && (
+          <p
+            style={{
+              fontSize: "14px",
+              fontWeight: "normal",
+              color: "red",
+              marginBottom: ".5rem",
+            }}
+          >
+            Password is required
+          </p>
+        )}
+
         <input
           type="password"
           {...register("password", { required: true })}
           className="auth-input"
-          placeholder="Password"
+          placeholder="Contraseña"
         />
-        {errors.password && (
-          <p className="text-red-500">Password is required</p>
-        )}
+
         <button
           style={{ width: "100%" }}
           className="btn btn-verde"

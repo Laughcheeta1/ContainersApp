@@ -12,6 +12,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 38rem;
 }
 
 .auth-input {
@@ -24,7 +25,7 @@
   box-shadow: rgba(164, 172, 185, 0.24) 0px 1px 2px 0px,
     rgba(18, 55, 105, 0.08) 0px 0px 0px 1px;
   border: 0.5px rgb(107, 114, 128);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
 .auth-title {
@@ -32,5 +33,5 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
