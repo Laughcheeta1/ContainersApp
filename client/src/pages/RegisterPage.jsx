@@ -14,7 +14,7 @@ function RegisterPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/register");
+    if (isAuthenticated) navigate("/menu");
   }, [isAuthenticated]);
 
   const onSubmit = handleSubmit(async (values) => {
