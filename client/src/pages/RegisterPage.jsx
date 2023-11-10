@@ -71,7 +71,7 @@ function RegisterPage() {
         )}
         <button
           style={{ width: "100%" }}
-          className="btn btn-azul"
+          className="btn btn-verde"
           type="submit"
         >
           Register

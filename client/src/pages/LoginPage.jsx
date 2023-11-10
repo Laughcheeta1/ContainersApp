@@ -38,7 +38,7 @@ function LoginPage() {
               marginBottom: ".6rem",
             }}
           >
-            Bienvenido.
+            Bienvenido de nuevo.
           </h1>
           <p style={{ fontSize: "14px" }}>
             Aquí podras consultar toda la información de{" "}
