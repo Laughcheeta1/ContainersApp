@@ -11,16 +11,14 @@ const containerSchema = z.object({
     required_error: "El color es necesario",
   }),
   size: z.string({
-    required_error: "El tamaño es necesario",
+    required_error: "El color es necesario",
   }),
   qr_code: z.string({
-    required_error: "El tamaño es necesario",
+    required_error: "El codigo QR es necesario",
   }),
-  status: z.string({
-    required_error: "El tamaño es necesario",
-  }),
+  status: z.string(),
   type: z.string({
-    required_error: "El tamaño es necesario",
+    required_error: "El tipo es necesario",
   }),
   notes: z.string().optional(),
   maintenance: {
