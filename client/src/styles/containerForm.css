@@ -24,6 +24,18 @@
 
 .input-group label {
   margin-right: 1rem;
+  white-space: nowrap;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.group p {
+  color: #ef4444;
+  font-size: 14px;
 }
 
 .container-group {
