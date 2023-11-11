@@ -29,7 +29,7 @@ export default function TaskFormPage() {
 
       if (!params.id) {
         createTask(validData);
-        navigate("/tasks");
+        // navigate("/tasks");
         return;
       }
 
@@ -37,7 +37,7 @@ export default function TaskFormPage() {
 
       // navigate("/tasks");
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     }
   };
 
@@ -52,8 +52,6 @@ export default function TaskFormPage() {
     };
     loadTask();
   }, []);
-
-  console.log(errors);
 
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">

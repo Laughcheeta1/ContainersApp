@@ -32,7 +32,7 @@ export function TaskProvider({ children }) {
       await createTaskRequest(task);
       getTasks();
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     }
   };
 

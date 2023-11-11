@@ -37,16 +37,17 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
-
   try {
+    const { email, password } = req.body;
     const userFound = await User.findOne({ email });
-    if (!userFound) return res.status(400).json({ message: "User Not Found" });
+
+    if (!userFound)
+      return res.status(400).json({ message: ["User Not Found"] });
 
     const isMatch = await bcrypt.compare(password, userFound.password);
 
     if (!isMatch)
-      return res.status(400).json({ message: "Incorrect Password" });
+      return res.status(400).json({ message: ["Incorrect Password"] });
 
     const token = await createAccessToken({ id: userFound._id });
 
@@ -56,8 +57,6 @@ const login = async (req, res) => {
       id: userFound._id,
       username: userFound.username,
       email: userFound.email,
-      createdAt: userFound.createdAt,
-      updatedAt: userFound.updatedAt,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

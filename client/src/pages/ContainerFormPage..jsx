@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 export default function ContainerFormPage() {
   const { register, handleSubmit, setValue } = useForm();
-  const { createContainer } = useContainers();
+  const { createContainer, errors: containerErrors } = useContainers();
   const navigate = useNavigate();
   const params = useParams();
 
@@ -13,7 +13,7 @@ export default function ContainerFormPage() {
     try {
       if (!params.id) {
         createContainer(data);
-        navigate("/containers");
+        if (errors.length === 0) navigate("/containers");
         return;
       }
     } catch (error) {
@@ -24,6 +24,12 @@ export default function ContainerFormPage() {
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
       <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+        {containerErrors.map((error, i) => (
+          <div className="bg-red-500 p-2 text-white text-center my-2" key={i}>
+            {error}
+          </div>
+        ))}
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="container_id">Numero</label>
           <input

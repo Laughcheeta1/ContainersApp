@@ -57,11 +57,12 @@ const createContainer = async (req, res) => {
     return res.json(newContainer); // Devolver por response al cliente el json con el nuevo contenedor
   } catch (error) {
     if (error.code === 11000 || error.code === 11001)
-      return res.status(400).json({ message: "Container ID already exists" });
+      return res
+        .status(400)
+        .json({ message: ["Container ID or QR code already exists"] });
 
     console.log(error);
-    
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: [error.message] });
   }
 };
 

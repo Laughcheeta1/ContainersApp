@@ -35,14 +35,15 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
-      if (Array.isArray(error.response.data))
-        return setErrors(error.response.data);
-      setErrors([error.response.data.message]);
+      setErrors(() => error.response.data.message);
     }
   };
 
   const logout = () => {
-    Cookies.remove("token");
+    Cookies.remove("token", {
+      sameSite: "None",
+      secure: "true",
+    });
     setUser(null);
     setIsAuthenticated(false);
   };

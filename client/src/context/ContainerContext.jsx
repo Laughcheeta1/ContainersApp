@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 import {
   createContainerRequest,
@@ -20,6 +20,7 @@ export const useContainers = () => {
 
 export function ContainerProvider({ children }) {
   const [containers, setContainers] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   const getContainers = async () => {
     try {
@@ -35,6 +36,7 @@ export function ContainerProvider({ children }) {
       await createContainerRequest(container);
       getContainers();
     } catch (error) {
+      setErrors(() => error.response.data.message);
       console.log(error);
     }
   };
@@ -51,9 +53,24 @@ export function ContainerProvider({ children }) {
     }
   };
 
+  useEffect(() => {
+    if (errors.length > 0) {
+      const timer = setTimeout(() => {
+        setErrors(() => []);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [errors]);
+
   return (
     <ContainerContext.Provider
-      value={{ getContainers, containers, createContainer, deleteContainer }}
+      value={{
+        getContainers,
+        containers,
+        createContainer,
+        deleteContainer,
+        errors,
+      }}
     >
       {children}
     </ContainerContext.Provider>
