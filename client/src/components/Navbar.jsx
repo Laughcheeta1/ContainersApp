@@ -39,7 +39,8 @@ export default function Navbar() {
               PATH === "/" ||
               PATH === "/login" ||
               PATH === "/register" ||
-              PATH === "/tasks"
+              PATH === "/tasks" ||
+              PATH === "/menu"
                 ? false
                 : page.props.to !== PATH
             )}
