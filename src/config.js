@@ -1,3 +1,9 @@
-const TOKEN_SECRET = process.env.TOKEN_SECRET || "some-ultra-secret-key";
+const crypto = require("crypto");
+
+const generateRandomKey = () => {
+  return crypto.randomBytes(32).toString("hex");
+};
+
+const TOKEN_SECRET = generateRandomKey();
 
 module.exports = TOKEN_SECRET;

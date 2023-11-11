@@ -9,16 +9,16 @@ export default function Navbar() {
   const PATH = useLocation().pathname;
 
   const PAGES = [
-    <CustomLink key="buscar_clientes" to="/clientes">
+    <CustomLink key="buscar_clientes" to="/clients">
       Clientes
     </CustomLink>,
     <CustomLink key="buscar_items" to="/items">
       Items
     </CustomLink>,
-    <CustomLink key="buscar_comodatos" to="/comodatos">
+    <CustomLink key="buscar_comodatos" to="/commodatums">
       Comodatos
     </CustomLink>,
-    <CustomLink key="buscar_contenedores" to="/contenedores">
+    <CustomLink key="buscar_contenedores" to="/containers">
       Contenedores
     </CustomLink>,
     <CustomLink key="pagina_principal" to="/menu">

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useContainers } from "../context/ContainerContext";
 import ContainerCard from "../components/ContainerCard";
 import BarraBusqueda from "../components/BarraBusqueda";

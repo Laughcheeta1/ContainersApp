@@ -32,7 +32,8 @@ export function ContainerProvider({ children }) {
 
   const createContainer = async (container) => {
     try {
-      const res = await createContainerRequest(container);
+      await createContainerRequest(container);
+      getContainers();
     } catch (error) {
       console.log(error);
     }
