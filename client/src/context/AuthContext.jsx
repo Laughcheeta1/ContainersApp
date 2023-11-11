@@ -19,9 +19,10 @@ export const AuthProvider = ({ children }) => {
   const signUp = async (user) => {
     try {
       const res = await registerRequest(user);
-      console.log(res.data);
-      setUser(() => res.data);
-      setIsAuthenticated(() => true);
+      if (res.status === 200) {
+        setUser(res.data);
+        setIsAuthenticated(true);
+      }
     } catch (error) {
       console.log(error);
       setErrors(() => error.response.data);
@@ -31,9 +32,8 @@ export const AuthProvider = ({ children }) => {
   const signin = async (user) => {
     try {
       const res = await loginRequest(user);
-      console.log(res);
-      setIsAuthenticated(true);
       setUser(res.data);
+      setIsAuthenticated(true);
     } catch (error) {
       if (Array.isArray(error.response.data))
         return setErrors(error.response.data);
@@ -43,15 +43,15 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     Cookies.remove("token");
-    setIsAuthenticated(false);
     setUser(null);
+    setIsAuthenticated(false);
   };
 
   useEffect(() => {
     if (errors.length > 0) {
       const timer = setTimeout(() => {
         setErrors(() => []);
-      }, 5000);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [errors]);
@@ -63,24 +63,19 @@ export const AuthProvider = ({ children }) => {
       if (!cookies.token) {
         setIsAuthenticated(false);
         setLoading(false);
-        return setUser(() => null);
+        return;
       }
 
       try {
         const res = await verifyTokenRequest(cookies.token);
 
-        if (!res.data) {
-          setIsAuthenticated(false);
-          setLoading(() => false);
-          return;
-        }
+        if (!res.data) return setIsAuthenticated(false);
 
         setIsAuthenticated(true);
         setUser(() => res.data);
         setLoading(false);
       } catch (error) {
         setIsAuthenticated(false);
-        setUser(() => null);
         setLoading(false);
       }
     }

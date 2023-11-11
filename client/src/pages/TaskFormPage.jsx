@@ -35,7 +35,7 @@ export default function TaskFormPage() {
 
       updateTask(params.id, validData);
 
-      navigate("/tasks");
+      // navigate("/tasks");
     } catch (error) {
       console.log(error);
     }
@@ -53,6 +53,8 @@ export default function TaskFormPage() {
     loadTask();
   }, []);
 
+  console.log(errors);
+
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
       <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
@@ -60,7 +62,7 @@ export default function TaskFormPage() {
           {errors.title && (
             <p className="text-red-500 text-xs italic">Please enter a title.</p>
           )}
-          
+
           <label htmlFor="title">Title</label>
           <input
             type="text"

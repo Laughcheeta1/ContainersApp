@@ -29,7 +29,8 @@ export function TaskProvider({ children }) {
 
   const createTask = async (task) => {
     try {
-      const res = await createTaskRequest(task);
+      await createTaskRequest(task);
+      getTasks();
     } catch (error) {
       console.log(error);
     }

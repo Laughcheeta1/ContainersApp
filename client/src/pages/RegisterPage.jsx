@@ -1,118 +1,127 @@
-import { useForm } from "react-hook-form";
-import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { registerSchema } from "../schemas/auth";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from "../context/AuthContext";
 import "../styles/auth.css";
 
 function RegisterPage() {
+  const { signUp, isAuthenticated, errors: registerErrors } = useAuth();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const { signUp, isAuthenticated, errors: registerErrors } = useAuth();
+  } = useForm({
+    resolver: zodResolver(registerSchema),
+  });
+
+  const onSubmit = async (value) => {
+    await signUp(value);
+  };
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) navigate("/menu");
   }, [isAuthenticated]);
 
-  const onSubmit = handleSubmit(async (values) => {
-    signUp(values);
-  });
-
   return (
-    <div className="auth-container">
-      {registerErrors.map((error, i) => (
-        <div className="bg-red-500 p-2 text-white" key={i}>
-          {error}
-        </div>
-      ))}
-      <form style={{ width: "100%" }} onSubmit={onSubmit}>
-        <div className="auth-title">
-          <h1
-            style={{
-              fontSize: "40px",
-              fontWeight: "600",
-              marginBottom: "1rem",
-            }}
+    <div className="body">
+      <div className="auth-container">
+        {registerErrors.map((error, i) => (
+          <div className="bg-red-500 p-2 text-white" key={i}>
+            {error}
+          </div>
+        ))}
+
+        <form style={{ width: "100%" }} onSubmit={handleSubmit(onSubmit)}>
+          <div className="auth-title">
+            <h1
+              style={{
+                fontSize: "40px",
+                fontWeight: "600",
+                marginBottom: "1rem",
+              }}
+            >
+              Crea tu cuenta.
+            </h1>
+            <p style={{ fontSize: "14px" }}>
+              Crea tu cuenta para acceder a{" "}
+              <span style={{ fontWeight: "600" }}>Espacios Móviles S.A.S.</span>
+            </p>
+          </div>
+
+          <label className="input-label" htmlFor="username">
+            Nombre de usuario:
+            {errors.username?.message && (
+              <p className="input-errors">{errors.username?.message}</p>
+            )}
+          </label>
+
+          <input
+            type="text"
+            name="username"
+            {...register("username")}
+            className="auth-input"
+            placeholder="Nombre de usuario"
+          />
+
+          <label className="input-label" htmlFor="email">
+            Correo:
+            {errors.email?.message && (
+              <p className="input-errors">{errors.email?.message}</p>
+            )}
+          </label>
+
+          <input
+            type="email"
+            name="email"
+            {...register("email")}
+            className="auth-input"
+            placeholder="Correo electrónico"
+          />
+
+          <label className="input-label" htmlFor="password">
+            Contraseña:
+            {errors.password?.message && (
+              <p className="input-errors">{errors.password?.message}</p>
+            )}
+          </label>
+
+          <input
+            type="password"
+            name="password"
+            {...register("password")}
+            className="auth-input"
+            placeholder="Contraseña"
+          />
+
+          <label className="input-label" htmlFor="confirmPassword">
+            Confirmar contraseña:
+            {errors.confirmPassword?.message && (
+              <p className="input-errors">{errors.confirmPassword?.message}</p>
+            )}
+          </label>
+
+          <input
+            type="password"
+            name="confirmPassword"
+            {...register("confirmPassword")}
+            className="auth-input"
+            placeholder="Confirmar contraseña"
+          />
+
+          <button
+            style={{ width: "100%", marginTop: "1rem" }}
+            className="btn btn-verde"
+            type="submit"
           >
-            Crea tu cuenta.
-          </h1>
-          <p style={{ fontSize: "14px" }}>
-            Crea tu cuenta para acceder a{" "}
-            <span style={{ fontWeight: "600" }}>Espacios Móviles S.A.S.</span>
-          </p>
-        </div>
-
-        {errors.username && (
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "normal",
-              color: "red",
-              marginBottom: ".5rem",
-            }}
-          >
-            Username is required
-          </p>
-        )}
-
-        <input
-          type="text"
-          {...register("username", { required: true })}
-          className="auth-input"
-          placeholder="Nombre de usuario"
-        />
-
-        {errors.email && (
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "normal",
-              color: "red",
-              marginBottom: ".5rem",
-            }}
-          >
-            Email is required
-          </p>
-        )}
-
-        <input
-          type="email"
-          {...register("email", { required: true })}
-          className="auth-input"
-          placeholder="Correo electrónico"
-        />
-
-        {errors.password && (
-          <p
-            style={{
-              fontSize: "14px",
-              fontWeight: "normal",
-              color: "red",
-              marginBottom: ".5rem",
-            }}
-          >
-            Password is required
-          </p>
-        )}
-
-        <input
-          type="password"
-          {...register("password", { required: true })}
-          className="auth-input"
-          placeholder="Contraseña"
-        />
-
-        <button
-          style={{ width: "100%" }}
-          className="btn btn-verde"
-          type="submit"
-        >
-          Register
-        </button>
-      </form>
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
