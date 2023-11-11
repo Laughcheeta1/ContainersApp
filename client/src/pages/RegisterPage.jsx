@@ -118,7 +118,7 @@ function RegisterPage() {
             className="btn btn-verde"
             type="submit"
           >
-            Register
+            Registrar
           </button>
         </form>
       </div>
