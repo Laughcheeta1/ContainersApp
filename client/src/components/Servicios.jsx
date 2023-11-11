@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Servicios() {
   return (
     <div className="servicios">
-      <Link to="/contenedores">
+      <Link to="/containers">
         <button className="btn-servicio">
           <div>Contenedores</div>
           <svg
@@ -32,7 +32,7 @@ export default function Servicios() {
           </svg>
         </button>
       </Link>
-      <Link to="/clientes">
+      <Link to="/clients">
         <button className="btn-servicio">
           <div>Clientes</div>
           <svg
@@ -119,7 +119,7 @@ export default function Servicios() {
           </svg>
         </button>
       </Link>
-      <Link to="/comodatos">
+      <Link to="/comodatums">
         <button className="btn-servicio">
           <div>Comodatos</div>
           <svg

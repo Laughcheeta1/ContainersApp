@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useContainers } from "../context/ContainerContext";
 import ContainerCard from "../components/ContainerCard";
 import BarraBusqueda from "../components/BarraBusqueda";
@@ -16,7 +16,7 @@ export default function ContainersPage() {
   return (
     <>
       <h1 className="search-page-title">Buscar Contenedores</h1>
-      <BarraBusqueda />
+      <BarraBusqueda route="new" />
       <div className="container-resultados">
         {containers.map((container) => (
           <ContainerCard container={container} key={container._id} />

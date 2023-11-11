@@ -24,13 +24,18 @@ export function ContainerProvider({ children }) {
   const getContainers = async () => {
     try {
       const res = await getContainersRequest();
-      console.log(res.data);
       setContainers(() => res.data);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const createContainer = async (container) => {
-    const res = await createContainerRequest(container);
+    try {
+      const res = await createContainerRequest(container);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteContainer = async (id) => {

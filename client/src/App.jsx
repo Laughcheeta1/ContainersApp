@@ -6,6 +6,7 @@ import TaskFormPage from "./pages/TaskFormPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import ContainersPage from "./pages/ContainersPage";
+import ContainerFormPage from "./pages/ContainerFormPage.";
 import MenuPage from "./pages/MenuPage";
 
 import { AuthProvider } from "./context/AuthContext";
@@ -33,7 +34,8 @@ export default function App() {
                 <Route path="/add-task" element={<TaskFormPage />} />
                 <Route path="/tasks/:id" element={<TaskFormPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/contenedores" element={<ContainersPage />} />
+                <Route path="/containers" element={<ContainersPage />} />
+                <Route path="/containers/new" element={<ContainerFormPage />} />
                 <Route path="/menu" element={<MenuPage />} />
               </Route>
             </Routes>

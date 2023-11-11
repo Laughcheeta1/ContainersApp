@@ -7,7 +7,7 @@ const getContainers = async (req, res) => {
     const containers = await Container.find();
     res.json(containers);
   } catch (error) {
-    res.status(400).json({ message: "Bad Request" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -21,29 +21,25 @@ const getContainer = async (req, res) => {
 
     res.json(foundContainer);
   } catch (error) {
-    return res.status(404).json({ message: "Container Not Found" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
 // Crear un contenedor
 
 const createContainer = async (req, res) => {
-  const {
-    container_id,
-    type,
-    status,
-    notes,
-    color,
-    size,
-    qr_code,
-    purchase,
-    maintenance,
-  } = req.body;
-
   try {
-    const foundContainer = await Container.findOne({ container_id }); // Verificar que el numero del contenedor no exista todavia
-    if (foundContainer)
-      return res.status(400).json(["Container_id already exists"]);
+    const {
+      container_id,
+      type,
+      status,
+      notes,
+      color,
+      size,
+      qr_code,
+      purchase,
+      maintenance,
+    } = req.body;
 
     const newContainer = new Container({
       container_id,
@@ -56,13 +52,16 @@ const createContainer = async (req, res) => {
       purchase,
       maintenance,
     });
-    const savedContainer = await newContainer.save();
-    res.json(savedContainer); // Devolver por response al cliente el json con el nuevo contenedor
+
+    await newContainer.save();
+    return res.json(newContainer); // Devolver por response al cliente el json con el nuevo contenedor
   } catch (error) {
+    if (error.code === 11000 || error.code === 11001)
+      return res.status(400).json({ message: "Container ID already exists" });
+
     console.log(error);
-    return res
-      .status(404)
-      .json({ message: "Couldnt save container in database" });
+    
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -88,7 +87,7 @@ const updateContainer = async (req, res) => {
 
     res.json(foundContainer);
   } catch (error) {
-    return res.status(404).json({ message: "Container Not Found" });
+    return res.status(500).json({ message: error.message });
   }
 };
 

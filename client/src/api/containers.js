@@ -1,13 +1,15 @@
 import axios from "./axios";
 
-export const getContainersRequest = () => axios.get("/contenedores");
+export const getContainersRequest = async () => axios.get("/contenedores");
 
-export const getContainerRequest = (id) => axios.get(`/contenedores/${id}`);
+export const getContainerRequest = async (id) =>
+  axios.get(`/contenedores/${id}`);
 
-export const createContainerRequest = (customer) =>
-  axios.post("/contenedores", customer);
+export const createContainerRequest = async (container) =>
+  axios.post("/contenedores", container);
 
-export const updateContainerRequest = (id, customer) =>
-  axios.put(`/contenedores/${id}`, customer);
+export const updateContainerRequest = async (id, container) =>
+  axios.put(`/contenedores/${id}`, container);
 
-export const deleteContainerRequest = (id) => axios.delete(`/contenedores/${id}`);
+export const deleteContainerRequest = async (id) =>
+  axios.delete(`/contenedores/${id}`);

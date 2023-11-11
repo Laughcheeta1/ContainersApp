@@ -1,49 +1,66 @@
-import { useForm } from "react-hook-form";
-import { useTasks } from "../context/TasksContext";
-import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
+import { useTasks } from "../context/TasksContext";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
 export default function TaskFormPage() {
-  const { register, handleSubmit, setValue } = useForm();
   const { createTask, getTask, updateTask } = useTasks();
+
   const navigate = useNavigate();
   const params = useParams();
 
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = async (data) => {
+    try {
+      const validData = {
+        ...data,
+        date: data.date ? dayjs.utc(data.date).format() : dayjs.utc().format(),
+      };
+
+      if (!params.id) {
+        createTask(validData);
+        navigate("/tasks");
+        return;
+      }
+
+      updateTask(params.id, validData);
+
+      navigate("/tasks");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    async function loadTask() {
+    const loadTask = async () => {
       if (params.id) {
         const task = await getTask(params.id);
         setValue("title", task.title);
         setValue("description", task.description);
         setValue("date", dayjs.utc(task.date).format("YYYY-MM-DD"));
       }
-    }
+    };
     loadTask();
   }, []);
-
-  const onSubmit = handleSubmit((data) => {
-    const validData = {
-      ...data,
-      date: data.date ? dayjs.utc(data.date).format() : dayjs.utc().format(),
-    };
-
-    if (!params.id) {
-      createTask(validData);
-      navigate("/tasks");
-      return;
-    }
-    updateTask(params.id, validData);
-    navigate("/tasks");
-  });
 
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
       <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {errors.title && (
+            <p className="text-red-500 text-xs italic">Please enter a title.</p>
+          )}
+          
           <label htmlFor="title">Title</label>
           <input
             type="text"

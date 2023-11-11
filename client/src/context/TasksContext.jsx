@@ -28,8 +28,11 @@ export function TaskProvider({ children }) {
   };
 
   const createTask = async (task) => {
-    const res = await createTaskRequest(task);
-    console.log(res);
+    try {
+      const res = await createTaskRequest(task);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteTask = async (id) => {
@@ -53,8 +56,9 @@ export function TaskProvider({ children }) {
 
   const updateTask = async (id, task) => {
     try {
-      console.log("ID: " + id)
+      console.log("ID: " + id);
       await updateTaskRequest(id, task);
+      setTasks(() => getTasks());
     } catch (error) {
       console.error(error);
     }

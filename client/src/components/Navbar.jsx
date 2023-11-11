@@ -8,8 +8,6 @@ export default function Navbar() {
   const { isAuthenticated, logout, user } = useAuth();
   const PATH = useLocation().pathname;
 
-  console.log(PATH);
-
   const PAGES = [
     <CustomLink key="buscar_clientes" to="/clientes">
       Clientes

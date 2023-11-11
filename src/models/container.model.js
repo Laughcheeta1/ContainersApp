@@ -81,6 +81,7 @@ const containerSchema = new mongoose.Schema(
     },
     notes: {
       type: String,
+      default: ""
     },
     purchase: {
       type: purchaseSchema,

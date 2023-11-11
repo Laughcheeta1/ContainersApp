@@ -7,13 +7,14 @@ const getTasks = async (req, res) => {
     }).populate("user");
     res.json(tasks);
   } catch (error) {
-    return res.status(404).json({ message: "Task not found" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
 const createTask = async (req, res) => {
   try {
     const { title, description, date } = req.body;
+
     const newTask = new Task({
       title,
       description,
@@ -21,10 +22,10 @@ const createTask = async (req, res) => {
       user: req.user.id,
     });
 
-    const savedTask = await newTask.save();
-    res.json(savedTask);
+    await newTask.save();
+    res.json(newTask);
   } catch (error) {
-    return res.status(404).json({ message: "Task not found" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -42,21 +43,26 @@ const deleteTask = async (req, res) => {
   try {
     const foundTask = await Task.findByIdAndRemove(req.params.id);
     if (!foundTask) return res.status(404).json({ message: "Task Not Found" });
+
     return res.sendStatus(204);
   } catch (error) {
-    return res.status(404).json({ message: "Task not found" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
 const updateTask = async (req, res) => {
   try {
-    const foundTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    if (!foundTask) return res.status(404).json({ message: "Task Not Found" });
-    res.json(foundTask);
+    const { title, description, date } = req.body;
+
+    const taskUpdated = await Task.findOneAndUpdate(
+      { _id: req.params.id },
+      { title, description, date },
+      { new: true }
+    );
+
+    return res.json(taskUpdated);
   } catch (error) {
-    return res.status(404).json({ message: "Task not found" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
