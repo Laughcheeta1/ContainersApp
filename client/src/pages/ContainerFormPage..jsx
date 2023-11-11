@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useContainers } from "../context/ContainerContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import "../styles/containerForm.css";
 
 export default function ContainerFormPage() {
   const { register, handleSubmit, setValue } = useForm();
@@ -22,67 +23,79 @@ export default function ContainerFormPage() {
   };
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
-        {containerErrors.map((error, i) => (
-          <div className="bg-red-500 p-2 text-white text-center my-2" key={i}>
-            {error}
+    <div className="container-form">
+      {containerErrors.map((error, i) => (
+        <div className="bg-red-500 p-2 text-white text-center my-2" key={i}>
+          {error}
+        </div>
+      ))}
+
+      <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
+        Agregar nuevo contenedor.
+      </h2>
+
+      <hr style={{ marginTop: ".5rem" }} />
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="container-group">
+          <div className="input-group">
+            <label htmlFor="container_id">Número:</label>
+            <input
+              type="text"
+              placeholder="ej: 1234"
+              autoFocus
+              className="input"
+              {...register("container_id")}
+            />
           </div>
-        ))}
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="container_id">Numero</label>
-          <input
-            type="text"
-            placeholder="ej: 1234"
-            autoFocus
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            {...register("container_id")}
-          />
+          <div className="input-group">
+            <label htmlFor="color">Color:</label>
+            <input
+              type="text"
+              placeholder="ej: Verde"
+              className="input"
+              {...register("color")}
+            />
+          </div>
+        </div>
 
-          <label htmlFor="color">Color</label>
-          <input
-            type="text"
-            placeholder="ej: Verde"
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            {...register("color")}
-          />
+        <label htmlFor="size">Tamaño:</label>
+        <input
+          type="text"
+          placeholder="ej: Grande"
+          className="input"
+          {...register("size")}
+        />
 
-          <label htmlFor="size">Tamaño</label>
-          <input
-            type="text"
-            placeholder="ej: Grande"
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            {...register("size")}
-          />
+        <label htmlFor="qr_code">Codigo QR:</label>
+        <input
+          type="text"
+          placeholder="QR"
+          className="input"
+          {...register("qr_code")}
+        />
 
-          <label htmlFor="qr_code">Codigo QR</label>
-          <input
-            type="text"
-            placeholder="QR"
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            {...register("qr_code")}
-          />
+        <label htmlFor="type">Tipo:</label>
+        <input
+          type="text"
+          placeholder="ej: Laboratorio"
+          className="input"
+          {...register("type")}
+        />
 
-          <label htmlFor="type">Tipo</label>
-          <input
-            type="text"
-            placeholder="ej: Laboratorio"
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            {...register("type")}
-          />
+        <label htmlFor="notes">Descripción:</label>
+        <textarea
+          rows="3"
+          placeholder="Description"
+          className="input"
+          {...register("notes")}
+        ></textarea>
 
-          <label htmlFor="notes">Descripción</label>
-          <textarea
-            rows="3"
-            placeholder="Description"
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
-            {...register("notes")}
-          ></textarea>
-
-          <button className="bg-indigo-500 px-3 py-2 rounded-md">Save</button>
-        </form>
-      </div>
+        <button style={{ marginTop: ".8rem" }} className="btn btn-verde">
+          Guardar Contenedor
+        </button>
+      </form>
     </div>
   );
 }

@@ -18,7 +18,8 @@
   font-stretch: 100%;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   background-color: #f2f2f2;
   height: 100%;
@@ -91,4 +92,17 @@ html, body {
     #005fe9,
     #005de5
   );
+}
+
+.input {
+  width: 100%;
+  font-size: 14px;
+  border-radius: 6px;
+  padding-inline: 10px;
+  padding-block: 8px;
+  border-inline-width: 0px;
+  box-shadow: rgba(164, 172, 185, 0.24) 0px 1px 2px 0px,
+    rgba(18, 55, 105, 0.08) 0px 0px 0px 1px;
+  border: 0.5px rgb(107, 114, 128);
+  margin-block: .9rem;
 }
