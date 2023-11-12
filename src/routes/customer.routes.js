@@ -9,14 +9,14 @@ const {
 
 const router = Router();
 
-router.get("/clientes", getCustomers);
+router.get("/customers", getCustomers);
 
-router.get("/clientes/:id", getCustomer);
+router.get("/customers/:id", getCustomer);
 
-router.post("/clientes", createCustomer);
+router.post("/customers", createCustomer);
 
-router.put("/clientes/:id", updateCustomer);
+router.put("/customers/:id", updateCustomer);
 
-router.delete("/clientes/:id", deleteCustomer);
+router.delete("/customers/:id", deleteCustomer);
 
 module.exports = router;
