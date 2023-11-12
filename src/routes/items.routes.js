@@ -6,18 +6,21 @@ const {
   deleteItem,
   updateItem,
   createItem,
-} = require("../controllers/items.controller");
+} = require("../controllers/items.controllers");
 const validateSchema = require("../middlewares/validator.middleware");
-const createItemsSchema = require("../schemas/items.schema");
+const createItemsSchema = require("../schemas/item.schema");
 
+router.get("/items", authRequired, getItems);
 
-// TODO: when validation works, remember to put in every one of them
-router.get("/items", getItems);
+router.post(
+  "/items",
+  validateSchema(createItemsSchema),
+  authRequired,
+  createItem
+);
 
-router.post("/items", createItem);
+router.delete("/items/:id", authRequired, deleteItem);
 
-router.delete("/items/:id", deleteItem);
-
-router.put("/items/:id", updateItem);
+router.put("/items/:id", authRequired, updateItem);
 
 module.exports = router;
