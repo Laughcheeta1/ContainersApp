@@ -1,0 +1,1 @@
+This are the things that validate from the front end that things like he password is 6 characters, they input a value, etc
