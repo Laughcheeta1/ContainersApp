@@ -1,4 +1,6 @@
 .search-page-title {
+  display: flex;
+  align-items: center;
   font-weight: 600;
   font-size: 1.9rem;
   padding-inline: min(8.5vw, 6rem);
