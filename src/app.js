@@ -7,6 +7,7 @@ const taskRoutes = require("./routes/task.routes");
 const containerRoutes = require("./routes/containers.routes");
 const commodatumRoutes = require("./routes/commodatum.routes");
 const customerRoutes = require("./routes/customer.routes");
+const itemsRoutes = require("./routes/items.routes");
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use("/api", taskRoutes);
 app.use("/api", containerRoutes);
 app.use("/api", commodatumRoutes);
 app.use("/api", customerRoutes);
+app.use("/api", itemsRoutes);
 // TODO: add the remaining models routes
 // TODO: add coments to everything
 module.exports = app;

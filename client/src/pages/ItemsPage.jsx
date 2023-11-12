@@ -1,17 +1,17 @@
 import { useEffect } from "react";
-import { useContainers } from "../context/ContainerContext";
-import ContainerCard from "../components/ContainerCard";
+import { useItems } from "../context/ItemsContext";
+import ItemCard from "../components/ItemCard";
 import BarraBusqueda from "../components/BarraBusqueda";
 import "../styles/busqueda.css";
 
-export default function ContainersPage() {
-  const { getContainers, containers } = useContainers();
+export default function ItemsPage() {
+  const { getItems, items } = useItems();
 
   useEffect(() => {
-    getContainers();
+    getItems();
   }, []);
 
-  if (containers.length === 0) return <h1>No Hay Contenedores</h1>;
+  if (items.length === 0) return <h1>No Hay Contenedores</h1>;
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function ContainersPage() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
             strokeLinecap="round"
@@ -86,8 +86,8 @@ export default function ContainersPage() {
           }}
         />
 
-        {containers.map((container) => (
-          <ContainerCard container={container} key={container._id} />
+        {items.map((items) => (
+          <ItemCard item={items} key={items._id} />
         ))}
       </div>
     </>

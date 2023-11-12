@@ -1,71 +1,81 @@
 const Item = require("../models/items.model");
 
 const getItems = async (req, res) => {
-    try {
-        const items = await Item.find();
+  try {
+    const items = await Item.find();
+    res.json(items);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
-        res.json(items);
-    }
-    catch (err)
-    {
-        return res.status(404).json({ message : "No se pudo encontrar ningun item" });
-    }
+const getItem = async (req, res) => {
+  try {
+    const foundItem = Item.findById(req.params.id);
+
+    if (!foundItem)
+      return res.status(404).json({ message: "No se encontró el ítem" });
+
+    res.json(foundItem);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
 };
 
 const deleteItem = async (req, res) => {
-    try {
-        const items = await Item.findByIdAndRemove(req.params.id);
-        if (!items) return res.status(404).json({ message: "Item Not Found" });
+  try {
+    const items = await Item.findByIdAndRemove(req.params.id);
+    if (!items) return res.status(404).json({ message: "Item Not Found" });
 
-        return res.sendStatus(204);
-    }
-    catch (err)
-    {
-        return res.status(404).json({ message : "No se pudo encontrar ningun item" });
-    }
+    return res.sendStatus(204);
+  } catch (error) {
+    return res.status(500).json({ message: [error.message] });
+  }
 };
 
 const updateItem = async (req, res) => {
-    try {
-        const foundItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
-            new : true,
-        });
-s
-        if (!foundItem) return res.status(404).json({ message: "Item Not Found" });
+  try {
+    const foundItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    s;
+    if (!foundItem) return res.status(404).json({ message: "Item Not Found" });
 
-        res.json(foundItem);
-    }
-    catch (err)
-    {
-        return res.status(404).json({ message : "No se pudo encontrar ningun item" });
-    }
+    res.json(foundItem);
+  } catch (error) {
+    return res.status(500).json({ message: [error.message] });
+  }
 };
 
 const createItem = async (req, res) => {
-    try {
-        const {version, name, brand, total_quantity, available_quantity} = req.body;
+  try {
+    const { version, name, brand, total_quantity, available_quantity } =
+      req.body;
 
-        const newItem = new Item({
-            version,
-            name,
-            brand,
-            total_quantity,
-            available_quantity
-        });
+    const newItem = new Item({
+      version,
+      name,
+      brand,
+      total_quantity,
+      available_quantity,
+    });
 
-        const savedItem = await new newItem.save();
-        res.json(savedItem);
-    }
-    catch (err)
-    {
-        return res.status(404).json({ message : "No se pudo encontrar ningun item" });
-    }
+    await newItem.save();
+    res.json(newItem);
+  } catch (error) {
+    if (error.code === 11000 || error.code === 11001)
+      return res.status(400).json({
+        message: ["El ítem ya existe"],
+      });
+
+    return res.status(500).json({ message: [error.message] });
+  }
 };
 
-
 module.exports = {
-    getItems,
-    deleteItem,
-    updateItem,
-    createItem
+  getItems,
+  getItem,
+  deleteItem,
+  updateItem,
+  createItem,
 };
