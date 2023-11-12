@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { containerSchema } from "../schemas/container";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState, useEffect } from "react";
 
 import "../styles/containerForm.css";
 
@@ -21,15 +22,20 @@ export default function ContainerFormPage() {
 
   const params = useParams();
 
+  const [wasSubmitted, setWasSubmitted] = useState(false);
+
   const onSubmit = async (data) => {
     if (!params.id) {
-      createContainer(data);
-      if (containerErrors.length === 0) navigate("/containers");
-      return;
+      await createContainer(data);
+      setWasSubmitted(true);
     }
   };
 
-  console.log(errors);
+  useEffect(() => {
+    if (wasSubmitted && containerErrors.length === 0)
+      return navigate("/containers");
+    setWasSubmitted(false);
+  }, [containerErrors, wasSubmitted]);
 
   return (
     <>
