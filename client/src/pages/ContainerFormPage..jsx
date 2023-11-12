@@ -24,7 +24,7 @@ export default function ContainerFormPage() {
   const onSubmit = async (data) => {
     if (!params.id) {
       createContainer(data);
-      if (!containerErrors) navigate("/containers");
+      if (containerErrors.length === 0) navigate("/containers");
       return;
     }
   };
@@ -155,7 +155,7 @@ export default function ContainerFormPage() {
               className="btn btn-gris"
               to="/containers"
             >
-              Volver
+              Cancelar
             </Link>
           </div>
         </form>
