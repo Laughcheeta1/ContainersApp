@@ -1,0 +1,4 @@
+This package is intended to store the methods that make send the http requests to the server.
+
+Its done by using the library Axios, where in "axios.js" there is defined the basic route each and every http requests gonna go throught.
+See axios.js for more explanation.

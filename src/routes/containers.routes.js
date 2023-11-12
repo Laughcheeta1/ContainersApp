@@ -12,19 +12,19 @@ const containerSchema = require("../schemas/containers.schema");
 const { Router } = require("express");
 const router = Router();
 
-router.get("/contenedores", authRequired, getContainers);
+router.get("/containers", authRequired, getContainers);
 
-router.get("/contenedores/:id", authRequired, getContainer);
+router.get("/containers/:id", authRequired, getContainer);
 
 router.post(
-  "/contenedores",
+  "/containers",
   authRequired,
   validateSchema(containerSchema),
   createContainer
 );
 
-router.put("/contenedores/:id", authRequired, updateContainer);
+router.put("/containers/:id", authRequired, updateContainer);
 
-router.delete("/contenedores/:id", authRequired, deleteContainer);
+router.delete("/containers/:id", authRequired, deleteContainer);
 
 module.exports = router;
