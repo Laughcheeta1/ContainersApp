@@ -15,12 +15,12 @@ export default function ContainersPage() {
 
   return (
     <>
-      <h1 className="search-page-title">Buscar Contenedores</h1>
+      <h1 className="search-page-title">Buscar Ítems</h1>
 
-      <BarraBusqueda placeholder="Buscar por número" route="new" />
+      <BarraBusqueda placeholder="Buscar por nombre" route="new" />
 
       <div className="container-resultados">
-        <h2 style={{ fontSize: "26px" }}>Contenedores.</h2>
+        <h2 style={{ fontSize: "26px" }}>Ítems.</h2>
 
         <hr
           style={{

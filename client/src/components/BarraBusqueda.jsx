@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
 
-export default function BarraBusqueda({ metodoBusqueda, route }) {
+export default function BarraBusqueda({ metodoBusqueda, route, placeholder }) {
   return (
     <div className="container-barra-busqueda">
-      <input
-        type="text"
-        className="barra-busqueda"
-        placeholder="Buscar por número"
-        onChange={metodoBusqueda}
-      />
+      <input type="text" className="barra-busqueda" placeholder={placeholder} />
       <Link to={route}>
         <button className="btn btn-verde">
           Agregar &nbsp;

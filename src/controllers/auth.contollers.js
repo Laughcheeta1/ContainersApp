@@ -46,12 +46,12 @@ const login = async (req, res) => {
     const userFound = await User.findOne({ email });
 
     if (!userFound)
-      return res.status(400).json({ message: ["User Not Found"] });
+      return res.status(400).json({ message: ["No se encontró el correo"] });
 
     const isMatch = await bcrypt.compare(password, userFound.password);
 
     if (!isMatch)
-      return res.status(400).json({ message: ["Incorrect Password"] });
+      return res.status(400).json({ message: ["Contraseña incorrecta"] });
 
     const token = await createAccessToken({ id: userFound._id });
 

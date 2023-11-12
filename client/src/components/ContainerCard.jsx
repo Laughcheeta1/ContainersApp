@@ -23,10 +23,10 @@ export default function ContainerCard({ container }) {
               deleteContainer(container._id);
             }}
           >
-            Delete
+            Eliminar
           </button>
           <Link to={`/tasks/${container._id}`} className="btn btn-azul">
-            Edit
+            Editar
           </Link>
         </div>
       </header>
