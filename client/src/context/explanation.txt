@@ -1,0 +1,1 @@
+This documents are the way the front end makes the request to the backend
