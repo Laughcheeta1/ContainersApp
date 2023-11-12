@@ -9,11 +9,11 @@ const register = async (req, res) => {
 
   try {
     const foundUser = await User.findOne({ email });
-    if (foundUser) return res.status(400).json(["The email is already in use"]);
+    if (foundUser) return res.status(400).json(["El correo ya está en uso"]);
 
     const foundUsername = await User.findOne({ username });
     if (foundUsername)
-      return res.status(400).json(["The username is already in use"]);
+      return res.status(400).json(["El nombre de usuario ya está en uso"]);
 
     const passwordHash = await bcrypt.hash(password, 10);
 
