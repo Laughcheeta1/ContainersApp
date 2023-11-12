@@ -1,22 +1,27 @@
 .page-title {
-  border-bottom: solid 1.5px #c2c2c2;
+  border-bottom: solid 1px rgba(18, 55, 105, 0.28);
   padding-block: 1.2rem;
 }
 
 .page-title h1 {
   font-size: 26px;
   font-weight: 500;
-  margin-inline: min(8.5vw, 6rem);
+  margin-inline: min(8vw, 6rem);
 }
 
 .title-container {
-  margin-inline: min(8.5vw, 1.5rem);
+  width: 100%;
+  background-color: white;
+  padding-top: 1rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(18, 55, 105, 0.28);
+  padding-left: min(8.5vw, 3.5rem);
 }
 
 .title-container h1 {
   font-weight: 600;
   font-size: 26px;
-  padding-block: 1rem;
+  padding-bottom: 1rem;
 }
 
 .principal-body {
@@ -42,15 +47,9 @@
   margin-block: 1rem;
 }
 
-.servicios button {
-  width: 14rem;
-  height: 14rem;
-}
-
 .right-container {
   display: flex;
   flex-direction: column;
-  margin-inline: 1rem;
   width: 100%;
 }
 
@@ -59,21 +58,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #29aa64;
+  width: 18rem;
+  height: 14rem;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.318);
   color: white;
-  border-radius: 16px;
-  border: none;
-  padding: 14px;
-  font-weight: 600;
-  font-size: 14px;
   white-space: nowrap;
-  line-height: 1;
-  height: 32px;
   transition: 150ms ease-in-out;
+  cursor: pointer;
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.1),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #24d757;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #18b343;
 }
 
 .btn-servicio:hover {
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
+  opacity: 0.78;
 }

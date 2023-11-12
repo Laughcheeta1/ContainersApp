@@ -30,7 +30,8 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: none;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.318);
   padding: 0 18px;
   font-weight: normal;
   font-size: 14px;
@@ -39,70 +40,62 @@ body {
   line-height: 1;
   height: 32px;
   transition: 150ms ease-in-out;
-  box-shadow: rgba(9, 30, 66, 0.45) 0px 2px 2px -2px,
-    rgba(9, 30, 66, 0.53) 0px 0px 5px 0.5px, #ebebeb inset 0 0.6px 0.5px;
   cursor: pointer;
 }
 
 .btn:hover {
   cursor: pointer;
-  box-shadow: rgba(9, 30, 66, 0.45) 0px 0.5px 0.5px,
-    rgba(9, 30, 66, 0.12) 0px 0px 0px 0.5px, #d2d2d2 inset 0 0.6px 0.5px;
+  opacity: 0.78;
 }
 
 .btn-verde {
-  background-image: linear-gradient(
-    to bottom,
-    #22ca51,
-    #20c44d,
-    #1dbe4a,
-    #1bb946,
-    #18b343
-  );
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.1),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #24d757;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #18b946;
 }
 
 .btn-naranja {
-  background-image: linear-gradient(
-    to bottom,
-    #ff650d,
-    #f4620f,
-    #e95f10,
-    #de5b11,
-    #d35812
-  );
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.1),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #ff650d;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #d35812;
 }
 
 .btn-rojo {
-  background-image: linear-gradient(
-    to bottom,
-    #e51919,
-    #dc1616,
-    #d21212,
-    #c90f0f,
-    #c00b0b
-  );
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.1),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #e51919;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #c00b0b;
 }
 
 .btn-azul {
-  background-image: linear-gradient(
-    to bottom,
-    #0164f6,
-    #0162f2,
-    #0060ed,
-    #005fe9,
-    #005de5
-  );
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.1),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #2276f4;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #005de5;
 }
 
 .btn-gris {
-  background-image: linear-gradient(
-    to bottom,
-    #c2c2c2,
-    #bbbbbb,
-    #b5b5b5,
-    #aeaeae,
-    #a8a8a8
-  );
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.1),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #c5c5c5;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #a8a8a8;
 }
 
 .input {
