@@ -59,7 +59,9 @@ const createContainer = async (req, res) => {
     if (error.code === 11000 || error.code === 11001)
       return res
         .status(400)
-        .json({ message: ["Container ID or QR code already exists"] });
+        .json({
+          message: ["El código del contenedor o el QR ya están en uso"],
+        });
 
     console.log(error);
     return res.status(500).json({ message: [error.message] });
