@@ -6,7 +6,8 @@ import TaskFormPage from "./pages/TaskFormPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
 import ContainersPage from "./pages/ContainersPage";
-import ContainerFormPage from "./pages/ContainerFormPage.";
+import ContainerFormPage from "./pages/ContainerFormPage";
+import ItemsPage from "./pages/ItemsPage";
 import MenuPage from "./pages/MenuPage";
 
 import { AuthProvider } from "./context/AuthContext";
@@ -27,19 +28,19 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-
-            <Route element={<ProtectedRoute />}>
-              <Route path="/tasks" element={<TasksPage />} />
-              <Route path="/add-task" element={<TaskFormPage />} />
-              <Route path="/tasks/:id" element={<TaskFormPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/containers" element={<ContainersPage />} />
-              <Route path="/containers/new" element={<ContainerFormPage />} />
-              <Route path="/menu" element={<MenuPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </ContainerProvider>
+              <Route element={<ProtectedRoute />}>
+                <Route path="/menu" element={<MenuPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/tasks" element={<TasksPage />} />
+                <Route path="/add-task" element={<TaskFormPage />} />
+                <Route path="/tasks/:id" element={<TaskFormPage />} />
+                <Route path="/containers" element={<ContainersPage />} />
+                <Route path="/containers/new" element={<ContainerFormPage />} />
+                <Route path="/items" element={<ItemsPage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </ContainerProvider>
     </AuthProvider>
   );
 }

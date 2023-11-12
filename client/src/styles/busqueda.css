@@ -1,8 +1,13 @@
 .search-page-title {
+  display: flex;
+  align-items: center;
   font-weight: 600;
   font-size: 1.9rem;
-  margin-inline: min(8.5vw, 6rem);
-  margin-block: 1.4rem;
+  padding-inline: min(8.5vw, 6rem);
+  padding-block: 1.4rem;
+  background-color: white;
+  margin-bottom: 2rem;
+  border-bottom: solid 1px rgba(18, 55, 105, 0.2);
 }
 
 .container-barra-busqueda {

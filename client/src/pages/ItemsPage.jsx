@@ -27,27 +27,55 @@ export default function ContainersPage() {
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g
             id="SVGRepo_tracerCarrier"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           ></g>
           <g id="SVGRepo_iconCarrier">
             {" "}
+            <rect
+              x="5"
+              y="4"
+              width="8"
+              height="8"
+              rx="1.8"
+              stroke="#33363F"
+              strokeWidth="2"
+            ></rect>{" "}
             <path
-              d="M3 19H21M3 5H21M4 5V19M20 5V19M8 8.5V15.5M16 8.5V15.5M12 8.5V15.5"
-              stroke="#000000"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              d="M4 13.8C4 12.8059 4.80589 12 5.8 12H10.2C11.1941 12 12 12.8059 12 13.8V20H5.8C4.80589 20 4 19.1941 4 18.2V13.8Z"
+              stroke="#33363F"
+              strokeWidth="2"
+            ></path>{" "}
+            <path
+              d="M12 13.8C12 12.8059 12.8059 12 13.8 12H18.2C19.1941 12 20 12.8059 20 13.8V18.2C20 19.1941 19.1941 20 18.2 20H12V13.8Z"
+              stroke="#33363F"
+              strokeWidth="2"
+            ></path>{" "}
+            <path
+              d="M16 12V15"
+              stroke="#33363F"
+              strokeWidth="2"
+              strokeLinecap="round"
+            ></path>{" "}
+            <path
+              d="M8 12V15"
+              stroke="#33363F"
+              strokeWidth="2"
+              strokeLinecap="round"
+            ></path>{" "}
+            <path
+              d="M9 4V7"
+              stroke="#33363F"
+              strokeWidth="2"
+              strokeLinecap="round"
             ></path>{" "}
           </g>
         </svg>
-        Buscar Contenedores
+        Buscar Ítems
       </h1>
-
-      <BarraBusqueda placeholder="Buscar por número" route="new" />
-
+      <BarraBusqueda placeholder="Buscar por nombre" route="new" />
       <div className="container-resultados">
-        <h2 style={{ fontSize: "26px" }}>Contenedores.</h2>
+        <h2 style={{ fontSize: "26px" }}>Ítems.</h2>
 
         <hr
           style={{
