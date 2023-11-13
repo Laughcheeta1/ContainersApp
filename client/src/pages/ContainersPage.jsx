@@ -11,8 +11,6 @@ export default function ContainersPage() {
     getContainers();
   }, []);
 
-  if (containers.length === 0) return <h1>No Hay Contenedores</h1>;
-
   return (
     <>
       <h1 className="search-page-title">

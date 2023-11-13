@@ -1,8 +1,12 @@
+import { useCustomers } from "../context/CustomerContext";
+
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
 export default function CustomerCard({ customer }) {
+  const { deleteCustomer } = useCustomers();
+
   return (
     <div className="resultado-busqueda">
       <div className="flex gap-x-2 items-center">
@@ -12,7 +16,7 @@ export default function CustomerCard({ customer }) {
         <button
           className="btn btn-rojo"
           onClick={() => {
-            deleteContainer(container._id);
+            deleteCustomer(customer._id);
           }}
         >
           Eliminar
