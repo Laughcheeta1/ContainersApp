@@ -62,7 +62,6 @@ export default function App() {
                       />
                       <Route path="/items" element={<ItemsPage />} />
                       <Route path="/items/new" element={<ItemFormPage />} />
-
                       <Route path="/customers" element={<CustomersPage />} />
                     </Route>
                   </Routes>
