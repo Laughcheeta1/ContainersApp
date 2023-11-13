@@ -40,8 +40,8 @@ export default function ContainerCard({ container }) {
             objectID={container._id}
           />
 
-          <Link to={`/tasks/${container._id}`} className="btn btn-azul">
-            Editar
+          <Link to={`/containers/${container._id}`} className="btn btn-azul">
+            Ver más
           </Link>
         </div>
       </header>

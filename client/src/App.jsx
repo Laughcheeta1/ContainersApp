@@ -9,6 +9,7 @@ import MenuPage from "./pages/MenuPage";
 
 import ContainersPage from "./pages/Containers/ContainersPage";
 import ContainerFormPage from "./pages/Containers/ContainerFormPage";
+import ContainerInfoPage from "./pages/Containers/ContainerInfoPage";
 
 import ItemsPage from "./pages/Items/ItemsPage";
 import ItemFormPage from "./pages/Items/ItemFormPage";
@@ -49,11 +50,18 @@ export default function App() {
                       <Route path="/profile" element={<ProfilePage />} />
 
                       <Route path="/containers" element={<ContainersPage />} />
-                      <Route path="/containers/new" element={<ContainerFormPage />} />
-                      
+                      <Route
+                        path="/containers/new"
+                        element={<ContainerFormPage />}
+                      />
+                      <Route
+                        path="/containers/:id"
+                        element={<ContainerInfoPage />}
+                      />
+
                       <Route path="/items" element={<ItemsPage />} />
                       <Route path="/items/new" element={<ItemFormPage />} />
-                      
+
                       <Route path="/customers" element={<CustomersPage />} />
                       <Route path="/customers/new" element={<CustomerFormPage />} />
                       <Route path="/customers/edit" element={<EditCustomerPage />} />
