@@ -46,7 +46,7 @@ export function CommodatumProvider({ children }) {
       const res = await deleteCommodatumRequest(id);
       if (res.status === 204)
         setCommodatums(() =>
-          customers.filter((commodatum) => commodatum._id !== id)
+          commodatum.filter((commodatum) => commodatum._id !== id)
         );
     } catch (error) {
       console.log(error);
