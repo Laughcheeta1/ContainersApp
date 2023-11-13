@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContainers } from "../context/ContainerContext";
 import AlertDialogEliminar from "../components/AlertDialogEliminar";
-import * as AlertDialog from "@radix-ui/react-alert-dialog";
-import "../styles/popUpEliminar.css";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";

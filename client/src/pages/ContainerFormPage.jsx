@@ -5,6 +5,7 @@ import { containerSchema } from "../schemas/container";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
+import AlertDialogCrear from "../components/AlertDialogCrear";
 
 import "../styles/formPage.css";
 
@@ -52,7 +53,7 @@ export default function ContainerFormPage() {
 
         <hr style={{ marginTop: ".5rem" }} />
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form>
           <div className="container-group">
             <div className="group">
               <p>{errors.container_id?.message}</p>
@@ -148,13 +149,19 @@ export default function ContainerFormPage() {
           ></textarea>
 
           <div style={{ marginTop: "1rem" }} className="container-group">
-            <button
+            {/* <button
               style={{ width: "100%" }}
               className="btn btn-verde"
               type="submit"
             >
               Guardar contenedor
-            </button>
+            </button> */}
+
+            <AlertDialogCrear
+              buttonMessage="Guardar contenedor"
+              descriptionMessage="Se creará un nuevo contenedor con la información que ingresaste"
+              onSubmit={handleSubmit(onSubmit)}
+            />
 
             <Link
               style={{ width: "100%" }}
