@@ -11,8 +11,6 @@ export default function CustomersPage() {
     getCustomers();
   }, []);
 
-  if (customers.length == 0) return <h1>No hay Clientes</h1>;
-
   return (
     <>
       <h1 className="search-page-title">
