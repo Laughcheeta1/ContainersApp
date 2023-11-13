@@ -63,6 +63,7 @@ const createItem = async (req, res) => {
     await newItem.save();
     res.json(newItem);
   } catch (error) {
+    console.log(error);
     if (error.code === 11000 || error.code === 11001)
       return res.status(400).json({
         message: ["El ítem ya existe"],
