@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { useContainers } from "../context/ContainerContext";
+import AlertDialogEliminar from "../components/AlertDialogEliminar";
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import "../styles/popUpEliminar.css";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -34,14 +37,11 @@ export default function ContainerCard({ container }) {
             alignItems: "center",
           }}
         >
-          <button
-            className="btn btn-rojo"
-            onClick={() => {
-              deleteContainer(container._id);
-            }}
-          >
-            Eliminar
-          </button>
+          <AlertDialogEliminar
+            deleteMethod={deleteContainer}
+            objectID={container._id}
+          />
+
           <Link to={`/tasks/${container._id}`} className="btn btn-azul">
             Editar
           </Link>
