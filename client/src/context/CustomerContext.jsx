@@ -14,7 +14,7 @@ export const useCustomers = () => {
   const context = useContext(CustomerContext);
 
   if (!CustomerContext)
-    throw new Error("useCustomers must be used within a ContainerProvider");
+    throw new Error("useCustomers must be used within a CustomerProvider");
   return context;
 };
 
