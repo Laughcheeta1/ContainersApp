@@ -41,9 +41,19 @@ export function CustomerProvider({ children }) {
     }
   };
 
-  const editCustomer = async (customer) => {
+  const editCustomer = async (id, customer) => {
+    // Only change the fields that are meant to be changed
+    if (customer.name)
+      customerToChange.name = customer.name;
+
+    if (customer.phone)
+      customerToChange.phone = customer.phone;
+
+    if (customer.address)
+      customerToChange.address = customer.address;
+    
     try {
-      await updateCustomerRequest(customer);
+      await updateCustomerRequest(id, customerToChange);
       getCustomers();
     }
     catch (error)
@@ -51,7 +61,7 @@ export function CustomerProvider({ children }) {
       setErrors(() => error.response.data.message);
       console.log(error);
     }
-  }
+  };
 
   const deleteCustomer = async (id) => {
     try {
