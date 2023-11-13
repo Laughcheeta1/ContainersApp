@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { registerSchema } from "../schemas/auth";
+import { registerSchema } from "../../schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAuth } from "../context/AuthContext";
-import "../styles/auth.css";
+import { useAuth } from "../../context/AuthContext";
+import "../../styles/auth.css";
 
 function RegisterPage() {
   const { signUp, isAuthenticated, errors: registerErrors } = useAuth();

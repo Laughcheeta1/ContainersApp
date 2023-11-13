@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useContainers } from "../context/ContainerContext";
-import ContainerCard from "../components/ContainerCard";
-import BarraBusqueda from "../components/BarraBusqueda";
-import "../styles/busqueda.css";
+import { useContainers } from "../../context/ContainerContext";
+import ContainerCard from "../../components/ContainerCard";
+import BarraBusqueda from "../../components/BarraBusqueda";
+import "../../styles/busqueda.css";
 
 export default function ContainersPage() {
   const { getContainers, containers } = useContainers();

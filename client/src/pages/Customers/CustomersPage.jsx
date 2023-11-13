@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useCustomers } from "../context/CustomerContext";
-import CustomerCard from "../components/CustomerCard";
-import BarraBusqueda from "../components/BarraBusqueda";
-import "../styles/busqueda.css";
+import { useCustomers } from "../../context/CustomerContext";
+import CustomerCard from "../../components/CustomerCard";
+import BarraBusqueda from "../../components/BarraBusqueda";
+import "../../styles/busqueda.css";
 
 export default function CustomersPage() {
   const { getCustomers, customers } = useCustomers();

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useCommodatums } from "../context/CommodatumContext";
-import CommodatumCard from "../components/CommodatumCard";
-import BarraBusqueda from "../components/BarraBusqueda";
-import "../styles/busqueda.css";
+import { useCommodatums } from "../../context/CommodatumContext";
+import CommodatumCard from "../../components/CommodatumCard";
+import BarraBusqueda from "../../components/BarraBusqueda";
+import "../../styles/busqueda.css";
 
 export default function CommodatumPage() {
   const { getCommodatums, commodatum } = useCommodatums();
