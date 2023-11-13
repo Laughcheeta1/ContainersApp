@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCustomers } from "../context/CustomerContext";
+import AlertDialogEliminar from "./AlertDialogEliminar";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -28,18 +29,14 @@ export default function CustomerCard({ customer }) {
           {customer.name}
         </p>
 
-        <button
-          className="btn btn-rojo"
-          onClick={() => {
-            deleteCustomer(customer._id);
-          }}
-        >
-          Eliminar
-        </button>
+        <AlertDialogEliminar
+          deleteMethod={deleteCustomer}
+          objectID={customer._id}
+        />
 
-          <Link to={`/customers/${customer._id}`} className="btn btn-azul">
-            Editar
-          </Link>
+        <Link to={`/customers/${customer._id}`} className="btn btn-azul">
+          Editar
+        </Link>
       </div>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>

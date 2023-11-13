@@ -30,15 +30,6 @@ export default function ItemCard({ item }) {
             gap: "1rem",
           }}
         >
-          {/* <button
-            className="btn btn-rojo"
-            onClick={() => {
-              deleteItem(item._id);
-            }}
-          >
-            Eliminar
-          </button> */}
-
           <AlertDialogEliminar deleteMethod={deleteItem} objectID={item._id} />
 
           <Link to={`/tasks/${item._id}`} className="btn btn-azul">
