@@ -72,7 +72,7 @@ const deleteCustomer = async (req, res) => {
     if (!customer)
       return res.status(404).json({ message: "Customer Not Found" });
 
-    res.sendStatus(201);
+    res.sendStatus(204);
   } catch (error) {
     return res.status(404).json({ message: "An Error Occurred" });
   }

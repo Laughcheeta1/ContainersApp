@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useCommodatums} from "../context/CommodatumContext";
+import { useCommodatums } from "../context/CommodatumContext";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -7,6 +7,8 @@ dayjs.extend(utc);
 
 export default function CommodatumCard({ commodatum }) {
   const { deleteCommodatum } = useCommodatums();
+
+  console.log(commodatum);
 
   return (
     <div className="resultado-busqueda">
@@ -49,11 +51,13 @@ export default function CommodatumCard({ commodatum }) {
       </header>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span style={{ fontWeight: "500" }}>No. Contenedor: </span> {commodatum.container.container_id}
+        <span style={{ fontWeight: "500" }}>No. Contenedor: </span>{" "}
+        {commodatum.container.container_id}
       </p>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span style={{ fontWeight: "500" }}>Fecha: </span> {dayjs(commodatum.date).utc().format("DD/MM/YY")}
+        <span style={{ fontWeight: "500" }}>Fecha: </span>{" "}
+        {dayjs(commodatum.date).utc().format("DD/MM/YY")}
       </p>
 
       <p style={{ fontSize: "16px" }}>
