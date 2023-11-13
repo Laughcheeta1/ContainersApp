@@ -1,0 +1,11 @@
+.title {
+  display: flex;
+  align-items: baseline;
+  font-weight: 600;
+  font-size: 1.6rem;
+  padding-inline: min(8.5vw, 6rem);
+  padding-block: 1.4rem;
+  background-color: white;
+  margin-bottom: 2rem;
+  border-bottom: solid 1px rgba(18, 55, 105, 0.2);
+}
