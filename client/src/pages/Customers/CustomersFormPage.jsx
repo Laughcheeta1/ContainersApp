@@ -5,7 +5,7 @@ import { customerSchema } from "../../schemas/customer";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import AlertDialogCrear from "../../components/AlertDialogCrear";
 
 import "../../styles/formPage.css";
