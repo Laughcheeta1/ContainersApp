@@ -5,6 +5,7 @@ import { customerSchema } from "../schemas/customer";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
+import AlertDialogCrear from "../components/AlertDialogCrear";
 
 import "../styles/formPage.css";
 
@@ -146,13 +147,12 @@ export default function CustomerFormPage()
 
         
                     <div style={{ marginTop: "1rem" }} className="container-group">
-                        <button
-                        style={{ width: "100%" }}
-                        className="btn btn-verde"
-                        type="submit"
-                        >
-                            Guardar cliente
-                        </button>
+                        
+                        <AlertDialogCrear
+                            buttonMessage="Guardar cliente"
+                            descriptionMessage="Se creara un nuevo cliente con la informacion que creaste"
+                            onSubmit={handleSubmit(onSubmit)}
+                        />
 
                         <Link
                         style={{ width: "100%" }}

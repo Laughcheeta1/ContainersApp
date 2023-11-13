@@ -20,8 +20,8 @@ export default function MenuPage() {
                 alignItems: "baseline",
               }}
             >
-              Bienvenido&#40;a&#41; &#20;{" "}
-              <p style={{ fontSize: "20px", fontWeight: "400" }}>
+              Bienvenido&#40;a&#41;{" "}
+              <p style={{ fontSize: "20px", fontWeight: "400", marginLeft: ".6rem" }}>
                 {user.username}
               </p>
             </h1>
