@@ -49,6 +49,14 @@ export default function CustomersPage()
 
             <div className="container-resultados">
                 <h2 style={{ fontSize: "26px" }}>Clientes</h2>
+                
+                <div style={{ display: "flex", flexDirection: "row", "justify-content": "space-between"}}>
+                    <p>Nombre</p>
+                    <p>Numero</p>
+                    <p>Direccion</p>
+                    <p>NIT</p>
+                    <p>Ultima Modificacion</p>
+                </div>
 
                 <hr
                     style={{
@@ -59,7 +67,7 @@ export default function CustomersPage()
                     }}
                 />
 
-                {containers.map((customer) => (
+                {customers.map((customer) => (
                     <CustomerCard customer={customer} key={customer._id} />
                 ))}
             </div>

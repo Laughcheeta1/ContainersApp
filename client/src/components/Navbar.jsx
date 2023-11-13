@@ -9,7 +9,7 @@ export default function Navbar() {
   const PATH = useLocation().pathname;
 
   const PAGES = [
-    <CustomLink key="buscar_clientes" to="/clients">
+    <CustomLink key="buscar_clientes" to="/customers">
       Clientes
     </CustomLink>,
     <CustomLink key="buscar_items" to="/items">
