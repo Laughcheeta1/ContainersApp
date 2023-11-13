@@ -41,6 +41,18 @@ export function CustomerProvider({ children }) {
     }
   };
 
+  const editCustomer = async (customer) => {
+    try {
+      await updateCustomerRequest(customer);
+      getCustomers();
+    }
+    catch (error)
+    {
+      setErrors(() => error.response.data.message);
+      console.log(error);
+    }
+  }
+
   const deleteCustomer = async (id) => {
     try {
       const res = await deleteCustomerRequest(id);
@@ -65,6 +77,7 @@ export function CustomerProvider({ children }) {
     <CustomerContext.Provider
       value={{
         getCustomers,
+        editCustomer,
         customers,
         createCustomer,
         deleteCustomer,
