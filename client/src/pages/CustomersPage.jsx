@@ -59,7 +59,7 @@ export default function CustomersPage()
                     }}
                 />
 
-                {containers.map((customer) => (
+                {customers.map((customer) => (
                     <CustomerCard customer={customer} key={customer._id} />
                 ))}
             </div>
