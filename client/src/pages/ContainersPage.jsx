@@ -57,7 +57,6 @@ export default function ContainersPage() {
             backgroundColor: "rgba(18, 55, 105, 0.10)",
           }}
         />
-
         {containers.map((container) => (
           <ContainerCard container={container} key={container._id} />
         ))}

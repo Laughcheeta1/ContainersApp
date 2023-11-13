@@ -4,8 +4,8 @@ export const getCustomersRequest = async () => axios.get("/customers");
 
 export const getCustomerRequest = async (id) => axios.get(`/customers/${id}`);
 
-export const createCostumerRequest = async (costumer) => axios.post("/customer", costumer);
+export const createCustomerRequest = async (costumer) => axios.post("/customers", costumer);
 
-export const updateCostumerRequest = async (id, costumer) => axios.put(`/customer/${id}`, costumer);
+export const updateCustomerRequest = async (id, costumer) => axios.put(`/customers/${id}`, costumer);
 
-export const deleteCostumerRequest = async (id) => axios.delete(`/customers/${id}`);
+export const deleteCustomerRequest = async (id) => axios.delete(`/customers/${id}`);

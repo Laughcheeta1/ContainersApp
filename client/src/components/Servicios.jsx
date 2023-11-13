@@ -32,7 +32,7 @@ export default function Servicios() {
           </svg>
         </button>
       </Link>
-      <Link to="/clients">
+      <Link to="/customers">
         <button className="btn-servicio">
           <div>Clientes</div>
           <svg

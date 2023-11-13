@@ -1,18 +1,11 @@
-<<<<<<< HEAD
-import { useEffect } from "react";
-import { useCustumer } from "../context/CustomerContext";
-import ContainerCard from "../components/CustomerCard";
-import BarraBusqueda from "../components/BarraBusqueda";
-import "../styles/busqueda.css";
-=======
 import { createContext, useContext, useState, useEffect } from "react";
 
 import {
     getCustomersRequest,
     getCustomerRequest,
-    createCostumerRequest,
-    updateCostumerRequest,
-    deleteCostumerRequest,
+    createCustomerRequest,
+    updateCustomerRequest,
+    deleteCustomerRequest,
 } from "../api/customers";
 
 const CustomerContext = createContext();
@@ -83,4 +76,3 @@ export function CustomerProvider({ children }) {
     </CustomerContext.Provider>
   );
 }
->>>>>>> 61a080ddd963bb70f3468c8aaa01ba59e7cfe5d2

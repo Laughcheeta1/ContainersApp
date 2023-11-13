@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-dayjs.extends(utc);
+dayjs.extend(utc);
 
 export default function CustomerCard({ customer }) {
     return (
