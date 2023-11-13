@@ -10,6 +10,7 @@ import ContainerFormPage from "./pages/ContainerFormPage";
 import ItemsPage from "./pages/ItemsPage";
 import MenuPage from "./pages/MenuPage";
 import CustomersPage from "./pages/CustomersPage";
+import CustomerFormPage from "./pages/CustomersFormPage";
 import { AuthProvider } from "./context/AuthContext";
 import { TaskProvider } from "./context/TasksContext";
 import { ContainerProvider } from "./context/ContainerContext";
@@ -45,6 +46,10 @@ export default function App() {
                       <Route
                         path="/containers/new"
                         element={<ContainerFormPage />}
+                      />
+                      <Route
+                        path="/customers/new"
+                        element={<CustomerFormPage />}
                       />
                       <Route path="/items" element={<ItemsPage />} />
                       <Route path="/customers" element={<CustomersPage />} />
