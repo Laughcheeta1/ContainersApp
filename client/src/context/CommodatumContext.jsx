@@ -31,6 +31,11 @@ export function CommodatumProvider({ children }) {
     }
   };
 
+  const getCommodatum = async (id) => {
+    const res = await getCommodatumRequest(id);
+
+  };
+
   const createCommodatum = async (commodatum) => {
     try {
       await createCommodatumRequest(commodatum);
