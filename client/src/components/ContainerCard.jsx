@@ -10,13 +10,30 @@ export default function ContainerCard({ container }) {
 
   return (
     <div className="resultado-busqueda">
-      <header className="flex justify-between">
-        <h1 style={{ marginRight: "1rem" }} className="text-xl font-medium">
+      <header
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: ".4rem",
+          alignItems: "center",
+        }}
+      >
+        <h1
+          style={{ marginRight: "1rem", fontSize: "18px", fontWeight: "500" }}
+        >
           No: {container.container_id}
           {" · "}
           <span style={{ fontWeight: "normal" }}>{container.type}</span>
         </h1>
-        <div className="flex gap-x-2 items-center">
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: ".5rem",
+            alignItems: "center",
+          }}
+        >
           <button
             className="btn btn-rojo"
             onClick={() => {
@@ -31,16 +48,16 @@ export default function ContainerCard({ container }) {
         </div>
       </header>
 
-      <p className="text-sm">
-        <span className="text-lg">Tamaño:</span> {container.size}
+      <p style={{ marginRight: "1rem", fontSize: "16px" }}>
+        <span style={{ fontWeight: "500" }}>Tamaño:</span> {container.size}
       </p>
 
-      <p className="text-sm">
-        <span className="text-lg">Estado:</span> {container.status}
+      <p style={{ marginRight: "1rem", fontSize: "16px" }}>
+        <span style={{ fontWeight: "500" }}>Estado:</span> {container.status}
       </p>
 
-      <p className="text-sm">
-        <span className="text-lg">Últ Mod:</span>{" "}
+      <p style={{ fontSize: "16px" }}>
+        <span style={{ fontWeight: "500" }}>Últ Mod:</span>{" "}
         {dayjs(container.updatedAt).utc().format("DD/MM/YY")}
       </p>
     </div>

@@ -34,14 +34,14 @@ export function ItemProvider({ children }) {
       await createItemRequest(item);
       getItems();
     } catch (error) {
-      setErrors(() => error.response.data);
+      setErrors(() => error.response.data.message);
       console.log(error);
     }
   };
 
   const deleteItem = async (id) => {
     try {
-      await deleteItemRequest(id);
+      const res = await deleteItemRequest(id);
 
       if (res.status === 204)
         setItems(() => items.filter((item) => item._id !== id));

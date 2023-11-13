@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 
-import "../styles/containerForm.css";
+import "../styles/formPage.css";
 
 export default function ContainerFormPage() {
   const {
