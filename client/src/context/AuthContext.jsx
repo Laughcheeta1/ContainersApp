@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const signUp = async (user) => {
+  const signUp = async (user) => {  
     try {
       const res = await registerRequest(user);
       if (res.status === 200) {
@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
+      console.log(error);
       setErrors(() => error.response.data.message);
     }
   };
