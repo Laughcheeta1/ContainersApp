@@ -13,6 +13,7 @@ export const itemSchema = z.object({
 
   total_quantity: z
     .string()
+    .min(1, { message: "La cantidad total es necesaria" })
     .transform((value) =>
       typeof value === "string" ? parseInt(value, 10) : value
     )
@@ -23,6 +24,7 @@ export const itemSchema = z.object({
 
   available_quantity: z
     .string()
+    .min(1, { message: "La cantidad disponible es necesaria" })
     .transform((value) =>
       typeof value === "string" ? parseInt(value, 10) : value
     )
