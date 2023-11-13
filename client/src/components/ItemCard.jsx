@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useItems } from "../context/ItemsContext";
+import AlertDialogEliminar from "./AlertDialogEliminar";
 
 export default function ItemCard({ item }) {
   const { deleteItem } = useItems();
@@ -29,14 +30,16 @@ export default function ItemCard({ item }) {
             gap: "1rem",
           }}
         >
-          <button
+          {/* <button
             className="btn btn-rojo"
             onClick={() => {
               deleteItem(item._id);
             }}
           >
             Eliminar
-          </button>
+          </button> */}
+
+          <AlertDialogEliminar deleteMethod={deleteItem} objectID={item._id} />
 
           <Link to={`/tasks/${item._id}`} className="btn btn-azul">
             Editar
