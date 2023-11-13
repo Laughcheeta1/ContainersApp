@@ -56,17 +56,12 @@ export default function App() {
                         path="/containers/new"
                         element={<ContainerFormPage />}
                       />
-<<<<<<< HEAD
                       <Route
                         path="/customers/new"
                         element={<CustomerFormPage />}
                       />
-=======
-
->>>>>>> c8075c79beb31d3375c477694c2eda1f2e12afd0
                       <Route path="/items" element={<ItemsPage />} />
                       <Route path="/items/new" element={<ItemFormPage />} />
-
                       <Route path="/customers" element={<CustomersPage />} />
                     </Route>
                   </Routes>
