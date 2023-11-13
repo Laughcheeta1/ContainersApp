@@ -10,14 +10,14 @@ const {
 const { Router } = require("express");
 const router = Router();
 
-router.get("/commodatum/:id", getCommodatum);
+router.get("/commodatums/:id", getCommodatum);
 
-router.get("/commodatum", getCommodatums);
+router.get("/commodatums", getCommodatums);
 
-router.post("/commodatum", createCommodatum);
+router.post("/commodatums", createCommodatum);
 
-router.put("/commodatum/:id", updateCommodatum);
+router.put("/commodatums/:id", updateCommodatum);
 
-router.delete("/commodatum/:id", deleteCommodatum);
+router.delete("/commodatums/:id", deleteCommodatum);
 
 module.exports = router;

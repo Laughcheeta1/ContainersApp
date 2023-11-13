@@ -22,7 +22,6 @@ export default function CommodatumCard({ commodatum }) {
           style={{ marginRight: "1rem", fontSize: "18px", fontWeight: "500" }}
         >
           No: {commodatum.commodatum_id}
-          {" · "}
           <span style={{ fontWeight: "normal" }}>{commodatum.type}</span>
         </h1>
 
@@ -36,6 +35,7 @@ export default function CommodatumCard({ commodatum }) {
         >
           <button
             className="btn btn-rojo"
+            useCommodatumsclassName="btn btn-rojo"
             onClick={() => {
               deleteCommodatum(commodatum._id);
             }}
@@ -49,11 +49,11 @@ export default function CommodatumCard({ commodatum }) {
       </header>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span style={{ fontWeight: "500" }}>Tamaño:</span> {commodatum.size}
+        <span style={{ fontWeight: "500" }}>No. Contenedor: </span> {commodatum.container.container_id}
       </p>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span style={{ fontWeight: "500" }}>Estado:</span> {commodatum.status}
+        <span style={{ fontWeight: "500" }}>Fecha: </span> {dayjs(commodatum.date).utc().format("DD/MM/YY")}
       </p>
 
       <p style={{ fontSize: "16px" }}>

@@ -5,9 +5,7 @@ import BarraBusqueda from "../components/BarraBusqueda";
 import "../styles/busqueda.css";
 
 export default function CommodatumPage() {
-  const { getCommodatums, commodatums } = useCommodatums();
-
-  console.log(commodatums);
+  const { getCommodatums, commodatum } = useCommodatums();
 
   useEffect(() => {
     getCommodatums();
@@ -57,7 +55,7 @@ export default function CommodatumPage() {
             backgroundColor: "rgba(18, 55, 105, 0.10)",
           }}
         />
-        {commodatums.map((commodatum) => (
+        {commodatum.map((commodatum) => (
           <CommodatumCard commodatum={commodatum} key={commodatum._id} />
         ))}
       </div>
