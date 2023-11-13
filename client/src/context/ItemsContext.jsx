@@ -34,7 +34,7 @@ export function ItemProvider({ children }) {
       await createItemRequest(item);
       getItems();
     } catch (error) {
-      setErrors(() => error.response.data);
+      setErrors(() => error.response.data.message);
       console.log(error);
     }
   };
