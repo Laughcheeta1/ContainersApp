@@ -5,6 +5,7 @@ import { itemSchema } from "../schemas/item";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
+import AlertDialogCrear from "../components/AlertDialogCrear";
 
 import "../styles/formPage.css";
 
@@ -51,7 +52,7 @@ export default function ItemFormPage() {
 
         <hr style={{ marginTop: ".5rem" }} />
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form>
           <div className="group">
             <p>{errors.name?.message}</p>
 
@@ -114,13 +115,19 @@ export default function ItemFormPage() {
           </div>
 
           <div style={{ marginTop: "1rem" }} className="container-group">
-            <button
+            {/* <button
               style={{ width: "100%" }}
               className="btn btn-verde"
               type="submit"
             >
               Guardar ítem
-            </button>
+            </button> */}
+
+            <AlertDialogCrear
+              buttonMessage="Guardar ítem"
+              descriptionMessage="Se guardará un nuevo ítem con la información que ingresaste"
+              onSubmit={handleSubmit(onSubmit)}
+            />
 
             <Link
               style={{ width: "100%" }}

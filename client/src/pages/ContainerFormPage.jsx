@@ -149,13 +149,6 @@ export default function ContainerFormPage() {
           ></textarea>
 
           <div style={{ marginTop: "1rem" }} className="container-group">
-            {/* <button
-              style={{ width: "100%" }}
-              className="btn btn-verde"
-              type="submit"
-            >
-              Guardar contenedor
-            </button> */}
 
             <AlertDialogCrear
               buttonMessage="Guardar contenedor"
