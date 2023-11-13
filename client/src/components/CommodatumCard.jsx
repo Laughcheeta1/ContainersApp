@@ -35,17 +35,8 @@ export default function CommodatumCard({ commodatum }) {
             alignItems: "center",
           }}
         >
-          <button
-            className="btn btn-rojo"
-            useCommodatumsclassName="btn btn-rojo"
-            onClick={() => {
-              deleteCommodatum(commodatum._id);
-            }}
-          >
-            Eliminar
-          </button>
-          <Link to={`/tasks/${commodatum._id}`} className="btn btn-azul">
-            Editar
+          <Link to={`/commodatums/${commodatum._id}`} className="btn btn-azul">
+            Mas informacion
           </Link>
         </div>
       </header>

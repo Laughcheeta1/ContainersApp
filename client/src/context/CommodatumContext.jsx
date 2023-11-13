@@ -32,8 +32,14 @@ export function CommodatumProvider({ children }) {
   };
 
   const getCommodatum = async (id) => {
-    const res = await getCommodatumRequest(id);
-
+    try
+    {
+      const res = await getCommodatumRequest(id);
+    } 
+    catch (error)
+    {
+      console.log(error);
+    }
   };
 
   const createCommodatum = async (commodatum) => {
@@ -71,6 +77,7 @@ export function CommodatumProvider({ children }) {
     <CommodatumContext.Provider
       value={{
         getCommodatums,
+        getCommodatum,
         commodatum,
         createCommodatum,
         deleteCommodatum,
