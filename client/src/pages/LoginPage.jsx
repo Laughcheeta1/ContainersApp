@@ -77,7 +77,7 @@ function LoginPage() {
           />
 
           <button
-            style={{ width: "100%", marginTop: "1rem" }}
+            style={{ width: "100%", marginTop: "1rem", padding: "0" }}
             type="submit"
             className="btn btn-azul"
           >

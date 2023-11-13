@@ -114,7 +114,7 @@ function RegisterPage() {
           />
 
           <button
-            style={{ width: "100%", marginTop: "1rem" }}
+            style={{ width: "100%", marginTop: "1rem", padding: "0" }}
             className="btn btn-verde"
             type="submit"
           >
