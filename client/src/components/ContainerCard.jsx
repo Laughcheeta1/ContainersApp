@@ -49,15 +49,15 @@ export default function ContainerCard({ container }) {
       </header>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span>Tamaño:</span> {container.size}
+        <span style={{ fontWeight: "500" }}>Tamaño:</span> {container.size}
       </p>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span>Estado:</span> {container.status}
+        <span style={{ fontWeight: "500" }}>Estado:</span> {container.status}
       </p>
 
       <p style={{ fontSize: "16px" }}>
-        <span>Últ Mod:</span>{" "}
+        <span style={{ fontWeight: "500" }}>Últ Mod:</span>{" "}
         {dayjs(container.updatedAt).utc().format("DD/MM/YY")}
       </p>
     </div>

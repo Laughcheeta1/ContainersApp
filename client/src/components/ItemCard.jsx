@@ -45,15 +45,16 @@ export default function ItemCard({ item }) {
       </header>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span>Marca:</span> {item.brand}
+        <span style={{ fontWeight: "500" }}>Marca:</span> {item.brand}
       </p>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span>Total:</span> {item.total_quantity}
+        <span style={{ fontWeight: "500" }}>Total:</span> {item.total_quantity}
       </p>
 
       <p style={{ fontSize: "16px" }}>
-        <span>Disponibles:</span> {item.available_quantity}
+        <span style={{ fontWeight: "500" }}>Disponibles:</span>{" "}
+        {item.available_quantity}
       </p>
     </div>
   );
