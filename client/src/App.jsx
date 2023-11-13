@@ -15,6 +15,7 @@ import ItemFormPage from "./pages/Items/ItemFormPage";
 
 import CustomersPage from "./pages/Customers/CustomersPage";
 import CustomerFormPage from "./pages/Customers/CustomersFormPage";
+import EditCustomerPage from "./pages/Customers/EditCustomerPage";
 
 import CommodatumPage from "./pages/Commodatum/CommodatumPage";
 
@@ -55,6 +56,7 @@ export default function App() {
                       
                       <Route path="/customers" element={<CustomersPage />} />
                       <Route path="/customers/new" element={<CustomerFormPage />} />
+                      <Route path="/customers/edit" element={<EditCustomerPage />} />
 
                       <Route path="/commodatums" element={<CommodatumPage />} />
                     </Route>

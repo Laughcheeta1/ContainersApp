@@ -34,7 +34,7 @@ export default function CustomerCard({ customer }) {
           objectID={customer._id}
         />
 
-        <Link to={`/customers/${customer._id}`} className="btn btn-azul">
+        <Link to={{pathname: "/customers/edit", state: customer}} className="btn btn-azul">
           Editar
         </Link>
       </div>
