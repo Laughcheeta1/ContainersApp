@@ -74,7 +74,9 @@ export default function Navbar() {
                     ></path>
                   </svg>
                 </button>
-                <p>{user.username}</p>
+                <p style={{ fontSize: "14px", fontWeight: "400" }}>
+                  {user.username}
+                </p>
               </>
             ) : PATH === "/login" ? (
               <Link to="/register" className="btn btn-verde">
