@@ -101,6 +101,16 @@ export default function ContainerInfoPage() {
                 </div>
               </div>
             </div>
+
+            <hr
+              style={{
+                border: "solid .5px #B5B2BC",
+                marginBottom: "1.5rem",
+                marginInline: "1.5  rem",
+              }}
+            />
+
+            <h1 className="subtitle">Mantenimientos</h1>
           </div>
         </>
       ) : (
