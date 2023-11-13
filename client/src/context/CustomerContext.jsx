@@ -44,10 +44,9 @@ export function CustomerProvider({ children }) {
   const deleteCustomer = async (id) => {
     try {
       const res = await deleteCustomerRequest(id);
+
       if (res.status === 204)
-        setCustomers(() =>
-          customers.filter((customer) => customer._id !== id)
-        );
+        setCustomers(() => customers.filter((customer) => customer._id !== id));
     } catch (error) {
       console.log(error);
     }

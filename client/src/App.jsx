@@ -57,17 +57,14 @@ export default function App() {
                         <Route path="/tasks/:id" element={<TaskFormPage />} />
 
                         <Route path="/containers" element={<ContainersPage />} />
-                        <Route
-                          path="/containers/new"
-                          element={<ContainerFormPage />}
-                        />
-                        <Route
-                          path="/customers/new"
-                          element={<CustomerFormPage />}
-                        />
+                        <Route path="/containers/new" element={<ContainerFormPage />} />
+                        
                         <Route path="/items" element={<ItemsPage />} />
                         <Route path="/items/new" element={<ItemFormPage />} />
+                        
                         <Route path="/customers" element={<CustomersPage />} />
+                        <Route path="/customers/new" element={<CustomerFormPage />} />
+
                         <Route path="/commodatums" element={<CommodatumPage />} />
                       </Route>
                     </Routes>

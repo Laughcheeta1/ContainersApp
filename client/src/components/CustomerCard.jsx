@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom";
 import { useCustomers } from "../context/CustomerContext";
-
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -36,6 +36,10 @@ export default function CustomerCard({ customer }) {
         >
           Eliminar
         </button>
+
+          <Link to={`/customers/${customer._id}`} className="btn btn-azul">
+            Editar
+          </Link>
       </div>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>

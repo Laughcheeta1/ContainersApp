@@ -56,7 +56,7 @@ export default function CustomerFormPage()
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="container-group">
                         <div className="group">
-                            <p>{errors.type?.message}</p>
+                            <p>{errors.company_NIT?.message}</p>
                 
                             <div className="input-group">
 
@@ -74,7 +74,7 @@ export default function CustomerFormPage()
 
                     <div className="container-group">
                         <div className="group">
-                            <p>{errors.type?.message}</p>
+                            <p>{errors.name?.message}</p>
                 
                             <div className="input-group">
 
@@ -92,7 +92,7 @@ export default function CustomerFormPage()
 
                     <div className="container-group">
                         <div className="group">
-                            <p>{errors.type?.message}</p>
+                            <p>{errors.phone?.message}</p>
                 
                             <div className="input-group">
 
@@ -110,7 +110,7 @@ export default function CustomerFormPage()
 
                     <div className="container-group">
                         <div className="group">
-                            <p>{errors.type?.message}</p>
+                            <p>{errors.address?.message}</p>
                 
                             <div className="input-group">
 
@@ -128,7 +128,7 @@ export default function CustomerFormPage()
 
                     <div className="container-group">
                         <div className="group">
-                            <p>{errors.type?.message}</p>
+                            <p>{errors.created_by?.message}</p>
                 
                             <div className="input-group">
 
