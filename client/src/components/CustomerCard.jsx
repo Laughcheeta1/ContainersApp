@@ -33,18 +33,18 @@ export default function CustomerCard({ customer }) {
         </button>
       </div>
 
-      <p style={{ marginRight: "1rem", fontSize: "18px" }}>{customer.phone}</p>
+      <p style={{ marginRight: "1rem", fontSize: "16px" }}>{customer.phone}</p>
 
-      <p style={{ marginRight: "1rem", fontSize: "18px" }}>
+      <p style={{ marginRight: "1rem", fontSize: "16px" }}>
         {customer.address}
       </p>
 
-      <p style={{ marginRight: "1rem", fontSize: "18px" }}>
+      <p style={{ marginRight: "1rem", fontSize: "16px" }}>
         <span style={{ fontWeight: "500" }}>NIT: </span>
         {customer.company_NIT}
       </p>
 
-      <p style={{ fontSize: "18px" }}>
+      <p style={{ fontSize: "16px" }}>
         <span style={{ fontWeight: "500" }}>Últ mod: </span>
         {dayjs(customer.updatedAt).utc().format("DD/MM/YY")}
       </p>

@@ -6,13 +6,29 @@ export default function ItemCard({ item }) {
 
   return (
     <div className="resultado-busqueda">
-      <header className="flex justify-between">
-        <h1 style={{ marginRight: "1rem" }} className="text-xl font-medium">
+      <header
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: ".4rem",
+          alignItems: "center",
+        }}
+      >
+        <h1
+          style={{ marginRight: "1rem", fontSize: "18px", fontWeight: "500" }}
+        >
           {item.name}
           <span style={{ fontWeight: "normal" }}>{item.type}</span>
         </h1>
 
-        <div className="flex gap-x-2 items-center">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "1rem",
+          }}
+        >
           <button
             className="btn btn-rojo"
             onClick={() => {
@@ -21,22 +37,23 @@ export default function ItemCard({ item }) {
           >
             Eliminar
           </button>
+
           <Link to={`/tasks/${item._id}`} className="btn btn-azul">
             Editar
           </Link>
         </div>
       </header>
 
-      <p className="text-sm">
-        <span className="text-lg">Marca:</span> {item.brand}
+      <p style={{ marginRight: "1rem", fontSize: "16px" }}>
+        <span>Marca:</span> {item.brand}
       </p>
 
-      <p className="text-sm">
-        <span className="text-lg">Total:</span> {item.total_quantity}
+      <p style={{ marginRight: "1rem", fontSize: "16px" }}>
+        <span>Total:</span> {item.total_quantity}
       </p>
 
-      <p className="text-sm">
-        <span className="text-lg">Disponibles:</span> {item.available_quantity}
+      <p style={{ fontSize: "16px" }}>
+        <span>Disponibles:</span> {item.available_quantity}
       </p>
     </div>
   );

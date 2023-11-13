@@ -41,7 +41,7 @@ export function ItemProvider({ children }) {
 
   const deleteItem = async (id) => {
     try {
-      await deleteItemRequest(id);
+      const res = await deleteItemRequest(id);
 
       if (res.status === 204)
         setItems(() => items.filter((item) => item._id !== id));
