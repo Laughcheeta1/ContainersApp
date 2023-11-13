@@ -42,7 +42,7 @@ const createCustomer = async (req, res) => {
     const savedCustomer = await newCustomer.save();
     res.json(savedCustomer);
   } catch (error) {
-    return res.status(400).json({ message: "An Error Occurred" });
+    return res.status(500).json({ message: error.message });
   }
 };
 
