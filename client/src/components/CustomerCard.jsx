@@ -9,10 +9,24 @@ export default function CustomerCard({ customer }) {
 
   return (
     <div className="resultado-busqueda">
-      <div className="flex gap-x-2 items-center">
-        <p style={{ marginRight: "1rem" }} className="text-xl font-medium">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: ".5rem",
+          alignItems: "center",
+        }}
+      >
+        <p
+          style={{
+            marginRight: "1rem",
+            fontSize: "20px",
+            fontWeight: "500",
+          }}
+        >
           {customer.name}
         </p>
+
         <button
           className="btn btn-rojo"
           onClick={() => {
@@ -22,18 +36,20 @@ export default function CustomerCard({ customer }) {
           Eliminar
         </button>
       </div>
-      <p style={{ marginRight: "1rem" }} className="text-xl font-medium">
-        {customer.phone}
-      </p>
-      <p style={{ marginRight: "1rem" }} className="text-xl font-medium">
+
+      <p style={{ marginRight: "1rem", fontSize: "18px" }}>{customer.phone}</p>
+
+      <p style={{ marginRight: "1rem", fontSize: "18px" }}>
         {customer.address}
       </p>
-      <p style={{ marginRight: "1rem" }} className="text-xl font-medium">
-        <span>NIT: </span>
+
+      <p style={{ marginRight: "1rem", fontSize: "18px" }}>
+        <span style={{ fontWeight: "500" }}>NIT: </span>
         {customer.company_NIT}
       </p>
-      <p className="text-xl font-medium">
-        <span>Últ mod: </span>
+
+      <p style={{ fontSize: "18px" }}>
+        <span style={{ fontWeight: "500" }}>Últ mod: </span>
         {dayjs(customer.updatedAt).utc().format("DD/MM/YY")}
       </p>
     </div>
