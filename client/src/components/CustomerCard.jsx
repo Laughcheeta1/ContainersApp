@@ -37,7 +37,10 @@ export default function CustomerCard({ customer }) {
         </button>
       </div>
 
-      <p style={{ marginRight: "1rem", fontSize: "16px" }}>{customer.phone}</p>
+      <p style={{ marginRight: "1rem", fontSize: "16px" }}>
+        <span style={{ fontWeight: "500" }}>Tel: </span>
+        {customer.phone}
+      </p>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
         {customer.address}
