@@ -24,7 +24,8 @@ const customerSchema = mongoose.Schema(
       required: true,
     },
     created_by: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "User",
       required: true,
     },
   },
