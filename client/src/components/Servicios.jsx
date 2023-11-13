@@ -119,7 +119,7 @@ export default function Servicios() {
           </svg>
         </button>
       </Link>
-      <Link to="/comodatums">
+      <Link to="/commodatums">
         <button className="btn-servicio">
           <div>Comodatos</div>
           <svg

@@ -34,7 +34,7 @@ export function CommodatumProvider({ children }) {
   const createCommodatum = async (commodatum) => {
     try {
       await createCommodatumRequest(commodatum);
-      getCommodatum();
+      getCommodatums();
     } catch (error) {
       setErrors(() => error.response.data.message);
       console.log(error);

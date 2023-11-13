@@ -7,6 +7,8 @@ import "../styles/busqueda.css";
 export default function CommodatumPage() {
   const { getCommodatums, commodatums } = useCommodatums();
 
+  console.log(commodatums);
+
   useEffect(() => {
     getCommodatums();
   }, []);
