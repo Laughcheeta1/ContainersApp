@@ -61,7 +61,7 @@ export default function ContainerInfoPage() {
                   <img
                     name="image"
                     style={{
-                      height: "18rem",
+                      height: "12rem",
                       width: "auto",
                       objectFit: "cover",
                     }}
