@@ -1,13 +1,13 @@
 import { useForm } from "react-hook-form";
-import { useContainers } from "../context/ContainerContext";
+import { useContainers } from "../../context/ContainerContext";
 import { useNavigate, useParams } from "react-router-dom";
-import { containerSchema } from "../schemas/container";
+import { containerSchema } from "../../schemas/container";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
-import AlertDialogCrear from "../components/AlertDialogCrear";
+import AlertDialogCrear from "../../components/AlertDialogCrear";
 
-import "../styles/formPage.css";
+import "../../styles/formPage.css";
 
 export default function ContainerFormPage() {
   const {

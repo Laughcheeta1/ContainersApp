@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useItems } from "../context/ItemsContext";
-import ItemCard from "../components/ItemCard";
-import BarraBusqueda from "../components/BarraBusqueda";
-import "../styles/busqueda.css";
+import { useItems } from "../../context/ItemsContext";
+import ItemCard from "../../components/ItemCard";
+import BarraBusqueda from "../../components/BarraBusqueda";
+import "../../styles/busqueda.css";
 
 export default function ItemsPage() {
   const { getItems, items } = useItems();

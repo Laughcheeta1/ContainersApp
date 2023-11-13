@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useAuth } from "../context/AuthContext";
-import { loginSchema } from "../schemas/auth";
+import { useAuth } from "../../context/AuthContext";
+import { loginSchema } from "../../schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
-import "../styles/auth.css";
+import "../../styles/auth.css";
 
 function LoginPage() {
   const {
