@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useCommodatum, useContainers } from "../context/CommodatumContext";
+import { useCommodatums} from "../context/CommodatumContext";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -21,9 +21,9 @@ export default function CommodatumCard({ commodatum }) {
         <h1
           style={{ marginRight: "1rem", fontSize: "18px", fontWeight: "500" }}
         >
-          No: {container.container_id}
+          No: {commodatum.commodatum_id}
           {" · "}
-          <span style={{ fontWeight: "normal" }}>{container.type}</span>
+          <span style={{ fontWeight: "normal" }}>{commodatum.type}</span>
         </h1>
 
         <div
@@ -37,28 +37,28 @@ export default function CommodatumCard({ commodatum }) {
           <button
             className="btn btn-rojo"
             onClick={() => {
-              deleteContainer(container._id);
+              deleteCommodatum(commodatum._id);
             }}
           >
             Eliminar
           </button>
-          <Link to={`/tasks/${container._id}`} className="btn btn-azul">
+          <Link to={`/tasks/${commodatum._id}`} className="btn btn-azul">
             Editar
           </Link>
         </div>
       </header>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span style={{ fontWeight: "500" }}>Tamaño:</span> {container.size}
+        <span style={{ fontWeight: "500" }}>Tamaño:</span> {commodatum.size}
       </p>
 
       <p style={{ marginRight: "1rem", fontSize: "16px" }}>
-        <span style={{ fontWeight: "500" }}>Estado:</span> {container.status}
+        <span style={{ fontWeight: "500" }}>Estado:</span> {commodatum.status}
       </p>
 
       <p style={{ fontSize: "16px" }}>
         <span style={{ fontWeight: "500" }}>Últ Mod:</span>{" "}
-        {dayjs(container.updatedAt).utc().format("DD/MM/YY")}
+        {dayjs(commodatum.updatedAt).utc().format("DD/MM/YY")}
       </p>
     </div>
   );
