@@ -24,6 +24,10 @@ export default function CustomerCard({ customer }) {
             marginRight: "1rem",
             fontSize: "20px",
             fontWeight: "500",
+            maxWidth: "11rem",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            overflow: "hidden",
           }}
         >
           {customer.name}
@@ -34,7 +38,10 @@ export default function CustomerCard({ customer }) {
           objectID={customer._id}
         />
 
-        <Link to={{pathname: `/customers/edit/${customer._id}`}} className="btn btn-azul">
+        <Link
+          to={{ pathname: `/customers/edit/${customer._id}` }}
+          className="btn btn-azul"
+        >
           Editar
         </Link>
       </div>
