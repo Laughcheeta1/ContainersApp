@@ -1,11 +1,11 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import {
-    getCustomersRequest,
-    getCustomerRequest,
-    createCustomerRequest,
-    updateCustomerRequest,
-    deleteCustomerRequest,
+  getCustomersRequest,
+  getCustomerRequest,
+  createCustomerRequest,
+  updateCustomerRequest,
+  deleteCustomerRequest,
 } from "../api/customers";
 
 const CustomerContext = createContext();
@@ -32,13 +32,10 @@ export function CustomerProvider({ children }) {
   };
 
   const getCustomer = async (id) => {
-    try
-    {
+    try {
       const res = await getCustomerRequest(id);
       return res.data;
-    }
-    catch (error)
-    {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -56,21 +53,16 @@ export function CustomerProvider({ children }) {
   const editCustomer = async (id, customer) => {
     // Only change the fields that are meant to be changed
 
-    if (customer.name)
-      customerToChange.name = customer.name;
+    // if (customer.name) customerToChange.name = customer.name;
 
-    if (customer.phone)
-      customerToChange.phone = customer.phone;
+    // if (customer.phone) customerToChange.phone = customer.phone;
 
-    if (customer.address)
-      customerToChange.address = customer.address;
-    
+    // if (customer.address) customerToChange.address = customer.address;
+
     try {
-      await updateCustomerRequest(id, customerToChange);
+      await updateCustomerRequest(id, customer);
       getCustomers();
-    }
-    catch (error)
-    {
+    } catch (error) {
       setErrors(() => error.response.data.message);
       console.log(error);
     }
