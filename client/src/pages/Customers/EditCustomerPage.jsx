@@ -61,7 +61,10 @@ export default function EditCustomerPage() {
           ))}
 
           <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
-            Editar NIT: {customer.company_NIT}
+            Editar cliente{" "}
+            <span style={{ fontSize: "22px", fontWeight: "500" }}>
+              NIT: {customer.company_NIT}
+            </span>
           </h2>
 
           <hr style={{ marginTop: ".5rem" }} />
