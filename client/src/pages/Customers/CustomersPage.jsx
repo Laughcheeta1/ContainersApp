@@ -47,15 +47,6 @@ export default function CustomersPage() {
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Clientes</h2>
 
-        <hr
-          style={{
-            marginBottom: ".6rem",
-            height: "1px",
-            border: "none",
-            backgroundColor: "rgba(18, 55, 105, 0.10)",
-          }}
-        />
-
         {customers.map((customer) => (
           <CustomerCard customer={customer} key={customer._id} />
         ))}

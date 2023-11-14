@@ -75,15 +75,6 @@ export default function ItemsPage() {
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Ítems.</h2>
 
-        <hr
-          style={{
-            marginBottom: ".6rem",
-            height: "1px",
-            border: "none",
-            backgroundColor: "rgba(18, 55, 105, 0.10)",
-          }}
-        />
-
         {items.map((items) => (
           <ItemCard item={items} key={items._id} />
         ))}

@@ -4,8 +4,8 @@ import "../styles/popUp.css";
 
 const AlertDialogEliminar = ({ deleteMethod, objectID }) => (
   <AlertDialog.Root>
-    <AlertDialog.Trigger asChild>
-      <button className="btn btn-rojo">Eliminar</button>
+    <AlertDialog.Trigger className="btn btn-rojo" asChild>
+      <button>Eliminar</button>
     </AlertDialog.Trigger>
 
     <AlertDialog.Portal>

@@ -47,14 +47,6 @@ export default function ContainersPage() {
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Contenedores.</h2>
 
-        <hr
-          style={{
-            marginBottom: ".6rem",
-            height: "1px",
-            border: "none",
-            backgroundColor: "rgba(18, 55, 105, 0.10)",
-          }}
-        />
         {containers.map((container) => (
           <ContainerCard container={container} key={container._id} />
         ))}
