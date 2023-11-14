@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useCustomers } from "../../context/CustomerContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { editCustomerSchema } from "../../schemas/editCustomer";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,23 +10,38 @@ import AlertDialogCrear from "../../components/AlertDialogCrear";
 import "../../styles/formPage.css";
 
 export default function EditCustomerPage() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(editCustomerSchema),
-  });
+  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: zodResolver(editCustomerSchema) });
 
-  const { editCustomer, errors: customerErrors } = useCustomers();
+  const { editCustomer, errors: customerErrors, getCustomer } = useCustomers();
   const navigate = useNavigate();
 
   const [wasSubmitted, setWasSubmitted] = useState(false);
+  const [customer, setCustomer] = useState(null);
+  const params = useParams();
 
   const onSubmit = async (data) => {
-    await editCustomer(customer._id, data);
+    await editCustomer(params.id, data);
     setWasSubmitted(true);
   };
+
+  useEffect(() => {
+    try
+    {
+      console.log("Corriendo use effect");
+      const loadCustomer = async () => {
+        const customerInfo = await getCustomer(params.id);
+        console.log("The customer info is: ")
+        console.log(customerInfo);
+        setCustomer(() => customerInfo);
+      };
+
+      loadCustomer();
+    }
+    catch (error)
+    {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
     if (wasSubmitted && customerErrors.length === 0)
@@ -43,7 +58,7 @@ export default function EditCustomerPage() {
           </div>
         ))}
 
-        <h2 style={{ fontSize: "32px", fontWeight: 600 }}>Editar Cliente</h2>
+        <h2 style={{ fontSize: "32px", fontWeight: 600 }}>Editar Cliente: {customer.company_NIT}</h2>
 
         <hr style={{ marginTop: ".5rem" }} />
 
@@ -57,6 +72,7 @@ export default function EditCustomerPage() {
                 <input
                   name="name"
                   type="text"
+                  placeholder={customer.name}
                   className="input"
                   {...register("name")}
                 />
@@ -73,6 +89,7 @@ export default function EditCustomerPage() {
                 <input
                   name="phone"
                   type="text"
+                  placeholder={customer.phone}
                   className="input"
                   {...register("phone")}
                 />
@@ -89,6 +106,7 @@ export default function EditCustomerPage() {
                 <input
                   name="address"
                   type="text"
+                  placeholder={customer.address}
                   className="input"
                   {...register("address")}
                 />

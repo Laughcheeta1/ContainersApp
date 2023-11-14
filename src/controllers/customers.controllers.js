@@ -10,6 +10,9 @@ const getCustomers = async (req, res) => {
 };
 
 const getCustomer = async (req, res) => {
+  console.log("The passed Id is: ")
+  console.log(req.params.id);
+
   try {
     const customer = await Customer.findById(req.params.id);
 

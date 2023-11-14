@@ -64,7 +64,7 @@ export default function App() {
 
                       <Route path="/customers" element={<CustomersPage />} />
                       <Route path="/customers/new" element={<CustomerFormPage />} />
-                      <Route path="/customers/edit" element={<EditCustomerPage />} />
+                      <Route path="/customers/edit/:id" element={<EditCustomerPage />} />
 
                       <Route path="/commodatums" element={<CommodatumPage />} />
                     </Route>

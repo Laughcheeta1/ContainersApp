@@ -31,6 +31,18 @@ export function CustomerProvider({ children }) {
     }
   };
 
+  const getCustomer = async (id) => {
+    try
+    {
+      const res = await getCustomerRequest(id);
+      return res.data;
+    }
+    catch (error)
+    {
+      console.log(error);
+    }
+  };
+
   const createCustomer = async (customer) => {
     try {
       await createCustomerRequest(customer);
@@ -43,6 +55,7 @@ export function CustomerProvider({ children }) {
 
   const editCustomer = async (id, customer) => {
     // Only change the fields that are meant to be changed
+
     if (customer.name)
       customerToChange.name = customer.name;
 
@@ -86,6 +99,7 @@ export function CustomerProvider({ children }) {
   return (
     <CustomerContext.Provider
       value={{
+        getCustomer,
         getCustomers,
         editCustomer,
         customers,
