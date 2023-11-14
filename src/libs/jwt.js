@@ -8,7 +8,7 @@ async function createAccessToken(payload) {
       TOKEN_SECRET,
       {
         expiresIn: "1d",
-        algorithm: "HS256"
+        algorithm: "HS256",
       },
       (err, token) => {
         if (err) reject(err);

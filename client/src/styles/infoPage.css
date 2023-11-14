@@ -75,7 +75,7 @@
   flex-direction: row;
   justify-content: stretch;
   gap: 1.5rem;
-  align-items: start;
+  align-items: flex-start;
   padding: 1.6rem;
 }
 
