@@ -32,12 +32,11 @@ export function CommodatumProvider({ children }) {
   };
 
   const getCommodatum = async (id) => {
-    try
-    {
+    try {
       const res = await getCommodatumRequest(id);
-    } 
-    catch (error)
-    {
+      console.log(res.data);
+      return res.data;
+    } catch (error) {
       console.log(error);
     }
   };
