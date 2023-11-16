@@ -9,7 +9,11 @@ const register = async (req, res) => {
 
   try {
     const foundUser = await User.findOne({ email });
-    if (foundUser) return res.status(400).json(["The email is already in use"]);
+    if (foundUser) return res.status(400).json(["El correo ya está en uso"]);
+
+    const foundUsername = await User.findOne({ username });
+    if (foundUsername)
+      return res.status(400).json(["El nombre de usuario ya está en uso"]);
 
     const passwordHash = await bcrypt.hash(password, 10);
 
@@ -22,7 +26,7 @@ const register = async (req, res) => {
     const userSaved = await newUser.save();
     const token = await createAccessToken({ id: userSaved._id });
 
-    res.cookie("token", token);
+    res.cookie("token", token, { sameSite: "None", secure: "true" });
 
     res.json({
       id: userSaved._id,
@@ -37,27 +41,26 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { email, password } = req.body;
-
   try {
+    const { email, password } = req.body;
     const userFound = await User.findOne({ email });
-    if (!userFound) return res.status(400).json({ message: "User Not Found" });
+
+    if (!userFound)
+      return res.status(400).json({ message: ["No se encontró el correo"] });
 
     const isMatch = await bcrypt.compare(password, userFound.password);
 
     if (!isMatch)
-      return res.status(400).json({ message: "Incorrect Password" });
+      return res.status(400).json({ message: ["Contraseña incorrecta"] });
 
     const token = await createAccessToken({ id: userFound._id });
 
-    res.cookie("token", token);
+    res.cookie("token", token, { sameSite: "None", secure: "true" });
 
     res.json({
       id: userFound._id,
       username: userFound.username,
       email: userFound.email,
-      createdAt: userFound.createdAt,
-      updatedAt: userFound.updatedAt,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -66,6 +69,9 @@ const login = async (req, res) => {
 
 const logout = (req, res) => {
   res.cookie("token", "", {
+    sameSite: "None",
+    httpOnly: true,
+    secure: true,
     expires: new Date(0),
   });
 

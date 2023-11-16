@@ -1,8 +1,128 @@
-@tailwind base;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
+:root {
+  font-family: "Inter", sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+a {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-stretch: 100%;
+}
+
+html,
 body {
-  background-color: #202020;
+  margin: 0;
+  background-color: #f2f2f2;
+  height: 100%;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0 solid;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.428);
+  padding-inline: 18px;
+  font-weight: 500;
+  font-size: 14px;
   color: white;
+  white-space: nowrap;
+  text-decoration: none;
+  line-height: 1;
+  height: 32px;
+  transition: 150ms ease-in-out;
+  cursor: pointer;
+}
+
+.btn:hover {
+  cursor: pointer;
+  opacity: 0.78;
+}
+
+.btn-verde {
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.25),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #22b54c;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #128130;
+}
+
+.btn-naranja {
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.2),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #ff650d;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #d35812;
+}
+
+.btn-azul {
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.15),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #2276f4;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #005de5;
+}
+
+.btn-rojo {
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.3),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #dc2626;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #8e1818;
+  height: 30px;
+}
+
+.btn-gris {
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.1),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #c5c5c5;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #a8a8a8;
+}
+
+.input {
+  width: 100%;
+  font-size: 14px;
+  border-radius: 6px;
+  padding-inline: 10px;
+  padding-block: 8px;
+  border-inline-width: 0px;
+  box-shadow: rgba(164, 172, 185, 0.24) 0px 1px 2px 0px,
+    rgba(18, 55, 105, 0.08) 0px 0px 0px 1px;
+  border: 0.5px rgb(107, 114, 128);
+  margin-block: 0.4rem;
+}
+
+.container-error {
+  background-color: #ef4444;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0.6rem;
+  width: fit-content;
 }

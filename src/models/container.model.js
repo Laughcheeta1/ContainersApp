@@ -1,91 +1,107 @@
 const mongoose = require("mongoose");
 
+// Schema para objetos de mantenimiento
+
+const maintenanceSchema = new mongoose.Schema({
+  done_by: {
+    type: String,
+    default: "",
+  },
+  title: {
+    type: String,
+    default: "",
+  },
+  duration: {
+    type: String,
+    default: "",
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  annotations: {
+    type: String,
+    default: "",
+  },
+});
+
+// Schema para objetos de compra
+
+const purchaseSchema = new mongoose.Schema({
+  vendor: {
+    type: String,
+    default: "",
+  },
+  price: {
+    type: String,
+    default: "",
+  },
+  date: {
+    type: Date,
+  },
+  original_purpose: {
+    type: String,
+    default: "",
+  },
+});
+
+// Schema para el contenedor
+
 const containerSchema = new mongoose.Schema(
   {
-    // version: {
-    //   type: Number,
-    // },
-    number: {
+    version: {
+      type: Number,
+      default: 1,
+    },
+    container_id: {
       type: String,
       required: true,
       trim: true,
       unique: true,
     },
-    // color: {
-    //   type: String,
-    //   trim: true,
-    // },
-    // size: {
-    //   type: String,
-    //   trim: true,
-    // },
-    // qr_code: {
-    //   type: String,
-    //   unique: true,
-    // },
+    color: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    size: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    qr_code: {
+      type: String,
+      unique: true,
+      trim: true,
+      required: true,
+    },
     status: {
       type: String,
-      required: true,
+      default: "Libre",
     },
     notes: {
       type: String,
+      default: ""
     },
-    // purchase: {
-    //   type: purchaseSchema,
-    //   required: true,
-    // },
+    purchase: {
+      type: purchaseSchema,
+      default: {},
+    },
     type: {
       type: String,
       required: true,
     },
-    // maintenance: {
-    //   type: maintenanceSchema,
-    //   required: true,
-    // },
+    maintenance: [
+      {
+        type: maintenanceSchema,
+        default: {},
+      },
+    ],
   },
   {
     timestamps: true,
+    minimize: false,
   }
 );
-
-const purchaseSchema = new mongoose.Schema({
-  vendor: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  original_purpose: {
-    type: String,
-  },
-});
-
-const maintenanceSchema = new mongoose.Schema({
-  done_by: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  duration: {
-    type: String,
-    required: true,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  annotations: {
-    type: String,
-  },
-});
 
 module.exports = mongoose.model("Container", containerSchema);

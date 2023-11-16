@@ -6,7 +6,7 @@ const registerSchema = z.object({
   }),
   email: z
     .string({
-      required_erro: "Email is required",
+      required_error: "Email is required",
     })
     .email({
       message: "Invalid email",

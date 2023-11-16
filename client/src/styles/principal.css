@@ -1,0 +1,81 @@
+.page-title {
+  border-bottom: solid 1px rgba(18, 55, 105, 0.28);
+  padding-block: 1.2rem;
+}
+
+.page-title h1 {
+  font-size: 26px;
+  font-weight: 500;
+  margin-inline: min(8vw, 6rem);
+}
+
+.title-container {
+  width: 100%;
+  background-color: white;
+  padding-top: 1rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(18, 55, 105, 0.28);
+  padding-left: min(8.5vw, 3.5rem);
+}
+
+.title-container h1 {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.principal-body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.servicios-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.servicios {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  margin-block: 1rem;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.btn-servicio {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 18rem;
+  height: 14rem;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: rgba(255, 255, 255, 0.318);
+  color: white;
+  white-space: nowrap;
+  transition: 150ms ease-in-out;
+  cursor: pointer;
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.1),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #22b54c;
+  box-shadow: 0 1px 2px #25114f66, 0 0 0 1px #138f36;
+}
+
+.btn-servicio:hover {
+  cursor: pointer;
+  opacity: 0.78;
+}

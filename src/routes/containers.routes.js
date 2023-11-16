@@ -1,25 +1,30 @@
 const {
   getContainers,
   createContainer,
+  getContainer,
+  updateContainer,
+  deleteContainer,
 } = require("../controllers/containers.controller");
+const authRequired = require("../middlewares/validateToken");
+const validateSchema = require("../middlewares/validator.middleware");
+const containerSchema = require("../schemas/containers.schema");
 
 const { Router } = require("express");
 const router = Router();
 
-router.get("/contenedores", getContainers);
+router.get("/containers", authRequired, getContainers);
 
-router.get("/contenedores/:id", (req, res) => {
-  res.send("Pagina Contenedores ID");
-});
+router.get("/containers/:id", authRequired, getContainer);
 
-router.post("/contenedores", createContainer);
+router.post(
+  "/containers",
+  authRequired,
+  validateSchema(containerSchema),
+  createContainer
+);
 
-router.put("/contenedores/:id", (req, res) => {
-  res.send("Editar un contenedor");
-});
+router.put("/containers/:id", authRequired, updateContainer);
 
-router.delete("/contenedores/:id", (req, res) => {
-  res.send("Borrar un contenedor");
-});
+router.delete("/containers/:id", authRequired, deleteContainer);
 
 module.exports = router;
