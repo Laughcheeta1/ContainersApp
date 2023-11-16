@@ -68,7 +68,7 @@ export default function TransactionPage()
         <>
             { container ? (
                 <div className="container-form">
-                {customerErrors.map((error, i) => (
+                {commodatumErrors.map((error, i) => (
                   <div className="container-error" key={i}>
                     {error}
                   </div>
@@ -77,35 +77,79 @@ export default function TransactionPage()
                 <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
                   Crear transaccion{" "}
                   <span style={{ fontSize: "22px", fontWeight: "500" }}>
-                    Contenedor : {params.id}
+                    Contenedor : {params.number}
                   </span>
                 </h2>
       
                 <hr style={{ marginTop: ".5rem" }} />
       
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div>
-                        
+                    <h1>Quien recibe: </h1>
+                    <div style={{ paddingLeft: "5rem" }}>
                         <div className="container-group">
                             <div className="group">
-                            <p>{errors.name?.message}</p>
-            
-                            <div className="input-group">
-                                <label htmlFor="type">Nombre:</label>
-                                <input
-                                name="name"
-                                type="text"
-                                defaultValue={customer.name}
-                                className="input"
-                                {...register("name")}
-                                />
+                                <p>{errors.receiver?.id?.message}</p>
+                                <div className="input-group" >
+                                    <label htmlFor="receiverId">Cedula:</label>
+                                    <input
+                                    name="receiver.id"
+                                    type="text"
+                                    id="receiverId"
+                                    placeholder="ej: 12345678"
+                                    className="input"
+                                    {...register("receiver.id")}
+                                    />
+                                </div>
                             </div>
+                        </div>
+
+                        <div className="container-group">
+                            <div className="group">
+                                <p>{errors.receiver?.name?.message}</p>
+                
+                                <div className="input-group">
+                                    <label htmlFor="receiverName">Nombre:</label>
+                                    <input
+                                    name="receiver.name"
+                                    type="text"
+                                    id="receiverName"
+                                    placeholder="Ej: Juan Antonio Restrepo Alvarez"
+                                    className="input"
+                                    {...register("receiver.name")}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="container-group">
+                            <div className="group">
+                                <p>{errors.receiver?.number?.message}</p>
+                
+                                <div className="input-group">
+                                    <label htmlFor="receiverNumber">Numero:</label>
+                                    <input
+                                    name="receiver.number"
+                                    type="text"
+                                    id="receiverNumber"
+                                    placeholder="Ej: +57 589 746 2536"
+                                    className="input"
+                                    {...register("receiver.number")}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-                  
-      
-                    <div style={{ marginTop: "1rem" }} className="container-group">
+                    
+                    <hr></hr>
+                    
+                    <h1 style={{marginTop: "2rem"}}>Items</h1>
+                    
+                    <div style={{ paddingLeft: "5rem" }}>
+                        <h2>Make the dynamic list for Items here</h2>
+                    </div>
+
+
+                    <div style={{ marginTop: "3rem" }} className="container-group">
                         <AlertDialogCrear
                         buttonMessage="Confirmar"
                         descriptionMessage="Se creara el comodato correspondiente a esta transaccion"

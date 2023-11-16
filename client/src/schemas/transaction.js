@@ -9,6 +9,12 @@ export const transactionSchema = z.object({
         quantity : z.number()
     }),
 
+    items : z.array({
+        name : z.string().min(1),
+        brand : z.string().min(1),
+        quantity : z.number()
+    }),
+
     company : z.string().min(9),
 
     date : z.date(),
