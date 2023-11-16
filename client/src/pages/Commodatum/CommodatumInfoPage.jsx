@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import LoadingScreen from "../../components/LoadingScreen";
 import "../../styles/infoPage.css";
 import containerDummy from "../../assets/containerDummy.png";
+import "../Commodatum/commodatumInfoPage.css"
 
 export default function CommodatumInfoPage() {
   const params = useParams();
@@ -50,7 +51,7 @@ export default function CommodatumInfoPage() {
 
               <div className="info-column">
                 <div className="details container">
-                  <div className="info-row">
+                  <div className="two-columns-container">
                     <div className="column">
                     <p className="text">
                     {" · "}Persona que recibe: <span>{commodatum.receiver.name}</span>
