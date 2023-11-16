@@ -87,7 +87,7 @@ export default function TransactionPage()
                   </span>
                 </h2>
       
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form>
                     <h1>Quien recibe: </h1>
                     <div style={{ paddingLeft: "5rem" }}>
                         <div className="container-group">

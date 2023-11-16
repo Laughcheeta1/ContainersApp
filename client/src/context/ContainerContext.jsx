@@ -25,7 +25,6 @@ export function ContainerProvider({ children }) {
   const getContainer = async (id) => {
     try {
       const res = await getContainerRequest(id);
-      console.log(res.data);
       return res.data;
     } catch (error) {
       console.log(error);
