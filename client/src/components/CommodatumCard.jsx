@@ -6,9 +6,6 @@ import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
 export default function CommodatumCard({ commodatum }) {
-  const { deleteCommodatum } = useCommodatums();
-
-  console.log(commodatum);
 
   return (
     <div className="resultado-busqueda">

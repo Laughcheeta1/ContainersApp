@@ -1,23 +1,24 @@
 import { z } from "zod";
 
+// const itemObject = z.object({
+//     id : z.string().default(""),
+//     quantity : z.number().default("")
+// });
+
 export const transactionSchema = z.object({
     container : z.string().min(1),
 
     receiver : z.object({
         id : z.string().min(1),
         name : z.string().min(1),
-        quantity : z.number().min(1)
+        number : z.string().min(1)
     }),
 
-    items : z.array({
-        name : z.string(),
-        brand : z.string(),
-        quantity : z.number()
-    }).default([]),
+    // items : z.array(itemObject).default([]),
 
-    company : z.string().min(9),
+    company : z.string().min(8),
 
-    date : z.date().min(1),
+    date : z.date().default(""),
 
     duration : z.string().min(1),
 

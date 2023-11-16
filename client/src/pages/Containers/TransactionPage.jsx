@@ -66,42 +66,42 @@ export default function TransactionPage() {
     setWasSubmitted(true);
   };
 
-  return (
-    <>
-      {container ? (
-        <div className="container-form">
-          {commodatumErrors.map((error, i) => (
-            <div className="container-error" key={i}>
-              {error}
-            </div>
-          ))}
-
-          <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
-            Crear transaccion{" "}
-            <span style={{ fontSize: "22px", fontWeight: "500" }}>
-              Contenedor : {params.number}
-            </span>
-          </h2>
-
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <h1>Quien recibe: </h1>
-            <div style={{ paddingLeft: "5rem" }}>
-              <div className="container-group">
-                <div className="group">
-                  <p>{errors.receiver?.id?.message}</p>
-                  <div className="input-group">
-                    <label htmlFor="receiverId">Cedula:</label>
-                    <input
-                      name="receiver.id"
-                      type="text"
-                      id="receiverId"
-                      placeholder="ej: 12345678"
-                      className="input"
-                      {...register("receiver.id")}
-                    />
+    return(
+        <>
+            { container ? (
+                <div className="container-form">
+                {commodatumErrors.map((error, i) => (
+                  <div className="container-error" key={i}>
+                    {error}
                   </div>
-                </div>
-              </div>
+                ))}
+      
+                <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
+                  Crear transaccion{" "}
+                  <span style={{ fontSize: "22px", fontWeight: "500" }}>
+                    Contenedor : {params.number}
+                  </span>
+                </h2>
+      
+                <form>
+                    <h1>Quien recibe: </h1>
+                    <div style={{ paddingLeft: "5rem" }}>
+                        <div className="container-group">
+                            <div className="group">
+                                <p>{errors.receiver?.id?.message}</p>
+                                <div className="input-group" >
+                                    <label htmlFor="receiverId">Cedula:</label>
+                                    <input
+                                    name="receiver.id"
+                                    type="text"
+                                    id="receiverId"
+                                    placeholder="ej: 12345678"
+                                    className="input"
+                                    {...register("receiver.id")}
+                                    />
+                                </div>
+                            </div>
+                        </div>
 
               <div className="container-group">
                 <div className="group">

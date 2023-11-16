@@ -37,8 +37,6 @@ export default function EditCustomerPage() {
     }
   }, []);
 
-  console.log(customer);
-
   const onSubmit = async (data) => {
     await editCustomer(params.id, data);
     setWasSubmitted(true);

@@ -1,0 +1,15 @@
+.two-columns-container {
+    display: flex;
+  }
+  
+  .column {
+    flex: 1;
+    padding: 16px;
+    border: 1px solid #ccc;
+    margin: 8px;
+    border: none;
+  }
+
+  .text{
+    font-size: 25;
+  }
