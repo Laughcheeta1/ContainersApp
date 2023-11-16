@@ -11,6 +11,8 @@ import ContainersPage from "./pages/Containers/ContainersPage";
 import ContainerFormPage from "./pages/Containers/ContainerFormPage";
 import ContainerInfoPage from "./pages/Containers/ContainerInfoPage";
 
+import TransactionPage from "./pages/Containers/TransactionPage";
+
 import ItemsPage from "./pages/Items/ItemsPage";
 import ItemFormPage from "./pages/Items/ItemFormPage";
 
@@ -60,6 +62,8 @@ export default function App() {
                         path="/containers/:id"
                         element={<ContainerInfoPage />}
                       />
+                      <Route path="/transaction/:id"
+                      element={<TransactionPage />} />
 
                       <Route path="/items" element={<ItemsPage />} />
                       <Route path="/items/new" element={<ItemFormPage />} />
