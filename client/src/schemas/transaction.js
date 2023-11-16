@@ -4,26 +4,26 @@ export const transactionSchema = z.object({
     container : z.string().min(1),
 
     receiver : z.object({
-        id : z.string(),
-        name : z.string(),
-        quantity : z.number()
+        id : z.string().min(1),
+        name : z.string().min(1),
+        quantity : z.number().min(1)
     }),
 
     items : z.array({
-        name : z.string().min(1),
-        brand : z.string().min(1),
+        name : z.string(),
+        brand : z.string(),
         quantity : z.number()
-    }),
+    }).default([]),
 
     company : z.string().min(9),
 
-    date : z.date(),
+    date : z.date().min(1),
 
-    duration : z.string(),
+    duration : z.string().min(1),
 
-    action : z.string(),
+    action : z.string().min(1),
 
-    price : z.string(),
+    price : z.string().min(1),
     
-    transport_price : z.string()
+    transport_price : z.string().min(1)
 });

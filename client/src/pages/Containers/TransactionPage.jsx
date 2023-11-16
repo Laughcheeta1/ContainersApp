@@ -51,18 +51,24 @@ export default function TransactionPage()
         }
     }, []);
 
-    const onSubmit = async (data) => {
-        await createCommodatum(data);
-        setWasSubmitted(true);
-    };
-
     useEffect(() => {
-        if (wasSubmitted && commodatumErrors.length === 0)
-            return navigate(`/containers/${params.id}`);
+        if (wasSubmitted)
+        {
+            if (commodatumErrors.length === 0)
+                return navigate(`/containers/${params.id}`);
+            else
+                console.log("there was an error");
+        }
 
         setWasSubmitted(false);
     }, [commodatumErrors, wasSubmitted]);
 
+    const onSubmit = async (data) => {
+        console.log("Starting to process submit");
+        console.log(data);
+        // await createCommodatum(data);
+        setWasSubmitted(true);
+    };
 
     return(
         <>
@@ -80,8 +86,6 @@ export default function TransactionPage()
                     Contenedor : {params.number}
                   </span>
                 </h2>
-      
-                <hr style={{ marginTop: ".5rem" }} />
       
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h1>Quien recibe: </h1>
@@ -143,17 +147,108 @@ export default function TransactionPage()
                     <hr></hr>
                     
                     <h1 style={{marginTop: "2rem"}}>Items</h1>
-                    
+
                     <div style={{ paddingLeft: "5rem" }}>
                         <h2>Make the dynamic list for Items here</h2>
                     </div>
+                    
+                    <hr></hr>
 
+                    <div className="container-group">
+                        <div className="group">
+                            <p>{errors.company?.message}</p>
+            
+                            <div className="input-group">
+                                <label htmlFor="company">Nit Compañia:</label>
+                                <input
+                                name="company"
+                                type="text"
+                                id="company"
+                                placeholder="Ej: Ruta 40"
+                                className="input"
+                                {...register("company")}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="container-group">
+                        <div className="group">
+                            <p>{errors.duration?.message}</p>
+            
+                            <div className="input-group">
+                                <label htmlFor="duration">Duracion contrato:</label>
+                                <input
+                                name="duration"
+                                type="text"
+                                id="duration"
+                                placeholder="Ej: 2 meses y 3 dias"
+                                className="input"
+                                {...register("duration")}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="container-group">
+                        <div className="group">
+                            <p>{errors.action?.message}</p>
+            
+                            <div className="input-group">
+                                <label htmlFor="action">Accion:</label>
+                                <input
+                                name="action"
+                                type="text"
+                                id="action"
+                                placeholder="Ej: Salida"
+                                className="input"
+                                {...register("action")}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="container-group">
+                        <div className="group">
+                            <p>{errors.price?.message}</p>
+            
+                            <div className="input-group">
+                                <label htmlFor="price">Precio:</label>
+                                <input
+                                name="price"
+                                type="text"
+                                id="price"
+                                placeholder="Ej: 13,000,000.00"
+                                className="input"
+                                {...register("price")}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="container-group">
+                        <div className="group">
+                            <p>{errors.price?.message}</p>
+            
+                            <div className="input-group">
+                                <label htmlFor="transport_price">Precio de transporte:</label>
+                                <input
+                                name="transport_price"
+                                type="text"
+                                id="transport_price"
+                                placeholder="Ej: 530,000"
+                                className="input"
+                                {...register("transport_price")}
+                                />
+                            </div>
+                        </div>
+                    </div>
 
                     <div style={{ marginTop: "3rem" }} className="container-group">
                         <AlertDialogCrear
-                        buttonMessage="Confirmar"
-                        descriptionMessage="Se creara el comodato correspondiente a esta transaccion"
-                        onSubmit={handleSubmit(onSubmit)}
+                            buttonMessage="Crear comodato"
+                            descriptionMessage="Se realizara la transaccion deseada"
+                            onSubmit={handleSubmit(onSubmit)}
                         />
         
                         <Link
@@ -161,7 +256,7 @@ export default function TransactionPage()
                         className="btn btn-gris"
                         to={`/containers/${params.id}`}
                         >
-                        Cancelar
+                            Cancelar
                         </Link>
                     </div>
                 </form>
