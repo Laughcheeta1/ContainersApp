@@ -19,6 +19,8 @@ import CustomerFormPage from "./pages/Customers/CustomersFormPage";
 import EditCustomerPage from "./pages/Customers/EditCustomerPage";
 
 import CommodatumPage from "./pages/Commodatum/CommodatumPage";
+import CommodatumInfoPage from "./pages/Commodatum/CommodatumInfoPage";
+
 
 import { AuthProvider } from "./context/AuthContext";
 import { ContainerProvider } from "./context/ContainerContext";
@@ -67,6 +69,7 @@ export default function App() {
                       <Route path="/customers/edit/:id" element={<EditCustomerPage />} />
 
                       <Route path="/commodatums" element={<CommodatumPage />} />
+                      <Route path="/commodatums/:id" element={<CommodatumInfoPage />} />
                     </Route>
                   </Routes>
                 </BrowserRouter>

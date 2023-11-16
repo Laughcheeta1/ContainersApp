@@ -29,7 +29,7 @@ export default function CommodatumInfoPage() {
       {commodatum ? (
         <>
           <div className="title">
-            Comodato no.{" "}
+            Comodato no.{"  "}
             <span
               style={{
                 fontSize: "24px",
@@ -37,7 +37,7 @@ export default function CommodatumInfoPage() {
                 marginInline: "1rem",
               }}
             >
-              {commodatum.comodatum_id}
+              {commodatum.commodatum_id}
             </span>
             {" · "}
             {commodatum.action}
@@ -75,11 +75,11 @@ export default function CommodatumInfoPage() {
                 <div className="details container">
                   <div className="info-row">
                     <p className="text">
-                    {" · "}Persona que recibe: <span>{commodatum.reciever}</span>
+                    {" · "}Persona que recibe: <span>{commodatum.receiver.name}</span>
                     </p>
 
                     <p className="text">
-                    {" · "}Contenedor: <span>{commodatum.container}</span>
+                    {" · "}Contenedor: <span>{commodatum.container.container_id}</span>
                     </p>
 
                     <p className="text">
@@ -105,13 +105,13 @@ export default function CommodatumInfoPage() {
                   </div>
                 </div>
 
-                {/*<div className="container">
+                {/* <div className="container">
                   <div className="info-row">
                     <p className="text">
                       Notas: <span>{container.notes}</span>
                     </p>
                   </div>
-               </div>*/}
+               </div> */}
               </div>
             </div>
 
