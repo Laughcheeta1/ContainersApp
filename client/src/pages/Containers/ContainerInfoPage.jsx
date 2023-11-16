@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useContainers } from "../../context/ContainerContext";
 import { useParams } from "react-router-dom";
@@ -112,6 +113,10 @@ export default function ContainerInfoPage() {
 
             <h1 className="subtitle">Mantenimientos</h1>
           </div>
+
+          <Link to={`/transaction/${container._id}/${container.container_id}`} className="btn btn-azul">
+            Hacer Transaccion
+          </Link>
         </>
       ) : (
         <LoadingScreen />

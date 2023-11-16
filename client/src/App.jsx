@@ -62,7 +62,7 @@ export default function App() {
                         path="/containers/:id"
                         element={<ContainerInfoPage />}
                       />
-                      <Route path="/transaction/:id"
+                      <Route path="/transaction/:id/:number"
                       element={<TransactionPage />} />
 
                       <Route path="/items" element={<ItemsPage />} />
