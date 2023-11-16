@@ -46,36 +46,22 @@ export default function CommodatumInfoPage() {
           <div className="container-info">
             <h1 className="container-title-info">Información General</h1>
             <div className="info">
-              {/*<div style={{ display: "flex", flexDirection: "column" }}>
-                <div className="container">
-                   <label
-                    style={{
-                      fontSize: "20px",
-                      marginBottom: "1rem",
-                      fontWeight: "500",
-                    }}
-                    htmlFor="image"
-                  >
-                    Foto contenedor.
-                  </label>
-                  <img
-                    name="image"
-                    style={{
-                      height: "12rem",
-                      width: "auto",
-                      objectFit: "cover",
-                    }}
-                    src={containerDummy}
-                    alt=""
-                  />
-                </div>
-              </div>*/}
+             
 
               <div className="info-column">
                 <div className="details container">
                   <div className="info-row">
+                    <div className="column">
                     <p className="text">
                     {" · "}Persona que recibe: <span>{commodatum.receiver.name}</span>
+                    </p>
+
+                    <p className="text">
+                    {" · "}ID de la persona que recibe: <span>{commodatum.receiver.id}</span>
+                    </p>
+
+                    <p className="text">
+                    {" · "}Telefono de la persona que recibe: <span>{commodatum.receiver.number}</span>
                     </p>
 
                     <p className="text">
@@ -85,7 +71,9 @@ export default function CommodatumInfoPage() {
                     <p className="text">
                     {" · "}Compañía: <span>{commodatum.company}</span>
                     </p>
+                    </div>
 
+                    <div className="column">
                     <p className="text">
                     {" · "}Fecha de creación: <span>{commodatum.date}</span>
                     </p>
@@ -101,17 +89,11 @@ export default function CommodatumInfoPage() {
                     <p className="text">
                     {" · "}Precio de transporte: <span>{commodatum.transport_price}</span>
                     </p>
+                    </div>
 
                   </div>
                 </div>
 
-                {/* <div className="container">
-                  <div className="info-row">
-                    <p className="text">
-                      Notas: <span>{container.notes}</span>
-                    </p>
-                  </div>
-               </div> */}
               </div>
             </div>
 
