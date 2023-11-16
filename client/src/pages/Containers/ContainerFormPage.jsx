@@ -51,8 +51,6 @@ export default function ContainerFormPage() {
           Agregar nuevo contenedor.
         </h2>
 
-        <hr style={{ marginTop: ".5rem" }} />
-
         <form>
           <div className="container-group">
             <div className="group">
@@ -135,7 +133,11 @@ export default function ContainerFormPage() {
           </div>
 
           <label
-            style={{ marginTop: "1rem", display: "inline-flex" }}
+            style={{
+              marginBottom: "1rem",
+              display: "inline-flex",
+              marginTop: "1.5rem",
+            }}
             htmlFor="notes"
           >
             Descripción:
@@ -148,8 +150,7 @@ export default function ContainerFormPage() {
             {...register("notes")}
           ></textarea>
 
-          <div style={{ marginTop: "1rem" }} className="container-group">
-
+          <div style={{ marginTop: "1.5rem" }} className="container-group">
             <AlertDialogCrear
               buttonMessage="Guardar contenedor"
               descriptionMessage="Se creará un nuevo contenedor con la información que ingresaste"

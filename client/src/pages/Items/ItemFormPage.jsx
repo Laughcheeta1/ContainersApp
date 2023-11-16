@@ -50,8 +50,6 @@ export default function ItemFormPage() {
           Agregar nuevo ítem.
         </h2>
 
-        <hr style={{ marginTop: ".5rem" }} />
-
         <form>
           <div className="group">
             <p>{errors.name?.message}</p>

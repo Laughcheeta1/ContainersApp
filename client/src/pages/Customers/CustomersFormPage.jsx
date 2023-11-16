@@ -54,8 +54,6 @@ export default function CustomerFormPage() {
           Agregar nuevo cliente.
         </h2>
 
-        <hr style={{ marginTop: ".5rem" }} />
-
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="container-group">
             <div className="group">
@@ -125,7 +123,7 @@ export default function CustomerFormPage() {
             </div>
           </div>
 
-          <div style={{ marginTop: "1rem" }} className="container-group">
+          <div style={{ marginTop: "2rem" }} className="container-group">
             <AlertDialogCrear
               buttonMessage="Guardar cliente"
               descriptionMessage="Se creara un nuevo cliente con la informacion que creaste"
