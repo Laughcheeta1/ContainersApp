@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const {
+  getCustomersByName,
   createCustomer,
   updateCustomer,
   deleteCustomer,
@@ -8,6 +9,8 @@ const {
 } = require("../controllers/customers.controllers");
 
 const router = Router();
+
+router.get("/customersByName/:name", getCustomersByName);
 
 router.get("/customers", getCustomers);
 

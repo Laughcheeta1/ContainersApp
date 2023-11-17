@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const authRequired = require("../middlewares/validateToken");
 const {
+  getItemsByName,
   getItems,
   deleteItem,
   updateItem,
@@ -9,6 +10,8 @@ const {
 } = require("../controllers/items.controllers");
 const validateSchema = require("../middlewares/validator.middleware");
 const createItemsSchema = require("../schemas/item.schema");
+
+router.get("/itemsByName/:name", getItemsByName);
 
 router.get("/items", authRequired, getItems);
 
