@@ -23,11 +23,11 @@ export function ContainerProvider({ children }) {
   const [containers, setContainers] = useState([]);
   const [errors, setErrors] = useState([]);
 
-  const getContainerByNumber = async (id) => {
+  const getContainersByNumber = async (id) => {
     try {
       console.log("running the query");
       const res = await getContainerByNumberRequest(id);
-      return res.data;
+      setContainers(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -85,7 +85,7 @@ export function ContainerProvider({ children }) {
   return (
     <ContainerContext.Provider
       value={{
-        getContainerByNumber,
+        getContainersByNumber,
         getContainers,
         getContainer,
         containers,
