@@ -28,7 +28,7 @@ function LoginPage() {
     <div className="body">
       <div className="auth-container">
         {signinErrors.map((error, i) => (
-          <div className="bg-red-500 p-2 text-white text-center my-2" key={i}>
+          <div className="container-error" key={i}>
             {error}
           </div>
         ))}
@@ -52,7 +52,9 @@ function LoginPage() {
 
           <label className="input-label" htmlFor="email">
             Correo:
-            <p className="input-errors">{errors.email?.message}</p>
+            <p style={{ marginLeft: "1rem" }} className="input-errors">
+              {errors.email?.message}
+            </p>
           </label>
 
           <input
@@ -65,7 +67,9 @@ function LoginPage() {
 
           <label className="input-label">
             Contraseña:
-            <p className="input-errors">{errors.password?.message}</p>
+            <p style={{ marginLeft: "1rem" }} className="input-errors">
+              {errors.password?.message}
+            </p>
           </label>
 
           <input
