@@ -113,10 +113,10 @@ const createCommodatum = async (req, res) => {
         .status(404)
         .json({ message: ["Container Number Doesn't Exist"] }); // Verificar que el numero del contenedor exista
     }
-    else if (action !== "entrada" && foundContainer.status === "No Disponible") // Verificar que el contenedor se encuentre disponible
+    else if (action !== "Entrada" && foundContainer.status === "No Disponible") // Verificar que el contenedor se encuentre disponible
     {
       console.log("Container not available");
-      return res.status(400).json({message : "Container not available"});
+      return res.status(400).json({message : ["Container not available"]});
     }
       
 
@@ -138,7 +138,7 @@ const createCommodatum = async (req, res) => {
     const savedCommodatum = await newCommodatum.save();
 
     // Make the Container availability
-    if (action === "entrada")
+    if (action === "Entrada")
       await Container.updateOne({ container_id : container },  { status : "Disponible" });
     else
       await Container.updateOne({ container_id : container }, { status : "No Disponible" });
