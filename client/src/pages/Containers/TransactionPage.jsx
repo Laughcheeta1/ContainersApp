@@ -47,7 +47,7 @@ export default function TransactionPage() {
     } catch (error) {
       console.log(error);
     }
-  });
+  }, []);
 
   useEffect(() => {
     if (wasSubmitted && commodatumErrors.length === 0)
@@ -280,7 +280,7 @@ export default function TransactionPage() {
               </div>
             </div>
 
-            <div className="container-group">
+            <div style={{ marginTop: "1rem" }} className="container-group">
               <AlertDialogCrear
                 buttonMessage="Crear comodato"
                 descriptionMessage="Se realizara la transaccion deseada"
