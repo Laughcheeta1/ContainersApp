@@ -20,9 +20,7 @@ export default function ContainerFormPage() {
 
   const { createContainer, errors: containerErrors } = useContainers();
   const navigate = useNavigate();
-
   const params = useParams();
-
   const [wasSubmitted, setWasSubmitted] = useState(false);
 
   const onSubmit = async (data) => {

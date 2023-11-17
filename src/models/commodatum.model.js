@@ -19,12 +19,13 @@ const commodatumSchema = new mongoose.Schema(
   {
     version: {
       type: Number,
+      default: 1,
     },
     commodatum_id: {
       type: String,
       required: true,
       unique: true,
-      trime: true,
+      trim: true,
     },
     container: {
       type: mongoose.Types.ObjectId,
@@ -41,10 +42,10 @@ const commodatumSchema = new mongoose.Schema(
     },
     date: {
       type: Date,
-      required: true,
+      default: Date.now,
     },
     duration: {
-      type: Number,
+      type: String,
       required: true,
     },
     signature: {
@@ -64,7 +65,8 @@ const commodatumSchema = new mongoose.Schema(
       required: true,
     },
     created_by: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "User",
       required: true,
     },
   },

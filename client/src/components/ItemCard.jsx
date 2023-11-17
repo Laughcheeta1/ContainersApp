@@ -32,7 +32,7 @@ export default function ItemCard({ item }) {
         >
           <AlertDialogEliminar deleteMethod={deleteItem} objectID={item._id} />
 
-          <Link to={`/tasks/${item._id}`} className="btn btn-azul">
+          <Link to={`/items/edit/${item._id}`} className="btn btn-azul">
             Editar
           </Link>
         </div>

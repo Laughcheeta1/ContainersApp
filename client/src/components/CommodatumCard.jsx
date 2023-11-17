@@ -6,10 +6,6 @@ import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
 export default function CommodatumCard({ commodatum }) {
-  const { deleteCommodatum } = useCommodatums();
-
-  console.log(commodatum);
-
   return (
     <div className="resultado-busqueda">
       <header
@@ -36,7 +32,7 @@ export default function CommodatumCard({ commodatum }) {
           }}
         >
           <Link to={`/commodatums/${commodatum._id}`} className="btn btn-azul">
-            Mas informacion
+            Mas información
           </Link>
         </div>
       </header>

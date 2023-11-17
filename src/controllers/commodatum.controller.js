@@ -3,6 +3,18 @@ const Container = require("../models/container.model.js");
 
 // Obtener un comodato en particular por id (en params)
 
+const getCommodatumByNumber = async (req, res) => {
+  try
+  {
+    const foundCommodatums = await Commodatum.find({ commodatum_id : { $regex : `${req.params.number}`, $options: "i" } });
+    res.json(foundCommodatums);
+  }
+  catch (error)
+  {
+    return res.status(404).json({ message : error.message });
+  }
+}
+
 const getCommodatum = async (req, res) => {
   try {
     const foundCommodatum = await Commodatum.findById(req.params.id).populate(
@@ -31,27 +43,27 @@ const getCommodatums = async (req, res) => {
 
 // Actualizar un comodato
 
-const updateCommodatum = async (req, res) => {
-  if (req.body.commodatum_id || req.body.container)
-    return res
-      .status(400)
-      .json({ message: "Cannot Change Specified Attribute" });
-  try {
-    const foundCommodatum = await Commodatum.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      {
-        new: true,
-      }
-    ).populate("container");
-    if (!foundCommodatum)
-      return res.status(404).json({ message: "Commodatum Not Found" });
-    return res.json(foundCommodatum);
-  } catch (error) {
-    console.log(error);
-    return res.status(404).json({ message: "An Error Ocurred" });
-  }
-};
+// const updateCommodatum = async (req, res) => {
+//   if (req.body.commodatum_id || req.body.container)
+//     return res
+//       .status(400)
+//       .json({ message: "Cannot Change Specified Attribute" });
+//   try {
+//     const foundCommodatum = await Commodatum.findByIdAndUpdate(
+//       req.params.id,
+//       req.body,
+//       {
+//         new: true,
+//       }
+//     ).populate("container");
+//     if (!foundCommodatum)
+//       return res.status(404).json({ message: "Commodatum Not Found" });
+//     return res.json(foundCommodatum);
+//   } catch (error) {
+//     console.log(error);
+//     return res.status(404).json({ message: "An Error Ocurred" });
+//   }
+// };
 
 // Eliminar un comodato
 
@@ -86,15 +98,27 @@ const createCommodatum = async (req, res) => {
   try {
     const foundCommodatum = await Commodatum.findOne({ commodatum_id });
     if (foundCommodatum)
+    {
+      console.log("Ya existe el numero del contenedor");
       return res
         .status(400)
-        .json({ message: "Commodatum Number Already Exists" }); // Verificar que no exista un comodato con ese numero
+        .json({ message: ["Commodatum Number Already Exists"] }); // Verificar que no exista un comodato con ese numero
+    }
 
     const foundContainer = await Container.findOne({ container_id: container });
     if (!foundContainer)
+    {
+      console.log("El contenedor no existe");
       return res
         .status(404)
-        .json({ message: "Container Number Doesn't Exist" }); // Verificar que el numero del contenedor exista
+        .json({ message: ["Container Number Doesn't Exist"] }); // Verificar que el numero del contenedor exista
+    }
+    else if (action !== "Entrada" && foundContainer.status === "No Disponible") // Verificar que el contenedor se encuentre disponible
+    {
+      console.log("Container not available");
+      return res.status(400).json({message : ["Container not available"]});
+    }
+      
 
     const newCommodatum = new Commodatum({
       version,
@@ -113,17 +137,24 @@ const createCommodatum = async (req, res) => {
 
     const savedCommodatum = await newCommodatum.save();
 
+    // Make the Container availability
+    if (action === "Entrada")
+      await Container.updateOne({ container_id : container },  { status : "Disponible" });
+    else
+      await Container.updateOne({ container_id : container }, { status : "No Disponible" });
+
     return res.json(savedCommodatum);
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ message: "An Error Ocurred " });
+    return res.status(500).json({ message: [error.message] });
   }
 };
 
 module.exports = {
+  getCommodatumByNumber,
   getCommodatums,
   getCommodatum,
   deleteCommodatum,
-  updateCommodatum,
+  // updateCommodatum,
   createCommodatum,
 };

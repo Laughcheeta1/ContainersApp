@@ -1,5 +1,7 @@
 import axios from "./axios";
 
+export const getCustomersByNameRequest = async (name) => axios.get(`/customersByName/${name}`);
+
 export const getCustomersRequest = async () => axios.get("/customers");
 
 export const getCustomerRequest = async (id) => axios.get(`/customers/${id}`);

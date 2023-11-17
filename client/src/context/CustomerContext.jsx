@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import {
+  getCustomersByNameRequest,
   getCustomersRequest,
   getCustomerRequest,
   createCustomerRequest,
@@ -21,6 +22,16 @@ export const useCustomers = () => {
 export function CustomerProvider({ children }) {
   const [customers, setCustomers] = useState([]);
   const [errors, setErrors] = useState([]);
+
+
+  const getCustomersByName = async (name) => {
+    try {
+      const res = await getCustomersByNameRequest(name);
+      setCustomers(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getCustomers = async () => {
     try {
@@ -91,6 +102,7 @@ export function CustomerProvider({ children }) {
   return (
     <CustomerContext.Provider
       value={{
+        getCustomersByName,
         getCustomer,
         getCustomers,
         editCustomer,

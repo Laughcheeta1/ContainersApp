@@ -1,5 +1,7 @@
 import axios from "./axios";
 
+export const getContainerByNumberRequest = async (number) => axios.get(`/containersByNumber/${number}`);
+
 export const getContainersRequest = async () => axios.get("/containers");
 
 export const getContainerRequest = async (id) =>

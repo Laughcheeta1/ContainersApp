@@ -1,4 +1,5 @@
 const {
+  getContainerByNumber,
   getContainers,
   createContainer,
   getContainer,
@@ -12,16 +13,13 @@ const containerSchema = require("../schemas/containers.schema");
 const { Router } = require("express");
 const router = Router();
 
+router.get("/containersByNumber/:id", getContainerByNumber);
+
 router.get("/containers", authRequired, getContainers);
 
 router.get("/containers/:id", authRequired, getContainer);
 
-router.post(
-  "/containers",
-  authRequired,
-  validateSchema(containerSchema),
-  createContainer
-);
+router.post("/containers", authRequired, validateSchema(containerSchema), createContainer);
 
 router.put("/containers/:id", authRequired, updateContainer);
 

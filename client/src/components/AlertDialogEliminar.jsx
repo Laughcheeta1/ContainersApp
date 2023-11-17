@@ -2,7 +2,7 @@ import React from "react";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import "../styles/popUp.css";
 
-const AlertDialogEliminar = ({ deleteMethod, objectID }) => (
+const AlertDialogEliminar = ({ deleteMethod, objectID, redirectMethod }) => (
   <AlertDialog.Root>
     <AlertDialog.Trigger className="btn btn-rojo" asChild>
       <button>Eliminar</button>

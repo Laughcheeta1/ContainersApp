@@ -1,11 +1,12 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import {
-    getCommodatumsRequest,
-    getCommodatumRequest,
-    createCommodatumRequest,
-    updateCommodatumRequest,
-    deleteCommodatumRequest,
+  getCommodatumsByNumberRequest,
+  getCommodatumsRequest,
+  getCommodatumRequest,
+  createCommodatumRequest,
+  updateCommodatumRequest,
+  deleteCommodatumRequest,
 } from "../api/commodatums";
 
 const CommodatumContext = createContext();
@@ -21,6 +22,16 @@ export const useCommodatums = () => {
 export function CommodatumProvider({ children }) {
   const [commodatum, setCommodatums] = useState([]);
   const [errors, setErrors] = useState([]);
+
+  const getCommodatumsByNumber = async (number) => 
+  {
+    try {
+      const res = await getCommodatumsByNumberRequest(number);
+      setCommodatums(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const getCommodatums = async () => {
     try {
@@ -75,6 +86,7 @@ export function CommodatumProvider({ children }) {
   return (
     <CommodatumContext.Provider
       value={{
+        getCommodatumsByNumber,
         getCommodatums,
         getCommodatum,
         commodatum,

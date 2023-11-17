@@ -5,7 +5,7 @@ import BarraBusqueda from "../../components/BarraBusqueda";
 import "../../styles/busqueda.css";
 
 export default function ContainersPage() {
-  const { getContainers, containers } = useContainers();
+  const { getContainersByNumber, getContainers, containers } = useContainers();
 
   useEffect(() => {
     getContainers();
@@ -42,7 +42,7 @@ export default function ContainersPage() {
         Buscar Contenedores
       </h1>
 
-      <BarraBusqueda placeholder="Buscar por número" route="new" />
+      <BarraBusqueda placeholder="Buscar por número" route="new" searchMethod={getContainersByNumber} refillMethod={getContainers} objectClass={"Container"}/>
 
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Contenedores.</h2>

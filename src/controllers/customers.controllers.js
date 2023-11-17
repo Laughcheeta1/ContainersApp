@@ -1,5 +1,17 @@
 const Customer = require("../models/customers.model");
 
+const getCustomersByName = async (req, res) => {
+  try
+  {
+    const foundCustomers = await Customer.find({ name : { $regex : `${req.params.name}`, $options: "i"} });
+    res.json(foundCustomers);
+  }
+  catch (error)
+  {
+    return res.status(500).json({ message: error.message });
+  }
+}
+
 const getCustomers = async (req, res) => {
   try {
     const customers = await Customer.find();
@@ -10,9 +22,6 @@ const getCustomers = async (req, res) => {
 };
 
 const getCustomer = async (req, res) => {
-  console.log("The passed Id is: ")
-  console.log(req.params.id);
-
   try {
     const customer = await Customer.findById(req.params.id);
 
@@ -82,6 +91,7 @@ const deleteCustomer = async (req, res) => {
 };
 
 module.exports = {
+  getCustomersByName,
   deleteCustomer,
   updateCustomer,
   createCustomer,

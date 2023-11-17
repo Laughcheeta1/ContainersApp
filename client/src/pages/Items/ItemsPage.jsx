@@ -5,7 +5,7 @@ import BarraBusqueda from "../../components/BarraBusqueda";
 import "../../styles/busqueda.css";
 
 export default function ItemsPage() {
-  const { getItems, items } = useItems();
+  const { getItemsByName, getItems, items } = useItems();
 
   useEffect(() => {
     getItems();
@@ -71,7 +71,7 @@ export default function ItemsPage() {
         </svg>
         Buscar Ítems
       </h1>
-      <BarraBusqueda placeholder="Buscar por nombre" route="new" />
+      <BarraBusqueda placeholder="Buscar por nombre" route="new" searchMethod={getItemsByName} refillMethod={getItems} objectClass={"Item"}/>
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Ítems.</h2>
 

@@ -1,5 +1,7 @@
 import axios from "./axios.js"
 
+export const getItemsByNameRequest = async (name) => axios.get(`/itemsByName/${name}`);
+
 export const getItemsRequest = async () => axios.get("/items");
 
 export const getItemRequest = async (id) => axios.get(`/items/${id}`);

@@ -52,7 +52,11 @@
 }
 
 .container-title-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: 0;
+  gap: 2rem;
   font-size: 26px;
   font-weight: 500;
   padding: 1.6rem;

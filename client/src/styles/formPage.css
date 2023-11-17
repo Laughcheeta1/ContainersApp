@@ -1,3 +1,24 @@
+hr {
+  height: 2px;
+  margin: 1rem 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-inline: 1.6rem;
+  margin-top: 1.2rem;
+  margin-bottom: 2.5rem;
+  padding-top: 1.2rem;
+  width: 100%;
+  background-color: white;
+  box-shadow: rgba(164, 172, 185, 0.6) 0px 1px 3px 0px,
+    rgba(18, 55, 105, 0.08) 0px 0px 0px 1px;
+  border: 0.8px rgb(53, 56, 73);
+  border-radius: 22px;
+}
+
 .container-form {
   display: flex;
   justify-content: center;
@@ -21,6 +42,7 @@ input {
 .input-group {
   display: flex;
   align-items: center;
+  margin-bottom: 1.5rem;
   justify-content: space-between;
   width: 100%;
 }
@@ -33,7 +55,8 @@ input {
 .group {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   width: 100%;
 }
 
@@ -47,6 +70,6 @@ input {
   flex-direction: row;
   justify-content: space-between;
   gap: 2rem;
-  /* margin-bottom: 0.6rem; */
+  width: 100%;
   align-items: center;
 }

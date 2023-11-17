@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { useCustomers } from "../../context/CustomerContext";
+import { useContainers } from "../../context/ContainerContext";
 import { useNavigate, useParams } from "react-router-dom";
-import { editCustomerSchema } from "../../schemas/editCustomer";
+import { editContainerSchema } from "../../schemas/editContainer";
 import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
@@ -10,74 +10,78 @@ import LoadingScreen from "../../components/LoadingScreen";
 
 import "../../styles/formPage.css";
 
-export default function EditCustomerPage() {
+export default function EditContainerPage() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(editCustomerSchema) });
+  } = useForm({ resolver: zodResolver(editContainerSchema) });
 
-  const { editCustomer, errors: customerErrors, getCustomer } = useCustomers();
+  const {
+    updateContainer,
+    errors: containerErrors,
+    getContainer,
+  } = useContainers();
   const navigate = useNavigate();
 
   const [wasSubmitted, setWasSubmitted] = useState(false);
-  const [customer, setCustomer] = useState(null);
+  const [container, setContainer] = useState(null);
   const params = useParams();
 
   useEffect(() => {
     try {
-      const loadCustomer = async () => {
-        const customerInfo = await getCustomer(params.id);
-        setCustomer(() => customerInfo);
+      const loadContainer = async () => {
+        const containerInfo = await getContainer(params.id);
+        setContainer(() => containerInfo);
       };
 
-      loadCustomer();
+      loadContainer();
     } catch (error) {
       console.log(error);
     }
   }, []);
 
   const onSubmit = async (data) => {
-    await editCustomer(params.id, data);
+    await updateContainer(params.id, data);
     setWasSubmitted(true);
   };
 
   useEffect(() => {
-    if (wasSubmitted && customerErrors.length === 0)
-      return navigate("/customers");
+    if (wasSubmitted && containerErrors.length === 0)
+      return navigate(`/containers/${params.id}`);
     setWasSubmitted(false);
-  }, [customerErrors, wasSubmitted]);
+  }, [containerErrors, wasSubmitted]);
 
   return (
     <>
-      {customer ? (
+      {container ? (
         <div className="container-form">
-          {customerErrors.map((error, i) => (
+          {containerErrors.map((error, i) => (
             <div className="container-error" key={i}>
               {error}
             </div>
           ))}
 
           <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
-            Editar cliente{" "}
+            Editar contenedor.{" "}
             <span style={{ fontSize: "22px", fontWeight: "500" }}>
-              NIT: {customer.company_NIT}
+              Numero: {container.container_id}
             </span>
           </h2>
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="container-group">
               <div className="group">
-                <p>{errors.name?.message}</p>
+                {errors.color?.message ? <p>{errors.color?.message}</p> : null}
 
                 <div className="input-group">
-                  <label htmlFor="type">Nombre:</label>
+                  <label htmlFor="color">Color:</label>
                   <input
-                    name="name"
+                    name="color"
                     type="text"
-                    defaultValue={customer.name}
+                    defaultValue={container.color}
                     className="input"
-                    {...register("name")}
+                    {...register("color")}
                   />
                 </div>
               </div>
@@ -85,16 +89,16 @@ export default function EditCustomerPage() {
 
             <div className="container-group">
               <div className="group">
-                <p>{errors.phone?.message}</p>
+                {errors.size?.message ? <p>{errors.size?.message}</p> : null}
 
                 <div className="input-group">
-                  <label htmlFor="type">Teléfono:</label>
+                  <label htmlFor="size">Tamaño:</label>
                   <input
-                    name="phone"
+                    name="size"
                     type="text"
-                    defaultValue={customer.phone}
+                    defaultValue={container.size}
                     className="input"
-                    {...register("phone")}
+                    {...register("size")}
                   />
                 </div>
               </div>
@@ -102,22 +106,40 @@ export default function EditCustomerPage() {
 
             <div className="container-group">
               <div className="group">
-                <p>{errors.address?.message}</p>
+                {errors.type?.message ? <p>{errors.type?.message}</p> : null}
 
                 <div className="input-group">
-                  <label htmlFor="type">Dirección:</label>
+                  <label htmlFor="type">Tipo:</label>
                   <input
-                    name="address"
+                    name="type"
                     type="text"
-                    defaultValue={customer.address}
+                    defaultValue={container.type}
                     className="input"
-                    {...register("address")}
+                    {...register("type")}
                   />
                 </div>
               </div>
             </div>
 
-            <div style={{ marginTop: "2rem" }} className="container-group">
+            <div className="container-group">
+              <div className="group">
+                {errors.notes?.message ? <p>{errors.notes?.message}</p> : null}
+
+                <div className="input-group">
+                  <label htmlFor="notes">Notas:</label>
+                  <textarea
+                    name="notes"
+                    rows="3"
+                    placeholder="ej: Laboratorio de química para universidad"
+                    defaultValue={container.notes}
+                    className="input"
+                    {...register("notes")}
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ marginTop: "1.5rem" }} className="container-group">
               <AlertDialogCrear
                 buttonMessage="Guardar cambios"
                 descriptionMessage="Se guardaran los cambios que entraste"
@@ -127,7 +149,7 @@ export default function EditCustomerPage() {
               <Link
                 style={{ width: "100%" }}
                 className="btn btn-gris"
-                to="/customers"
+                to={`/containers/${params.id}`}
               >
                 Cancelar
               </Link>

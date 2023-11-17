@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useContainers } from "../../context/ContainerContext";
 import { useParams } from "react-router-dom";
@@ -14,7 +15,6 @@ export default function ContainerInfoPage() {
     try {
       const loadContainer = async () => {
         const containerInfo = await getContainer(params.id);
-        console.log(containerInfo);
         setContainer(() => containerInfo);
       };
 
@@ -44,7 +44,18 @@ export default function ContainerInfoPage() {
           </div>
 
           <div className="container-info">
-            <h1 className="container-title-info">Información.</h1>
+            <h1 className="container-title-info">
+              Información.{" "}
+              <Link
+                to={`/transaction/${container._id}/${container.container_id}`}
+                className="btn btn-verde"
+              >
+                Realizar Transacción
+              </Link>
+
+              <Link to={"/containers"} className="btn btn-azul">Volver</Link>
+              <Link to={`/containers/edit/${params.id}`} className="btn btn-gris">Editar</Link>
+            </h1>
             <div className="info">
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div className="container">

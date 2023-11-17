@@ -1,8 +1,10 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import {
+  getItemsByNameRequest,
   createItemRequest,
   deleteItemRequest,
+  updateItemRequest,
   getItemRequest,
   getItemsRequest,
 } from "../api/items";
@@ -19,6 +21,24 @@ export const useItems = () => {
 export function ItemProvider({ children }) {
   const [items, setItems] = useState([]);
   const [errors, setErrors] = useState([]);
+
+  const getItemsByName = async (name) => {
+    try {
+      const res = await getItemsByNameRequest(name);
+      setItems(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getItem = async (id) => {
+    try {
+      const res = await getItemRequest(id);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getItems = async () => {
     try {
@@ -38,6 +58,19 @@ export function ItemProvider({ children }) {
       setErrors(() => error.response.data.message);
     }
   };
+
+  const updateItem = async (id, item) => {
+    try
+    {
+      await updateItemRequest(id, item);
+      getItems();
+    }
+    catch (error)
+    {
+      setErrors(() => error.response.data.message);
+      console.log(error);
+    }
+  }
 
   const deleteItem = async (id) => {
     try {
@@ -61,7 +94,7 @@ export function ItemProvider({ children }) {
 
   return (
     <ItemContext.Provider
-      value={{ createItem, deleteItem, getItems, errors, items }}
+      value={{ getItemsByName, createItem, updateItem, deleteItem, getItems, getItem, errors, items }}
     >
       {children}
     </ItemContext.Provider>

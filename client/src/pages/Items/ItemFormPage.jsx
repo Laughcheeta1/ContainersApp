@@ -20,9 +20,7 @@ export default function ItemFormPage() {
 
   const { createItem, errors: itemErrors } = useItems();
   const navigate = useNavigate();
-
   const params = useParams();
-
   const [wasSubmitted, setWasSubmitted] = useState(false);
 
   const onSubmit = async (data) => {
@@ -46,13 +44,15 @@ export default function ItemFormPage() {
           </div>
         ))}
 
-        <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
+        <h2
+          style={{ fontSize: "32px", fontWeight: 600, marginBottom: "2.5rem" }}
+        >
           Agregar nuevo ítem.
         </h2>
 
         <form>
           <div className="group">
-            <p>{errors.name?.message}</p>
+            {errors.name?.message ? <p>{errors.name?.message}</p> : null}
 
             <div className="input-group">
               <label htmlFor="name">Nombre:</label>
@@ -68,7 +68,7 @@ export default function ItemFormPage() {
           </div>
 
           <div className="group">
-            <p>{errors.brand?.message}</p>
+            {errors.brand?.message ? <p>{errors.brand?.message}</p> : null}
 
             <div className="input-group">
               <label htmlFor="brand">Marca:</label>
@@ -83,7 +83,9 @@ export default function ItemFormPage() {
           </div>
 
           <div className="group">
-            <p>{errors.total_quantity?.message}</p>
+            {errors.total_quantity?.message ? (
+              <p>{errors.total_quantity?.message}</p>
+            ) : null}
 
             <div className="input-group">
               <label htmlFor="type">Total de unidades:</label>
@@ -98,7 +100,9 @@ export default function ItemFormPage() {
           </div>
 
           <div className="group">
-            <p>{errors.available_quantity?.message}</p>
+            {errors.available_quantity?.message ? (
+              <p>{errors.available_quantity?.message}</p>
+            ) : null}
 
             <div className="input-group">
               <label htmlFor="type">Unidades disponibles:</label>
@@ -113,14 +117,6 @@ export default function ItemFormPage() {
           </div>
 
           <div style={{ marginTop: "1rem" }} className="container-group">
-            {/* <button
-              style={{ width: "100%" }}
-              className="btn btn-verde"
-              type="submit"
-            >
-              Guardar ítem
-            </button> */}
-
             <AlertDialogCrear
               buttonMessage="Guardar ítem"
               descriptionMessage="Se guardará un nuevo ítem con la información que ingresaste"
