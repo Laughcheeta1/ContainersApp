@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
+
 import { useContainers } from "../../context/ContainerContext";
 import { useItems } from "../../context/ItemsContext";
+
 import { useNavigate, useParams } from "react-router-dom";
 import { transactionSchema } from "../../schemas/transaction";
 import { Link } from "react-router-dom";
@@ -31,25 +33,33 @@ export default function TransactionPage()
 
     const { createCommodatum, errors : commodatumErrors } = useCommodatums();
     const { getContainer } = useContainers();
-    const navigate = useNavigate();
+    const { getItems, items } = useItems();
 
     const [wasSubmitted, setWasSubmitted] = useState(false);
     const [container, setContainer] = useState(null);
+
     const params = useParams(); // The parameter is going to be the
         // container Id in wich we are creating the transaction
+    const navigate = useNavigate();
 
-    useEffect(() => {
+    useEffect(() => { // Load the Container and teh Items
         try {
-            const loadContainer = async () => {
+            const loadContainer = async () => { // Get the container
             const containerInfo = await getContainer(params.id);
             setContainer(() => containerInfo);
-          };
-    
-          loadContainer();
+            };
+
+            const loadItems = async () => { // Get the items
+                await getItems();
+            };
+            
+            loadContainer();
+            loadItems();
         } catch (error) {
-          console.log(error);
+            console.log(error);
         }
     }, []);
+
 
     useEffect(() => {
         if (wasSubmitted)
@@ -148,8 +158,14 @@ export default function TransactionPage()
                     
                     <h1 style={{marginTop: "2rem"}}>Items</h1>
 
-                    <div style={{ paddingLeft: "5rem" }}>
-                        <h2>Make the dynamic list for Items here</h2>
+                    <div style={{ paddingLeft: "5rem" }}> {/*TODO: finish the dynamic list*/}
+                        <select>
+                            {
+                                items ? items.map((item) => (
+                                    <option key={item._id} value={item._id}>{item.name}</option>
+                                )) : null
+                            }
+                        </select>
                     </div>
                     
                     <hr></hr>
