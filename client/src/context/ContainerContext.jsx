@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import {
+  getContainerByNumberRequest,
   createContainerRequest,
   updateContainerRequest,
   deleteContainerRequest,
@@ -21,6 +22,16 @@ export const useContainers = () => {
 export function ContainerProvider({ children }) {
   const [containers, setContainers] = useState([]);
   const [errors, setErrors] = useState([]);
+
+  const getContainerByNumber = async (id) => {
+    try {
+      console.log("running the query");
+      const res = await getContainerByNumberRequest(id);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getContainer = async (id) => {
     try {
@@ -74,6 +85,7 @@ export function ContainerProvider({ children }) {
   return (
     <ContainerContext.Provider
       value={{
+        getContainerByNumber,
         getContainers,
         getContainer,
         containers,
