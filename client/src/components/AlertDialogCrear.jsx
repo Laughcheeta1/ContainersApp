@@ -27,7 +27,12 @@ const AlertDialogCrear = ({ buttonMessage, descriptionMessage, onSubmit }) => (
             <button className="btn btn-gris">Cancelar</button>
           </AlertDialog.Cancel>
 
-          <AlertDialog.Action asChild onClick={() => {console.log("Pressed Guardar"); onSubmit();}}>
+          <AlertDialog.Action
+            asChild
+            onClick={() => {
+              onSubmit();
+            }}
+          >
             <button type="submit" className="btn btn-verde">
               Guardar
             </button>

@@ -23,7 +23,6 @@ import EditCustomerPage from "./pages/Customers/EditCustomerPage";
 import CommodatumPage from "./pages/Commodatum/CommodatumPage";
 import CommodatumInfoPage from "./pages/Commodatum/CommodatumInfoPage";
 
-
 import { AuthProvider } from "./context/AuthContext";
 import { ContainerProvider } from "./context/ContainerContext";
 import { ItemProvider } from "./context/ItemsContext";
@@ -40,45 +39,54 @@ export default function App() {
       <ContainerProvider>
         <CustomerProvider>
           <ItemProvider>
-            <ContainerProvider>
-              <CommodatumProvider>
-                <BrowserRouter>
-                  <Navbar />
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
+            <CommodatumProvider>
+              <BrowserRouter>
+                <Navbar />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
 
-                    <Route element={<ProtectedRoute />}>
-                      <Route path="/menu" element={<MenuPage />} />
-                      <Route path="/profile" element={<ProfilePage />} />
+                  <Route element={<ProtectedRoute />}>
+                    <Route path="/menu" element={<MenuPage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
 
-                      <Route path="/containers" element={<ContainersPage />} />
-                      <Route
-                        path="/containers/new"
-                        element={<ContainerFormPage />}
-                      />
-                      <Route
-                        path="/containers/:id"
-                        element={<ContainerInfoPage />}
-                      />
-                      <Route path="/transaction/:id/:number"
-                      element={<TransactionPage />} />
+                    <Route path="/containers" element={<ContainersPage />} />
+                    <Route
+                      path="/containers/new"
+                      element={<ContainerFormPage />}
+                    />
+                    <Route
+                      path="/containers/:id"
+                      element={<ContainerInfoPage />}
+                    />
+                    <Route
+                      path="/transaction/:id/:number"
+                      element={<TransactionPage />}
+                    />
 
-                      <Route path="/items" element={<ItemsPage />} />
-                      <Route path="/items/new" element={<ItemFormPage />} />
+                    <Route path="/items" element={<ItemsPage />} />
+                    <Route path="/items/new" element={<ItemFormPage />} />
 
-                      <Route path="/customers" element={<CustomersPage />} />
-                      <Route path="/customers/new" element={<CustomerFormPage />} />
-                      <Route path="/customers/edit/:id" element={<EditCustomerPage />} />
+                    <Route path="/customers" element={<CustomersPage />} />
+                    <Route
+                      path="/customers/new"
+                      element={<CustomerFormPage />}
+                    />
+                    <Route
+                      path="/customers/edit/:id"
+                      element={<EditCustomerPage />}
+                    />
 
-                      <Route path="/commodatums" element={<CommodatumPage />} />
-                      <Route path="/commodatums/:id" element={<CommodatumInfoPage />} />
-                    </Route>
-                  </Routes>
-                </BrowserRouter>
-              </CommodatumProvider>
-            </ContainerProvider>
+                    <Route path="/commodatums" element={<CommodatumPage />} />
+                    <Route
+                      path="/commodatums/:id"
+                      element={<CommodatumInfoPage />}
+                    />
+                  </Route>
+                </Routes>
+              </BrowserRouter>
+            </CommodatumProvider>
           </ItemProvider>
         </CustomerProvider>
       </ContainerProvider>

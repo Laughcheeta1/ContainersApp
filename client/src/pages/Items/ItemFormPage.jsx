@@ -20,9 +20,7 @@ export default function ItemFormPage() {
 
   const { createItem, errors: itemErrors } = useItems();
   const navigate = useNavigate();
-
   const params = useParams();
-
   const [wasSubmitted, setWasSubmitted] = useState(false);
 
   const onSubmit = async (data) => {
@@ -113,14 +111,6 @@ export default function ItemFormPage() {
           </div>
 
           <div style={{ marginTop: "1rem" }} className="container-group">
-            {/* <button
-              style={{ width: "100%" }}
-              className="btn btn-verde"
-              type="submit"
-            >
-              Guardar ítem
-            </button> */}
-
             <AlertDialogCrear
               buttonMessage="Guardar ítem"
               descriptionMessage="Se guardará un nuevo ítem con la información que ingresaste"
