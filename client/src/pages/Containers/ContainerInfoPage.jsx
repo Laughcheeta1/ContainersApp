@@ -2,14 +2,13 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useContainers } from "../../context/ContainerContext";
 import { useParams } from "react-router-dom";
-import AlertDialogEliminar from "../../components/AlertDialogEliminar";
 import LoadingScreen from "../../components/LoadingScreen";
 import "../../styles/infoPage.css";
 import containerDummy from "../../assets/containerDummy.png";
 
 export default function ContainerInfoPage() {
   const params = useParams();
-  const { getContainer, deleteContainer } = useContainers();
+  const { getContainer } = useContainers();
   const [container, setContainer] = useState(null);
 
   useEffect(() => {
@@ -56,7 +55,6 @@ export default function ContainerInfoPage() {
 
               <Link to={"/containers"} className="btn btn-azul">Volver</Link>
               <Link to={`/containers/edit/${params.id}`} className="btn btn-gris">Editar</Link>
-              <AlertDialogEliminar deleteMethod={deleteContainer} objectID={params.id} />
             </h1>
             <div className="info">
               <div style={{ display: "flex", flexDirection: "column" }}>
