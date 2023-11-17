@@ -25,7 +25,7 @@ export default function TransactionPage() {
   const onSubmit = async (data) => {
     try {
       console.log(data);
-      data.container = params.id;
+      data.container = params.number;
       await createCommodatum(data);
       setWasSubmitted(true);
     } catch (error) {
