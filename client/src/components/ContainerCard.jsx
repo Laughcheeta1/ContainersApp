@@ -1,14 +1,10 @@
 import { Link } from "react-router-dom";
-import { useContainers } from "../context/ContainerContext";
-import AlertDialogEliminar from "../components/AlertDialogEliminar";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
 export default function ContainerCard({ container }) {
-  const { deleteContainer } = useContainers();
-
   return (
     <div className="resultado-busqueda">
       <header
@@ -35,10 +31,6 @@ export default function ContainerCard({ container }) {
             alignItems: "center",
           }}
         >
-          <AlertDialogEliminar
-            deleteMethod={deleteContainer}
-            objectID={container._id}
-          />
 
           <Link to={`/containers/${container._id}`} className="btn btn-azul">
             Ver más

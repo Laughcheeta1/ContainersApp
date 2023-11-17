@@ -10,6 +10,7 @@ import MenuPage from "./pages/MenuPage";
 import ContainersPage from "./pages/Containers/ContainersPage";
 import ContainerFormPage from "./pages/Containers/ContainerFormPage";
 import ContainerInfoPage from "./pages/Containers/ContainerInfoPage";
+import EditContainerPage from "./pages/Containers/EditContainerPage";
 
 import TransactionPage from "./pages/Containers/TransactionPage";
 
@@ -55,6 +56,7 @@ export default function App() {
                     <Route path="/containers" element={<ContainersPage />} />
                     <Route path="/containers/new" element={<ContainerFormPage />} />
                     <Route path="/containers/:id" element={<ContainerInfoPage />} />
+                    <Route path="/containers/edit/:id" element={<EditContainerPage />} />
                     <Route path="/transaction/:id/:number" element={<TransactionPage />} />
 
                     <Route path="/items" element={<ItemsPage />} />

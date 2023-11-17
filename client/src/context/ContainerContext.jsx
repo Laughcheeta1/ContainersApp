@@ -61,6 +61,16 @@ export function ContainerProvider({ children }) {
     }
   };
 
+  const updateContainer = async (id, container) => {
+    try {
+      await updateContainerRequest(id, container);
+      getContainers();
+    } catch (error) {
+      setErrors(() => error.response.data.message);
+      console.log(error);
+    }
+  };
+
   const deleteContainer = async (id) => {
     try {
       const res = await deleteContainerRequest(id);
@@ -90,6 +100,7 @@ export function ContainerProvider({ children }) {
         getContainer,
         containers,
         createContainer,
+        updateContainer,
         deleteContainer,
         errors,
       }}

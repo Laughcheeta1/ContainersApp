@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useCommodatums } from "../../context/CommodatumContext";
 import { useParams } from "react-router-dom";
 import LoadingScreen from "../../components/LoadingScreen";
@@ -46,9 +47,8 @@ export default function CommodatumInfoPage() {
 
           <div className="container-info">
             <h1 className="container-title-info">Información General</h1>
+            <Link to={"/commodatums"} className="btn btn-azul">Volver</Link>
             <div className="info">
-             
-
               <div className="info-column">
                 <div className="details container">
                   <div className="two-columns-container">
