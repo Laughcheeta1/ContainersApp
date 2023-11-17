@@ -24,7 +24,7 @@ const getItems = async (req, res) => {
 
 const getItem = async (req, res) => {
   try {
-    const foundItem = Item.findById(req.params.id);
+    const foundItem = await Item.findById(req.params.id);
 
     if (!foundItem)
       return res.status(404).json({ message: "No se encontró el ítem" });
@@ -51,7 +51,7 @@ const updateItem = async (req, res) => {
     const foundItem = await Item.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    s;
+    
     if (!foundItem) return res.status(404).json({ message: "Item Not Found" });
 
     res.json(foundItem);

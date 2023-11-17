@@ -15,6 +15,7 @@ import TransactionPage from "./pages/Containers/TransactionPage";
 
 import ItemsPage from "./pages/Items/ItemsPage";
 import ItemFormPage from "./pages/Items/ItemFormPage";
+import EditItemPage from "./pages/Items/EditItemPage";
 
 import CustomersPage from "./pages/Customers/CustomersPage";
 import CustomerFormPage from "./pages/Customers/CustomersFormPage";
@@ -52,37 +53,20 @@ export default function App() {
                     <Route path="/profile" element={<ProfilePage />} />
 
                     <Route path="/containers" element={<ContainersPage />} />
-                    <Route
-                      path="/containers/new"
-                      element={<ContainerFormPage />}
-                    />
-                    <Route
-                      path="/containers/:id"
-                      element={<ContainerInfoPage />}
-                    />
-                    <Route
-                      path="/transaction/:id/:number"
-                      element={<TransactionPage />}
-                    />
+                    <Route path="/containers/new" element={<ContainerFormPage />} />
+                    <Route path="/containers/:id" element={<ContainerInfoPage />} />
+                    <Route path="/transaction/:id/:number" element={<TransactionPage />} />
 
                     <Route path="/items" element={<ItemsPage />} />
                     <Route path="/items/new" element={<ItemFormPage />} />
+                    <Route path="/items/edit/:id" element={<EditItemPage />} />
 
                     <Route path="/customers" element={<CustomersPage />} />
-                    <Route
-                      path="/customers/new"
-                      element={<CustomerFormPage />}
-                    />
-                    <Route
-                      path="/customers/edit/:id"
-                      element={<EditCustomerPage />}
-                    />
+                    <Route path="/customers/new" element={<CustomerFormPage />} />
+                    <Route path="/customers/edit/:id" element={<EditCustomerPage />} />
 
                     <Route path="/commodatums" element={<CommodatumPage />} />
-                    <Route
-                      path="/commodatums/:id"
-                      element={<CommodatumInfoPage />}
-                    />
+                    <Route path="/commodatums/:id" element={<CommodatumInfoPage />} />
                   </Route>
                 </Routes>
               </BrowserRouter>

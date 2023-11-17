@@ -4,6 +4,7 @@ import {
   getItemsByNameRequest,
   createItemRequest,
   deleteItemRequest,
+  updateItemRequest,
   getItemRequest,
   getItemsRequest,
 } from "../api/items";
@@ -30,6 +31,15 @@ export function ItemProvider({ children }) {
     }
   };
 
+  const getItem = async (id) => {
+    try {
+      const res = await getItemRequest(id);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getItems = async () => {
     try {
       const res = await getItemsRequest();
@@ -48,6 +58,19 @@ export function ItemProvider({ children }) {
       setErrors(() => error.response.data.message);
     }
   };
+
+  const updateItem = async (id, item) => {
+    try
+    {
+      await updateItemRequest(id, item);
+      getItems();
+    }
+    catch (error)
+    {
+      setErrors(() => error.response.data.message);
+      console.log(error);
+    }
+  }
 
   const deleteItem = async (id) => {
     try {
@@ -71,7 +94,7 @@ export function ItemProvider({ children }) {
 
   return (
     <ItemContext.Provider
-      value={{ getItemsByName, createItem, deleteItem, getItems, errors, items }}
+      value={{ getItemsByName, createItem, updateItem, deleteItem, getItems, getItem, errors, items }}
     >
       {children}
     </ItemContext.Provider>
