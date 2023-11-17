@@ -143,7 +143,7 @@ export default function EditCustomerPage() {
               </div>
             </div>
 
-            <div style={{ marginTop: "1.5rem" }} className="container-group">
+            <div style={{ marginTop: "1rem" }} className="container-group">
               <AlertDialogCrear
                 buttonMessage="Guardar cambios"
                 descriptionMessage="Se guardaran los cambios que entraste"
