@@ -199,16 +199,16 @@ export default function TransactionPage() {
                     {...register("action")}
                   >
                     {container.status === "Disponible" ? (
-                      <option value="venta">Venta</option>
+                      <option value="Venta">Venta</option>
                     ) : (
                       <></>
                     )}
                     {container.status === "Disponible" ? (
-                      <option value="alquiler">Alquiler</option>
+                      <option value="Alquiler">Alquiler</option>
                     ) : (
                       <></>
                     )}
-                    <option value="entrada">Entrada</option>
+                    <option value="Entrada">Entrada</option>
                   </select>
                 </div>
               </div>
