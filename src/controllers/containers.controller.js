@@ -2,6 +2,18 @@ const Container = require("../models/container.model");
 
 // Obtener todos los contendores
 
+const getContainerByNumber = async (req, res) => {
+  try
+  {
+    const foundContainers = await Container.find({ "container_id": { $regex: `${req.params.id}` } });
+    res.json(foundContainers);
+  }
+  catch (error)
+  {
+    return res.staus(500).json({ message: error.message });
+  }
+};
+
 const getContainers = async (req, res) => {
   try {
     const containers = await Container.find();
@@ -110,6 +122,7 @@ const deleteContainer = async (req, res) => {
 };
 
 module.exports = {
+  getContainerByNumber,
   getContainers,
   getContainer,
   createContainer,

@@ -1,5 +1,6 @@
 // const authRequired = require("../middlewares/validateToken");
 const {
+  getCommodatumByNumber,
   getCommodatums,
   getCommodatum,
   deleteCommodatum,
@@ -9,6 +10,8 @@ const {
 
 const { Router } = require("express");
 const router = Router();
+
+router.get("/commodatumsByNumber/:number", getCommodatumByNumber);
 
 router.get("/commodatums/:id", getCommodatum);
 

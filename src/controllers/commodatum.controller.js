@@ -3,6 +3,18 @@ const Container = require("../models/container.model.js");
 
 // Obtener un comodato en particular por id (en params)
 
+const getCommodatumByNumber = async (req, res) => {
+  try
+  {
+    const foundCommodatums = await Commodatum.find({ commodatum_id : { $regex : `${req.params.number}` } });
+    res.json(foundCommodatums);
+  }
+  catch (error)
+  {
+    return res.status(404).json({ message : error.message });
+  }
+}
+
 const getCommodatum = async (req, res) => {
   try {
     const foundCommodatum = await Commodatum.findById(req.params.id).populate(
@@ -121,6 +133,7 @@ const createCommodatum = async (req, res) => {
 };
 
 module.exports = {
+  getCommodatumByNumber,
   getCommodatums,
   getCommodatum,
   deleteCommodatum,
