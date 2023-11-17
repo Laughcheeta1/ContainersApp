@@ -45,7 +45,15 @@ export default function ContainerInfoPage() {
           </div>
 
           <div className="container-info">
-            <h1 className="container-title-info">Información.</h1>
+            <h1 className="container-title-info">
+              Información.{" "}
+              <Link
+                to={`/transaction/${container._id}/${container.container_id}`}
+                className="btn btn-verde"
+              >
+                Realizar Transacción
+              </Link>
+            </h1>
             <div className="info">
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <div className="container">
@@ -113,10 +121,6 @@ export default function ContainerInfoPage() {
 
             <h1 className="subtitle">Mantenimientos</h1>
           </div>
-
-          <Link to={`/transaction/${container._id}/${container.container_id}`} className="btn btn-azul">
-            Hacer Transaccion
-          </Link>
         </>
       ) : (
         <LoadingScreen />

@@ -25,16 +25,12 @@ export default function TransactionPage() {
     resolver: zodResolver(commodatumSchema),
   });
 
-  console.log(errors);
-
   const onSubmit = async (data) => {
     data.container = params.number;
     data.created_by = user.id;
     await createCommodatum(data);
     setWasSubmitted(true);
   };
-
-  console.log(commodatumErrors);
 
   useEffect(() => {
     if (wasSubmitted && commodatumErrors.length === 0)
@@ -52,20 +48,37 @@ export default function TransactionPage() {
           </div>
         ))}
 
-        <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
-          Realizar transacción{" "}
+        <h2
+          style={{
+            fontSize: "34px",
+            fontWeight: 600,
+            margin: "0",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Realizar una transacción{" "}
+          <span style={{ fontSize: "22px", fontWeight: "500" }}>
+            Contenedor No: {params.number}
+          </span>
         </h2>
 
-        <span style={{ fontSize: "22px", fontWeight: "500" }}>
-          Contenedor No: {params.number}
-        </span>
-
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h2>Quien recibe:</h2>
+          <h2
+            style={{
+              marginTop: "1rem",
+              marginBottom: "0",
+              fontWeight: "500",
+              fontSize: "18px",
+            }}
+          >
+            Datos de quien recibe:
+          </h2>
 
-          <div className="container-group">
+          <div className="wrapper container-group">
             <div className="group">
-              <p>{errors.receiver?.id?.message}</p>
+              {errors.receiver?.id?.message ? (
+                <p>{errors.receiver?.id?.message}</p>
+              ) : null}
 
               <div className="input-group">
                 <label htmlFor="receiverId">Cédula:</label>
@@ -80,7 +93,9 @@ export default function TransactionPage() {
             </div>
 
             <div className="group">
-              <p>{errors.receiver?.name?.message}</p>
+              {errors.receiver?.name?.message ? (
+                <p>{errors.receiver?.name?.message}</p>
+              ) : null}
 
               <div className="input-group">
                 <label htmlFor="receiverName">Nombre:</label>
@@ -95,7 +110,9 @@ export default function TransactionPage() {
             </div>
 
             <div className="group">
-              <p>{errors.receiver?.number?.message}</p>
+              {errors.receiver?.number?.message ? (
+                <p>{errors.receiver?.number?.message}</p>
+              ) : null}
 
               <div className="input-group">
                 <label htmlFor="receiverNumber">Teléfono:</label>
@@ -112,7 +129,9 @@ export default function TransactionPage() {
 
           <div className="container-group">
             <div className="group">
-              <p>{errors.company?.message}</p>
+              {errors.company?.message ? (
+                <p>{errors.company?.message}</p>
+              ) : null}
 
               <div className="input-group">
                 <label htmlFor="company">NIT Compañía:</label>
@@ -127,7 +146,9 @@ export default function TransactionPage() {
             </div>
 
             <div className="group">
-              <p>{errors.duration?.message}</p>
+              {errors.duration?.message ? (
+                <p>{errors.duration?.message}</p>
+              ) : null}
 
               <div className="input-group">
                 <label htmlFor="duration">Duración contrato:</label>
@@ -143,7 +164,7 @@ export default function TransactionPage() {
           </div>
 
           <div className="group">
-            <p>{errors.action?.message}</p>
+            {errors.action?.message ? <p>{errors.action?.message}</p> : null}
 
             <div className="input-group">
               <label htmlFor="action">Acción:</label>
@@ -162,7 +183,7 @@ export default function TransactionPage() {
           </div>
 
           <div className="group">
-            <p>{errors.price?.message}</p>
+            {errors.price?.message ? <p>{errors.price?.message}</p> : null}
 
             <div className="input-group">
               <label htmlFor="price">Precio:</label>
@@ -177,7 +198,9 @@ export default function TransactionPage() {
           </div>
 
           <div className="group">
-            <p>{errors.price?.message}</p>
+            {errors.transport_price?.message ? (
+              <p>{errors.transport_price?.message}</p>
+            ) : null}
 
             <div className="input-group">
               <label htmlFor="transport_price">Precio de transporte:</label>
@@ -192,7 +215,9 @@ export default function TransactionPage() {
           </div>
 
           <div className="group">
-            <p>{errors.price?.message}</p>
+            {errors.commodatum_id?.message ? (
+              <p>{errors.commodatum_id?.message}</p>
+            ) : null}
 
             <div className="input-group">
               <label htmlFor="transport_price">Número de comodato:</label>
@@ -207,21 +232,23 @@ export default function TransactionPage() {
           </div>
 
           <div className="group">
-            <p>{errors.price?.message}</p>
+            {errors.signature?.message ? (
+              <p>{errors.signature?.message}</p>
+            ) : null}
 
             <div className="input-group">
               <label htmlFor="transport_price">Firma:</label>
               <input
                 name="signature"
                 type="text"
-                placeholder="Ej: 530,000"
+                placeholder="firma"
                 className="input"
                 {...register("signature")}
               />
             </div>
           </div>
 
-          <div style={{ marginTop: "2rem" }} className="container-group">
+          <div className="container-group">
             <AlertDialogCrear
               buttonMessage="Crear comodato"
               descriptionMessage="Se realizara la transaccion deseada"
