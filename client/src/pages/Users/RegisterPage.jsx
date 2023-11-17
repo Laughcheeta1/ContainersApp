@@ -31,7 +31,7 @@ function RegisterPage() {
     <div className="body">
       <div className="auth-container">
         {registerErrors.map((error, i) => (
-          <div className="bg-red-500 p-2 text-white" key={i}>
+          <div className="container-error" key={i}>
             {error}
           </div>
         ))}
@@ -56,7 +56,9 @@ function RegisterPage() {
           <label className="input-label" htmlFor="username">
             Nombre de usuario:
             {errors.username?.message && (
-              <p className="input-errors">{errors.username?.message}</p>
+              <p style={{ marginLeft: "1rem" }} className="input-errors">
+                {errors.username?.message}
+              </p>
             )}
           </label>
 
@@ -71,7 +73,9 @@ function RegisterPage() {
           <label className="input-label" htmlFor="email">
             Correo:
             {errors.email?.message && (
-              <p className="input-errors">{errors.email?.message}</p>
+              <p style={{ marginLeft: "1rem" }} className="input-errors">
+                {errors.email?.message}
+              </p>
             )}
           </label>
 
@@ -86,7 +90,9 @@ function RegisterPage() {
           <label className="input-label" htmlFor="password">
             Contraseña:
             {errors.password?.message && (
-              <p className="input-errors">{errors.password?.message}</p>
+              <p style={{ marginLeft: "1rem" }} className="input-errors">
+                {errors.password?.message}
+              </p>
             )}
           </label>
 
@@ -101,7 +107,9 @@ function RegisterPage() {
           <label className="input-label" htmlFor="confirmPassword">
             Confirmar contraseña:
             {errors.confirmPassword?.message && (
-              <p className="input-errors">{errors.confirmPassword?.message}</p>
+              <p style={{ marginLeft: "1rem" }} className="input-errors">
+                {errors.confirmPassword?.message}
+              </p>
             )}
           </label>
 
