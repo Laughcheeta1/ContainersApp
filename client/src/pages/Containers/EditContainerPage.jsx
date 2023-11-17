@@ -17,7 +17,11 @@ export default function EditContainerPage() {
     formState: { errors },
   } = useForm({ resolver: zodResolver(editContainerSchema) });
 
-  const { updateContainer, errors: containerErrors, getContainer } = useContainers();
+  const {
+    updateContainer,
+    errors: containerErrors,
+    getContainer,
+  } = useContainers();
   const navigate = useNavigate();
 
   const [wasSubmitted, setWasSubmitted] = useState(false);
@@ -59,7 +63,7 @@ export default function EditContainerPage() {
           ))}
 
           <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
-            Editar Container{" "}editContainerSchema
+            Editar contenedor.{" "}
             <span style={{ fontSize: "22px", fontWeight: "500" }}>
               Numero: {container.container_id}
             </span>
@@ -68,7 +72,7 @@ export default function EditContainerPage() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="container-group">
               <div className="group">
-                <p>{errors.color?.message}</p>
+                {errors.color?.message ? <p>{errors.color?.message}</p> : null}
 
                 <div className="input-group">
                   <label htmlFor="color">Color:</label>
@@ -85,7 +89,7 @@ export default function EditContainerPage() {
 
             <div className="container-group">
               <div className="group">
-                <p>{errors.size?.message}</p>
+                {errors.size?.message ? <p>{errors.size?.message}</p> : null}
 
                 <div className="input-group">
                   <label htmlFor="size">Tamaño:</label>
@@ -102,7 +106,7 @@ export default function EditContainerPage() {
 
             <div className="container-group">
               <div className="group">
-                <p>{errors.type?.message}</p>
+                {errors.type?.message ? <p>{errors.type?.message}</p> : null}
 
                 <div className="input-group">
                   <label htmlFor="type">Tipo:</label>
@@ -119,7 +123,7 @@ export default function EditContainerPage() {
 
             <div className="container-group">
               <div className="group">
-                <p>{errors.notes?.message}</p>
+                {errors.notes?.message ? <p>{errors.notes?.message}</p> : null}
 
                 <div className="input-group">
                   <label htmlFor="notes">Notas:</label>
@@ -135,7 +139,7 @@ export default function EditContainerPage() {
               </div>
             </div>
 
-            <div style={{ marginTop: "2rem" }} className="container-group">
+            <div style={{ marginTop: "1.5rem" }} className="container-group">
               <AlertDialogCrear
                 buttonMessage="Guardar cambios"
                 descriptionMessage="Se guardaran los cambios que entraste"

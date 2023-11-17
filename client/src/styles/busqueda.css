@@ -62,3 +62,35 @@
   border: 0.8px rgb(53, 56, 73);
   border-radius: 10px;
 }
+
+.estado-contenedor-disponible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.25),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #22b54c;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 10px;
+}
+
+.estado-contenedor-no-disponible {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 100%, 0.3),
+      hsla(0, 0%, 100%, 0)
+    ),
+    #dc2626;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 10px;
+}
