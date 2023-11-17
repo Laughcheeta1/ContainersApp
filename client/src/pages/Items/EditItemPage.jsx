@@ -60,7 +60,7 @@ export default function EditCustomerPage() {
           <h2
             style={{ fontSize: "32px", fontWeight: 600, marginBottom: "2rem" }}
           >
-            Editar Item{" "}
+            Editar Ítem{" "}
             <span style={{ fontSize: "22px", fontWeight: "500" }}>
               Nombre: {item.name}
             </span>
