@@ -44,7 +44,7 @@ export default function EditContainerPage() {
 
   useEffect(() => {
     if (wasSubmitted && containerErrors.length === 0)
-      return navigate("/containers");
+      return navigate(`/containers/${params.id}`);
     setWasSubmitted(false);
   }, [containerErrors, wasSubmitted]);
 
@@ -123,13 +123,14 @@ export default function EditContainerPage() {
 
                 <div className="input-group">
                   <label htmlFor="notes">Notas:</label>
-                  <input
+                  <textarea
                     name="notes"
-                    type="text"
+                    rows="3"
+                    placeholder="ej: Laboratorio de química para universidad"
                     defaultValue={container.notes}
                     className="input"
                     {...register("notes")}
-                  />
+                  ></textarea>
                 </div>
               </div>
             </div>
@@ -144,7 +145,7 @@ export default function EditContainerPage() {
               <Link
                 style={{ width: "100%" }}
                 className="btn btn-gris"
-                to="/containers"
+                to={`/containers/${params.id}`}
               >
                 Cancelar
               </Link>

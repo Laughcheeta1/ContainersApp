@@ -130,7 +130,5 @@ export default function ContainerInfoPage() {
         <LoadingScreen />
       )}
     </div>
-
-    // TODO: do the edit container part (Add a button and everything)
   );
 }
