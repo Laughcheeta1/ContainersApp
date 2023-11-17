@@ -42,7 +42,7 @@ export default function ContainersPage() {
         Buscar Contenedores
       </h1>
 
-      <BarraBusqueda placeholder="Buscar por número" route="new" searchMethod={getContainersByNumber} refillMethod={getContainers}/>
+      <BarraBusqueda placeholder="Buscar por número" route="new" searchMethod={getContainersByNumber} refillMethod={getContainers} objectClass={"Container"}/>
 
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Contenedores.</h2>

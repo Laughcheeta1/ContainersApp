@@ -42,7 +42,7 @@ export default function CustomersPage() {
         Buscar Cliente
       </h1>
 
-      <BarraBusqueda placeholder="Buscar por NIT" route="new" searchMethod={getCustomersByName} refillMethod={getCustomers}/>
+      <BarraBusqueda placeholder="Buscar por NIT" route="new" searchMethod={getCustomersByName} refillMethod={getCustomers} objectClass={"Customer"}/>
 
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Clientes</h2>

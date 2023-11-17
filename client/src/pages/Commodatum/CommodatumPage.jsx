@@ -42,7 +42,7 @@ export default function CommodatumPage() {
         Buscar Comodatos
       </h1>
 
-      <BarraBusqueda placeholder="Buscar por número" route="new" searchMethod={getCommodatumsByNumber} refillMethod={getCommodatums}/>
+      <BarraBusqueda placeholder="Buscar por número" route="new" searchMethod={getCommodatumsByNumber} refillMethod={getCommodatums} objectClass={"Commodatum"}/>
 
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Comodatos</h2>
