@@ -3,8 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useCommodatums } from "../../context/CommodatumContext";
-import { useItems } from "../../context/ItemsContext";
-import { transactionSchema } from "../../schemas/transaction";
+import { useAuth } from "../../context/AuthContext";
+import { commodatumSchema } from "../../schemas/commodatum";
 import AlertDialogCrear from "../../components/AlertDialogCrear";
 import LoadingScreen from "../../components/LoadingScreen";
 
@@ -15,23 +15,26 @@ export default function TransactionPage() {
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
+  const { user } = useAuth();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(commodatumSchema),
+  });
+
+  console.log(errors);
 
   const onSubmit = async (data) => {
-    try {
-      console.log(data);
-      data.container = params.number;
-      await createCommodatum(data);
-      setWasSubmitted(true);
-    } catch (error) {
-      console.log(error);
-    }
+    data.container = params.number;
+    data.created_by = user.id;
+    await createCommodatum(data);
+    setWasSubmitted(true);
   };
+
+  console.log(commodatumErrors);
 
   useEffect(() => {
     if (wasSubmitted && commodatumErrors.length === 0)
@@ -43,11 +46,11 @@ export default function TransactionPage() {
   return (
     <>
       <div className="container-form">
-        {/* {commodatumErrors.map((error, i) => (
+        {commodatumErrors.map((error, i) => (
           <div className="container-error" key={i}>
             {error}
           </div>
-        ))} */}
+        ))}
 
         <h2 style={{ fontSize: "32px", fontWeight: 600 }}>
           Realizar transacción{" "}
@@ -57,7 +60,7 @@ export default function TransactionPage() {
           Contenedor No: {params.number}
         </span>
 
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <h2>Quien recibe:</h2>
 
           <div className="container-group">
@@ -107,35 +110,35 @@ export default function TransactionPage() {
             </div>
           </div>
 
-          <h2 style={{ marginTop: "2rem" }}>Ítems</h2>
+          <div className="container-group">
+            <div className="group">
+              <p>{errors.company?.message}</p>
 
-          <div className="group">
-            <p>{errors.company?.message}</p>
-
-            <div className="input-group">
-              <label htmlFor="company">NIT Compañía:</label>
-              <input
-                name="company"
-                type="text"
-                placeholder="Ej: Ruta 40"
-                className="input"
-                {...register("company")}
-              />
+              <div className="input-group">
+                <label htmlFor="company">NIT Compañía:</label>
+                <input
+                  name="company"
+                  type="text"
+                  placeholder="Ej: Ruta 40"
+                  className="input"
+                  {...register("company")}
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="group">
-            <p>{errors.duration?.message}</p>
+            <div className="group">
+              <p>{errors.duration?.message}</p>
 
-            <div className="input-group">
-              <label htmlFor="duration">Duración contrato:</label>
-              <input
-                name="duration"
-                type="text"
-                placeholder="Ej: 2 meses y 3 dias"
-                className="input"
-                {...register("duration")}
-              />
+              <div className="input-group">
+                <label htmlFor="duration">Duración contrato:</label>
+                <input
+                  name="duration"
+                  type="text"
+                  placeholder="Ej: 2 meses y 3 dias"
+                  className="input"
+                  {...register("duration")}
+                />
+              </div>
             </div>
           </div>
 
@@ -144,13 +147,17 @@ export default function TransactionPage() {
 
             <div className="input-group">
               <label htmlFor="action">Acción:</label>
-              <input
+              <select
                 name="action"
                 type="text"
                 placeholder="Ej: Salida"
                 className="input"
                 {...register("action")}
-              />
+              >
+                <option value="venta">Venta</option>
+                <option value="alquiler">Alquiler</option>
+                <option value="entrada">Entrada</option>
+              </select>
             </div>
           </div>
 
@@ -180,6 +187,36 @@ export default function TransactionPage() {
                 placeholder="Ej: 530,000"
                 className="input"
                 {...register("transport_price")}
+              />
+            </div>
+          </div>
+
+          <div className="group">
+            <p>{errors.price?.message}</p>
+
+            <div className="input-group">
+              <label htmlFor="transport_price">Número de comodato:</label>
+              <input
+                name="commodatum_id"
+                type="text"
+                placeholder="Ej: 530,000"
+                className="input"
+                {...register("commodatum_id")}
+              />
+            </div>
+          </div>
+
+          <div className="group">
+            <p>{errors.price?.message}</p>
+
+            <div className="input-group">
+              <label htmlFor="transport_price">Firma:</label>
+              <input
+                name="signature"
+                type="text"
+                placeholder="Ej: 530,000"
+                className="input"
+                {...register("signature")}
               />
             </div>
           </div>

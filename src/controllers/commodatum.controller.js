@@ -88,13 +88,13 @@ const createCommodatum = async (req, res) => {
     if (foundCommodatum)
       return res
         .status(400)
-        .json({ message: "Commodatum Number Already Exists" }); // Verificar que no exista un comodato con ese numero
+        .json({ message: ["Commodatum Number Already Exists"] }); // Verificar que no exista un comodato con ese numero
 
     const foundContainer = await Container.findOne({ container_id: container });
     if (!foundContainer)
       return res
         .status(404)
-        .json({ message: "Container Number Doesn't Exist" }); // Verificar que el numero del contenedor exista
+        .json({ message: ["Container Number Doesn't Exist"] }); // Verificar que el numero del contenedor exista
 
     const newCommodatum = new Commodatum({
       version,
@@ -116,7 +116,7 @@ const createCommodatum = async (req, res) => {
     return res.json(savedCommodatum);
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: [error.message] });
   }
 };
 
