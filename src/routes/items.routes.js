@@ -15,12 +15,7 @@ router.get("/itemsByName/:name", getItemsByName);
 
 router.get("/items", authRequired, getItems);
 
-router.post(
-  "/items",
-  validateSchema(createItemsSchema),
-  authRequired,
-  createItem
-);
+router.post("/items", validateSchema(createItemsSchema), authRequired, createItem);
 
 router.delete("/items/:id", authRequired, deleteItem);
 

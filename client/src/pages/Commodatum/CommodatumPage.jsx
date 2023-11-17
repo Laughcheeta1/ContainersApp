@@ -5,7 +5,7 @@ import BarraBusqueda from "../../components/BarraBusqueda";
 import "../../styles/busqueda.css";
 
 export default function CommodatumPage() {
-  const { getCommodatums, commodatum } = useCommodatums();
+  const { getCommodatumsByNumber, getCommodatums, commodatum } = useCommodatums();
 
   useEffect(() => {
     getCommodatums();
@@ -42,7 +42,7 @@ export default function CommodatumPage() {
         Buscar Comodatos
       </h1>
 
-      <BarraBusqueda placeholder="Buscar por número" route="new" />
+      <BarraBusqueda placeholder="Buscar por número" route="new" searchMethod={getCommodatumsByNumber} refillMethod={getCommodatums}/>
 
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Comodatos</h2>

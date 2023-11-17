@@ -4,7 +4,7 @@ const getItemsByName = async (req, res) =>
 {
   try 
   {
-    const foundItems = await Item.find({ name : { $regex : `${req.params.name}`} });
+    const foundItems = await Item.find({ name : { $regex : `${req.params.name}`, $options: "i"} });
     res.json(foundItems);
   }
   catch (error)

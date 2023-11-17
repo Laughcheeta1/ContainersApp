@@ -6,7 +6,7 @@ const Container = require("../models/container.model.js");
 const getCommodatumByNumber = async (req, res) => {
   try
   {
-    const foundCommodatums = await Commodatum.find({ commodatum_id : { $regex : `${req.params.number}` } });
+    const foundCommodatums = await Commodatum.find({ commodatum_id : { $regex : `${req.params.number}`, $options: "i" } });
     res.json(foundCommodatums);
   }
   catch (error)

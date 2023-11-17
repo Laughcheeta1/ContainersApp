@@ -3,7 +3,7 @@ const Customer = require("../models/customers.model");
 const getCustomersByName = async (req, res) => {
   try
   {
-    const foundCustomers = await Customer.find({ name : { $regex : `${req.params.name}`} });
+    const foundCustomers = await Customer.find({ name : { $regex : `${req.params.name}`, $options: "i"} });
     res.json(foundCustomers);
   }
   catch (error)

@@ -5,7 +5,7 @@ import BarraBusqueda from "../../components/BarraBusqueda";
 import "../../styles/busqueda.css";
 
 export default function CustomersPage() {
-  const { getCustomers, customers } = useCustomers();
+  const { getCustomersByName, getCustomers, customers } = useCustomers();
 
   useEffect(() => {
     getCustomers();
@@ -42,7 +42,7 @@ export default function CustomersPage() {
         Buscar Cliente
       </h1>
 
-      <BarraBusqueda placeholder="Buscar por NIT" route="new" />
+      <BarraBusqueda placeholder="Buscar por NIT" route="new" searchMethod={getCustomersByName} refillMethod={getCustomers}/>
 
       <div className="container-resultados">
         <h2 style={{ fontSize: "26px" }}>Clientes</h2>

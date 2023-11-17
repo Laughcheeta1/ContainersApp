@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 import {
+  getItemsByNameRequest,
   createItemRequest,
   deleteItemRequest,
   getItemRequest,
@@ -19,6 +20,15 @@ export const useItems = () => {
 export function ItemProvider({ children }) {
   const [items, setItems] = useState([]);
   const [errors, setErrors] = useState([]);
+
+  const getItemsByName = async (name) => {
+    try {
+      const res = await getItemsByNameRequest(name);
+      setItems(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getItems = async () => {
     try {
@@ -61,7 +71,7 @@ export function ItemProvider({ children }) {
 
   return (
     <ItemContext.Provider
-      value={{ createItem, deleteItem, getItems, errors, items }}
+      value={{ getItemsByName, createItem, deleteItem, getItems, errors, items }}
     >
       {children}
     </ItemContext.Provider>

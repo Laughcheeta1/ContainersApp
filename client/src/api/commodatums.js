@@ -1,5 +1,7 @@
 import axios from "./axios.js"
 
+export const getCommodatumsByNumberRequest = async (number) => axios.get(`/commodatumsByNumber/${number}`);
+
 export const getCommodatumsRequest = async () => axios.get("/commodatums");
 
 export const getCommodatumRequest = async (id) => axios.get(`/commodatums/${id}`);

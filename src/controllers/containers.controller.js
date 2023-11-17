@@ -5,7 +5,7 @@ const Container = require("../models/container.model");
 const getContainerByNumber = async (req, res) => {
   try
   {
-    const foundContainers = await Container.find({ "container_id": { $regex: `${req.params.id}` } });
+    const foundContainers = await Container.find({ "container_id": { $regex: `${req.params.id}`, $options: "i" } });
     res.json(foundContainers);
   }
   catch (error)
