@@ -53,6 +53,8 @@ export default function ContainerInfoPage() {
               >
                 Realizar Transacción
               </Link>
+
+              <Link to={"/containers"} className="btn btn-azul">Volver</Link>
             </h1>
             <div className="info">
               <div style={{ display: "flex", flexDirection: "column" }}>

@@ -25,6 +25,4 @@ app.use("/api", containerRoutes);
 app.use("/api", commodatumRoutes);
 app.use("/api", customerRoutes);
 app.use("/api", itemsRoutes);
-// TODO: add the remaining models routes
-// TODO: add coments to everything
 module.exports = app;

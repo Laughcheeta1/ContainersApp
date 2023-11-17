@@ -19,7 +19,7 @@ export const containerSchema = z.object({
     message: "El QR es necesario",
   }),
   
-  status: z.string().default("Libre"),
+  status: z.string().default("Available"),
 
   type: z.string().min(1, {
     message: "El tipo es necesario",

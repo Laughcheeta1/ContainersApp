@@ -5,6 +5,7 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { useCommodatums } from "../../context/CommodatumContext";
 import { useAuth } from "../../context/AuthContext";
 import { commodatumSchema } from "../../schemas/commodatum";
+import { useContainers } from "../../context/ContainerContext";
 import AlertDialogCrear from "../../components/AlertDialogCrear";
 import LoadingScreen from "../../components/LoadingScreen";
 
@@ -12,6 +13,8 @@ import "../../styles/formPage.css";
 
 export default function TransactionPage() {
   const { createCommodatum, errors: commodatumErrors } = useCommodatums();
+  const [container, setContainer] = useState(null);
+  const { getContainer } = useContainers();
   const [wasSubmitted, setWasSubmitted] = useState(false);
   const navigate = useNavigate();
   const params = useParams();
@@ -33,6 +36,20 @@ export default function TransactionPage() {
   };
 
   useEffect(() => {
+    try {
+      const loadContainer = async () => {
+        const containerInfo = await getContainer(params.id);
+        console.log(containerInfo);
+        setContainer(() => containerInfo);
+      };
+
+      loadContainer();
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+  useEffect(() => {
     if (wasSubmitted && commodatumErrors.length === 0)
       return navigate(`/containers/${params.id}`);
 
@@ -41,7 +58,8 @@ export default function TransactionPage() {
 
   return (
     <>
-      <div className="container-form">
+      {container ? 
+        <div className="container-form">
         {commodatumErrors.map((error, i) => (
           <div className="container-error" key={i}>
             {error}
@@ -175,8 +193,8 @@ export default function TransactionPage() {
                 className="input"
                 {...register("action")}
               >
-                <option value="venta">Venta</option>
-                <option value="alquiler">Alquiler</option>
+                {container.status === "Disponible" ? <option value="venta">Venta</option> : <></>}
+                {container.status === "Disponible" ? <option value="alquiler">Alquiler</option> : <></>}
                 <option value="entrada">Entrada</option>
               </select>
             </div>
@@ -265,6 +283,8 @@ export default function TransactionPage() {
           </div>
         </form>
       </div>
+    : <LoadingScreen />}
+      
     </>
   );
 }

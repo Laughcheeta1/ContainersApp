@@ -19,7 +19,7 @@ router.get("/commodatums", getCommodatums);
 
 router.post("/commodatums", createCommodatum);
 
-router.put("/commodatums/:id", updateCommodatum);
+// router.put("/commodatums/:id", updateCommodatum);
 
 router.delete("/commodatums/:id", deleteCommodatum);
 
