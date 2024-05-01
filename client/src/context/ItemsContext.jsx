@@ -25,7 +25,7 @@ export function ItemProvider({ children }) {
   const getItemsByName = async (name) => {
     try {
       const res = await getItemsByNameRequest(name);
-      setItems(res.data);
+      setItems(res.data); 
     } catch (error) {
       console.log(error);
     }
